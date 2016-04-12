@@ -1,0 +1,6 @@
+nav a:link,nav a:visited{line-height:1.3em;}
+
+
+#comments form .form-submit { padding:0 0 0 .7em;}
+#comments form .form-submit span { padding:0 0 .25em 0; }
+#comments form .form-submit input { padding:.2em 0 .4em .5em;}
