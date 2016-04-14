@@ -99,22 +99,4 @@
 					<li><a href="http://www.tantacom.com/contacto">contacto</a></li>
 				</ul>
 			</nav>
-			<footer>
-				<ul>
-					<li>
-						<ul>
-							<li class="map"><span>C/ Julián Camarillo, 26,<br /> 1ª planta, oficina 2,<br />28037, Madrid, España.</span></li>
-							<li class="tlf"><span>+34 91 440 10 40</span></li>
-							<li class="mail"><a href="mailto:tanta@tantacom.com">tanta@tantacom.com</a></li>
-						</ul>
-					</li>
-					<li>
-						<span>Pertenecemos al Grupo Onetec:<br></span>
-						<ul>
-							<li><a href="http://www.grupoonetec.com" target="_blank">www.grupoonetec.com</a></li>
-							<li><a href="http://www.onetec.es" target="_blank">www.onetec.es</a></li>
-						</ul>
-					</li>
-				</ul>
-			</footer>
 		</aside>
