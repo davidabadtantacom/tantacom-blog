@@ -194,6 +194,7 @@ function wp_rp_handle_postdata() {
 			'display_thumbnail' => isset($postdata['wp_rp_mobile_display_thumbnail']),
 			'excerpt_max_length' => (isset($postdata['wp_rp_mobile_excerpt_max_length']) && is_numeric(trim($postdata['wp_rp_mobile_excerpt_max_length']))) ? intval(trim($postdata['wp_rp_mobile_excerpt_max_length'])) : 200,
 			'custom_theme_enabled' => isset($postdata['wp_rp_mobile_custom_theme_enabled']),
+			'display_category' => isset($postdata['wp_rp_desktop_display_category']),
 		),
 		'desktop' => array(
 			'display_comment_count' => isset($postdata['wp_rp_desktop_display_comment_count']),
@@ -202,6 +203,7 @@ function wp_rp_handle_postdata() {
 			'display_thumbnail' => isset($postdata['wp_rp_desktop_display_thumbnail']),
 			'excerpt_max_length' => (isset($postdata['wp_rp_desktop_excerpt_max_length']) && is_numeric(trim($postdata['wp_rp_desktop_excerpt_max_length']))) ? intval(trim($postdata['wp_rp_desktop_excerpt_max_length'])) : 200,
 			'custom_theme_enabled' => isset($postdata['wp_rp_desktop_custom_theme_enabled']),
+			'display_category' => isset($postdata['wp_rp_desktop_display_category']),
 		)
 	);
 	

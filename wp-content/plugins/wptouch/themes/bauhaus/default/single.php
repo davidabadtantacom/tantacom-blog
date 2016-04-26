@@ -12,7 +12,7 @@
 							<?php wptouch_the_time(); ?>
 						<?php } ?>
 						<?php if ( bauhaus_should_show_comment_bubbles() ) { ?>
-							<?php if ( bauhaus_should_show_date() && ( comments_open() || wptouch_have_comments() ) ) echo '&harr;'; ?>
+							<?php if ( bauhaus_should_show_date() && ( comments_open() || wptouch_have_comments() ) ) echo '&bull;'; ?>
 							<?php if ( comments_open() || wptouch_have_comments() ) comments_number( __( 'no comments', 'wptouch-pro' ), __( '1 comment', 'wptouch-pro' ), __( '% comments', 'wptouch-pro' ) ); ?>
 						<?php } ?>
 					</span>
@@ -50,7 +50,7 @@
 		<?php } ?>
 	</div> <!-- content -->
 
-	<?php get_template_part( 'related-posts' ); ?>
+	<?php do_action( 'wptouch_after_post_content' ); ?>
 
 	<?php get_template_part( 'nav-bar' ); ?>
 	<?php if ( comments_open() || wptouch_have_comments() ) { ?>
