@@ -237,6 +237,7 @@ function wp_rp_install() {
 			'display_publish_date'			=> false,
 			'display_thumbnail'			=> true,
 			'display_excerpt'			=> false,
+			'display_category' => false,
 			'excerpt_max_length'			=> 100,
 			'theme_name' 				=> 'vertical-m.css',
 			'theme_custom_css'			=> WP_RP_DEFAULT_CUSTOM_CSS,
@@ -257,6 +258,18 @@ function wp_rp_is_classic() {
 	}
 	return false;
 }
+
+function wp_rp_migrate_3_5_4() {
+	$meta = get_option('gp_meta');
+	$meta['version'] = '3.6';
+	$meta['new_user'] = false;
+	update_option('gp_meta', $meta);
+
+	$options = get_option('gp_options');
+	$options['desktop']['display_category'] = false;
+	update_option('gp_options', $options);
+}
+
 
 function wp_rp_migrate_3_5_3() {
 	$meta = get_option('gp_meta');

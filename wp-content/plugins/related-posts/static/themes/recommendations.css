@@ -52,3 +52,8 @@ ul.related_post li div.remove_x {
 	display: none;
 }
 ul.related_post li:hover div.remove_x { display: block; }
+
+
+ul.related_post li .wp_rp_category a {
+	display: inline !important;
+}

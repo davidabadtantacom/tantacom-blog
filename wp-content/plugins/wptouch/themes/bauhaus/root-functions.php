@@ -1,14 +1,14 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '1.4.9' );
+define( 'BAUHAUS_THEME_VERSION', '1.6.5' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
-define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_root_url' ) );
+define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_parent_url' ) );
 
 // Bauhaus actions
 add_action( 'foundation_init', 'bauhaus_theme_init' );
 add_action( 'foundation_modules_loaded', 'bauhaus_register_fonts' );
-add_action( 'admin_enqueue_scripts', 'bauhaus_enqueue_admin_scripts' );
+add_action( 'customize_controls_enqueue_scripts', 'bauhaus_enqueue_customizer_script' );
 
 // Bauhaus filters
 add_filter( 'wptouch_registered_setting_domains', 'bauhaus_setting_domain' );
@@ -19,12 +19,13 @@ add_filter( 'wptouch_body_classes', 'bauhaus_body_classes' );
 add_filter( 'wptouch_post_classes', 'bauhaus_post_classes' );
 
 // Bauhaus GUI Settings
-add_filter( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'bauhaus_render_theme_settings' );
+add_filter( 'foundation_settings_header', 'bauhaus_header_settings' );
 add_filter( 'foundation_settings_blog', 'bauhaus_blog_settings' );
 add_filter( 'wptouch_post_footer', 'bauhaus_footer_version' );
 
 add_filter( 'wptouch_has_post_thumbnail', 'bauhaus_handle_has_thumbnail' );
 add_filter( 'wptouch_the_post_thumbnail', 'bauhaus_handle_the_thumbnail' );
+add_filter( 'wptouch_get_post_thumbnail', 'bauhaus_handle_get_thumbnail' );
 add_filter( 'wptouch_setting_version_compare', 'bauhaus_setting_version_compare', 10, 2 );
 
 function bauhaus_setting_domain( $domain ) {
@@ -51,18 +52,15 @@ function bauhaus_footer_version(){
 function bauhaus_setting_defaults( $settings ) {
 
 	// Bauhaus menu default
-	$settings->primary_menu = 'wp';
 	$settings->bauhaus_menu_style = 'off-canvas';
+	$settings->bauhaus_menu_position = 'left-side';
 
 
 	// Theme colors
 	$settings->bauhaus_background_color = '#f9f9f8';
 	$settings->bauhaus_header_color = '#2d353f';
-	$settings->bauhaus_link_color = '#35c4ff';
-	$settings->bauhaus_post_page_header_color = '#6dfdb9';
-
-	// Shapes
-	$settings->bauhaus_shape_type = 'circles';
+	$settings->bauhaus_link_color = '#0376a8';
+	$settings->bauhaus_post_page_header_color = '#4ad6a7';
 
 	// Blog
 	$settings->bauhaus_show_taxonomy = false;
@@ -89,19 +87,16 @@ function bauhaus_theme_init() {
 	foundation_add_theme_support(
 		array(
 			// Modules w/ settings
-			'webapp',
-			'advertising',
 			'wptouch-icons',
 			'custom-posts',
 			'custom-latest-posts',
-			'related-posts',
 			'google-fonts',
 			'load-more',
 			'media',
-			'login',
 			'sharing',
 			'social-links',
 			'featured',
+			'login',
 			// Modules w/o settings
 			'menu',
 			'spinjs',
@@ -130,11 +125,11 @@ function bauhaus_theme_init() {
 	);
 
 	// Example of how to register theme colors
-	// (Name, element to add color to, element to add background-color to, settings domain)
-	foundation_register_theme_color( 'bauhaus_background_color', __( 'Theme background', 'wptouch-pro' ), '', '.page-wrapper', BAUHAUS_SETTING_DOMAIN );
-	foundation_register_theme_color( 'bauhaus_header_color', __( 'Header & Menu', 'wptouch-pro' ), 'a', 'body, header, .wptouch-menu, .pushit, #search-dropper, .date-circle', BAUHAUS_SETTING_DOMAIN );
-	foundation_register_theme_color( 'bauhaus_link_color', __( 'Links', 'wptouch-pro' ), 'a, #slider a p:after', '.dots li.active, #switch .active', BAUHAUS_SETTING_DOMAIN );
-	foundation_register_theme_color( 'bauhaus_post_page_header_color', __( 'Post/Page Headers', 'wptouch-pro' ), '', '.bauhaus, .wptouch-login-wrap, form#commentform button#submit', BAUHAUS_SETTING_DOMAIN );
+	// (Name, element to add color to, element to add background-color to, settings domain, luma threshold, luma class root – light-*, dark-* )
+	foundation_register_theme_color( 'bauhaus_background_color', __( 'Theme background', 'wptouch-pro' ), '', '.page-wrapper', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'body' );
+	foundation_register_theme_color( 'bauhaus_header_color', __( 'Header & Menu', 'wptouch-pro' ),'', 'body, header, .wptouch-menu, .pushit, #search-dropper, .date-circle', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'header' );
+	foundation_register_theme_color( 'bauhaus_link_color', __( 'Links', 'wptouch-pro' ), '.content-wrap a, #slider a p:after', '.dots li.active, #switch .active', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING );
+	foundation_register_theme_color( 'bauhaus_post_page_header_color', __( 'Post/Page Headers', 'wptouch-pro' ), '', '.bauhaus, form#commentform button#submit', BAUHAUS_SETTING_DOMAIN, WPTOUCH_PRO_LIVE_PREVIEW_SETTING, 150, 'post-head' );
 }
 
 // Example of how to register Google font pairings
@@ -182,32 +177,7 @@ function bauhaus_register_fonts() {
 function bauhaus_body_classes( $classes ) {
 	$settings = bauhaus_get_settings();
 
-	$heading_luma = wptouch_hex_to_luma( $settings->bauhaus_header_color );
-	$shape_type = $settings->bauhaus_shape_type;
-
-	if ( $heading_luma <= 150 ) {
-		$classes[] = 'dark-header';
-	} else {
-		$classes[] = 'light-header';
-	}
-
-	$body_luma = wptouch_hex_to_luma( $settings->bauhaus_background_color );
-
-	if ( $body_luma <= 150 ) {
-		$classes[] = 'dark-body';
-	} else {
-		$classes[] = 'light-body';
-	}
-
-	$post_page_head_luma = wptouch_hex_to_luma( $settings->bauhaus_post_page_header_color );
-
-	if ( $post_page_head_luma <= 150 ) {
-		$classes[] = 'dark-post-head';
-	} else {
-		$classes[] = 'light-post-head';
-	}
-
-	$classes[] = $shape_type;
+	$classes[] = 'circles';
 
 	if ( !$settings->bauhaus_show_comment_bubbles ) {
 		$classes[] = 'no-com-bubbles';
@@ -235,11 +205,11 @@ function bauhaus_post_classes( $classes ) {
 }
 
 
-function bauhaus_enqueue_admin_scripts() {
+function bauhaus_enqueue_customizer_script() {
 	wp_enqueue_script(
-		'bauhaus-admin-js',
-		BAUHAUS_URL . '/admin/bauhaus-admin.js',
-		array( 'jquery', 'wptouch-pro-admin' ),
+		'bauhaus-customizer-js',
+		BAUHAUS_URL . '/bauhaus-customizer.js',
+		array( 'jquery' ),
 		BAUHAUS_THEME_VERSION,
 		false
 	);
@@ -247,53 +217,48 @@ function bauhaus_enqueue_admin_scripts() {
 
 // Admin Settings
 
-function bauhaus_render_theme_settings( $page_options ) {
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_BRANDING,
-		__( 'Theme Shapes', 'wptouch-pro' ),
-		'theme-shapes',
+function bauhaus_header_settings( $header_settings ) {
+
+	$header_settings[] = wptouch_add_pro_setting(
+		'list',
+		'bauhaus_menu_style',
+		__( 'Menu animation style', 'wptouch-pro' ),
+		false,
+		WPTOUCH_SETTING_BASIC,
+		'1.3',
 		array(
-			wptouch_add_pro_setting(
-				'radiolist',
-				'bauhaus_shape_type',
-				__( 'Theme shape style', 'wptouch-pro' ),
-				__( 'Bauhaus will use this shape style throughout its appearance', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				array(
-					'circles' => __( 'Circles', 'wptouch-pro' ),
-					'roundsquares' => __( 'Rounded squares', 'wptouch-pro' )
-				)
-			)
+			'off-canvas' => __( 'Off-canvas', 'wptouch-pro' ),
+			'drop-down' => __( 'Drop-down', 'wptouch-pro' )
 		),
-		$page_options,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_BRANDING,
-		__( 'Menu Style', 'wptouch-pro' ),
-		'menu-style',
+	$header_settings[] = wptouch_add_setting(
+		'list',
+		'bauhaus_menu_position',
+		__( 'Menu position', 'wptouch-pro' ),
+		false,
+		WPTOUCH_SETTING_BASIC,
+		'1.6.4',
 		array(
-			wptouch_add_pro_setting(
-				'radiolist',
-				'bauhaus_menu_style',
-				__( 'Menu animation style', 'wptouch-pro' ),
-				__( 'Bauhaus can show your menu off-canvas or in a drop-down.', 'wptouch-pro' ),
-				WPTOUCH_SETTING_ADVANCED,
-				'1.3',
-				array(
-					'off-canvas' => __( 'Off-canvas', 'wptouch-pro' ),
-					'drop-down' => __( 'Drop-down', 'wptouch-pro' )
-				)
-			)
+			'left-side' => __( 'Left side', 'wptouch-pro' ),
+			'right-side' => __( 'Right side', 'wptouch-pro' )
 		),
-		$page_options,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
-	return $page_options;
+	$header_settings[] = wptouch_add_setting(
+		'checkbox',
+		'bauhaus_show_search',
+		__( 'Show search in header', 'wptouch-pro' ),
+		false,
+		WPTOUCH_SETTING_BASIC,
+		'1.0',
+		false,
+		BAUHAUS_SETTING_DOMAIN
+	);
 
+	return $header_settings;
 }
 
 // Hook into Foundation page section for Blog and add settings
@@ -303,7 +268,7 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'list',
 		'bauhaus_use_thumbnails',
 		__( 'Post thumbnails', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0',
 		array(
@@ -319,12 +284,12 @@ function bauhaus_blog_settings( $blog_settings ) {
 	$blog_settings[] = wptouch_add_setting(
 		'radiolist',
 		'bauhaus_thumbnail_type',
-		__( 'Thumbnail Selection', 'wptouch-pro' ),
-		'',
+		__( 'Thumbnail Type', 'wptouch-pro' ),
+		false,
 		WPTOUCH_SETTING_ADVANCED,
 		'1.0',
 		array(
-			'featured' => __( 'Post featured image', 'wptouch-pro' ),
+			'featured' => __( 'Post featured images', 'wptouch-pro' ),
 			'custom_field' => __( 'Post custom field', 'wptouch-pro' )
 		),
 		BAUHAUS_SETTING_DOMAIN
@@ -334,10 +299,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'text',
 		'bauhaus_thumbnail_custom_field',
 		__( 'Thumbnail custom field name', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_ADVANCED,
 		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -345,10 +310,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'checkbox',
 		'bauhaus_show_taxonomy',
 		__( 'Show post categories and tags', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -356,10 +321,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'checkbox',
 		'bauhaus_show_date',
 		__( 'Show post date', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -367,10 +332,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'checkbox',
 		'bauhaus_show_author',
 		__( 'Show post author', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -378,21 +343,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'checkbox',
 		'bauhaus_show_comment_bubbles',
 		__( 'Show comment bubbles on posts', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0.5',
-		'',
-		BAUHAUS_SETTING_DOMAIN
-	);
-
-	$blog_settings[] = wptouch_add_setting(
-		'checkbox',
-		'bauhaus_show_search',
-		__( 'Show search in header', 'wptouch-pro' ),
-		__( 'Adds Search capability in the site header.', 'wptouch-pro' ),
-		WPTOUCH_SETTING_BASIC,
-		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -400,10 +354,10 @@ function bauhaus_blog_settings( $blog_settings ) {
 		'checkbox',
 		'bauhaus_use_infinite_scroll',
 		__( 'Use infinite scrolling for blog', 'wptouch-pro' ),
-		'',
+		false,
 		WPTOUCH_SETTING_BASIC,
 		'1.0',
-		'',
+		false,
 		BAUHAUS_SETTING_DOMAIN
 	);
 
@@ -438,6 +392,19 @@ function bauhaus_handle_the_thumbnail( $current_thumbnail ) {
 	return $current_thumbnail;
 }
 
+function bauhaus_handle_get_thumbnail( $current_thumbnail ) {
+	$settings = bauhaus_get_settings();
+
+	if ( $settings->bauhaus_thumbnail_type == 'custom_field' ) {
+		global $post;
+
+		$image = get_post_meta( $post->ID, $settings->bauhaus_thumbnail_custom_field, true );
+		return $image;
+	}
+
+	return $current_thumbnail;
+}
+
 function bauhaus_if_infinite_scroll_enabled(){
 	$settings = bauhaus_get_settings();
 
@@ -452,4 +419,34 @@ function bauhaus_if_off_canvas_enabled(){
 	if ( $settings->bauhaus_menu_style == 'off-canvas' ) {
 		foundation_add_theme_support( 'pushit' );
 	}
+}
+
+add_filter( 'wptouch_amp_header_color', 'bauhaus_amp_header_color' );
+function bauhaus_amp_header_color( $color ) {
+	$settings = bauhaus_get_settings();
+	return $settings->bauhaus_header_color;
+}
+
+add_filter( 'wptouch_amp_link_color', 'bauhaus_amp_link_color' );
+function bauhaus_amp_link_color( $color ) {
+	$settings = bauhaus_get_settings();
+	return $settings->bauhaus_link_color;
+}
+
+add_filter( 'wptouch_amp_show_author', 'bauhaus_amp_show_author' );
+function bauhaus_amp_show_author() {
+	$settings = bauhaus_get_settings();
+	return $settings->bauhaus_show_author;
+}
+
+add_filter( 'wptouch_amp_show_date', 'bauhaus_amp_show_date' );
+function bauhaus_amp_show_date() {
+	$settings = bauhaus_get_settings();
+	return $settings->bauhaus_show_date;
+}
+
+add_filter( 'wptouch_amp_show_taxonomy', 'bauhaus_amp_show_taxonomy' );
+function bauhaus_amp_show_taxonomy() {
+	$settings = bauhaus_get_settings();
+	return $settings->bauhaus_show_taxonomy;
 }
