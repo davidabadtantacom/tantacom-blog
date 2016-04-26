@@ -798,6 +798,9 @@ img#wpstats{width:0px;height:0px;overflow:hidden;}
 .entry-content h5,
 .entry-content h6{margin-bottom:.5em;}
 
+.entry-content p { margin-bottom: .5em; }
+.entry-content strong, .entry-content b { font-weight: bold; }
+
 /* =Print Style
 -------------------------------------------------------------- */
 
