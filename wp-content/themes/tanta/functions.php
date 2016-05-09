@@ -101,7 +101,8 @@ function tanta_setup() {
 	) );
 
 	// This theme allows users to set a custom background
-	add_custom_background();
+	//add_custom_background();
+	add_theme_support( 'custom-background' );
 
 		
 	
