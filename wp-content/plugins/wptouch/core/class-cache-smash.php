@@ -102,6 +102,15 @@ class WPtouchCacheSmash {
 					if ( !$this->find_in_array_no_case( 'iphone', $rejected_user_agents ) ) {
 						$cache_configured = false;
 					}
+
+					if ( !$cache_configured && ( $user_groups = $w3_config->get_array( 'mobile.rgroups' ) ) && is_array( $user_groups ) && count( $user_groups ) > 0 ) {
+						foreach ( $user_groups as $group ) {
+							if ( $group[ 'enabled' ] && $this->find_in_array_no_case( 'iphone', $group[ 'agents' ] ) && $group[ 'theme' ] == '' && $group[ 'redirect' ] == '' ) {
+								$cache_configured = true;
+								add_filter( 'wptouch_show_mobile_switch_link', '__return_false' );
+							}
+						}
+					}
 				}
 			}
 

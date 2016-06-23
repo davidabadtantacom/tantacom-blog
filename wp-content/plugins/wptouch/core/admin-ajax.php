@@ -188,7 +188,7 @@ function wptouch_admin_handle_ajax( &$wptouch_pro, $ajax_action ) {
 
 		 	$result_info = array();
 
-		 	if ( $result && isset( $result[ 'body' ] ) ) {
+		 	if ( $result && is_array( $result ) && isset( $result[ 'body' ] ) ) {
 		 		if ( preg_match_all( '#(<script>.*</script>)#iUs', $result[ 'body' ], $match ) ) {
 		 			foreach( $match[0] as $possible_analytics ) {
 		 				$search_for = array( 'GoogleAnalyticsObject' );
@@ -214,7 +214,7 @@ function wptouch_admin_handle_ajax( &$wptouch_pro, $ajax_action ) {
 		 		}
 		 	}
 
-		 	if ( !isset( $result_info[ 'code' ] ) ) {
+		 	if (  is_array( $result ) && !isset( $result_info[ 'code' ] ) ) {
 		 		$result_info[ 'code' ] = 'noresult';
 		 		$result_info[ 'msg' ] = __( 'Unable to find your Google Analytics code. You can enter it manually in the settings later.', 'wptouch-pro' );
 		 	}
@@ -344,8 +344,22 @@ function wptouch_admin_handle_ajax( &$wptouch_pro, $ajax_action ) {
 				switch_to_blog( $real_site );
 
 				$destination_main_settings = $wptouch_pro->get_raw_settings( 'wptouch_pro' );
+				if ( !$destination_main_settings ) {
+					$destination_main_settings = $wptouch_pro->get_setting_defaults( 'wptouch_pro' );
+					$destination_main_settings = 'wptouch_pro';
+				}
+
 				$destination_foundation_settings = $wptouch_pro->get_raw_settings( 'foundation' );
+				if ( !$destination_foundation_settings ) {
+					$destination_foundation_settings = $wptouch_pro->get_setting_defaults( 'foundation' );
+					$destination_foundation_settings->domain = 'foundation';
+				}
+
 				$destination_compat_settings = $wptouch_pro->get_raw_settings( 'compat' );
+				if ( !$destination_compat_settings ) {
+					$destination_compat_settings = $wptouch_pro->get_setting_defaults( 'compat' );
+					$destination_compat_settings->domain = 'compat';
+				}
 
 				if ( $wptouch_pro->post[ 'deploy_general' ] ) {
 					// Deploy general settings

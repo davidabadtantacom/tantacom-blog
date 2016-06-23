@@ -55,10 +55,8 @@
 
 		<?php do_action( 'wptouch_advertising_top' ); ?>
 
-		<?php if ( is_home() ) { ?>
-			<?php if ( function_exists( 'foundation_featured_slider' ) ) { ?>
-				<?php foundation_featured_slider(); ?>
-			<?php } ?>
+		<?php if ( function_exists( 'foundation_featured_slider' ) ) { ?>
+			<?php foundation_featured_slider(); ?>
 		<?php } ?>
 
 	<?php if ( is_archive() ) { ?>

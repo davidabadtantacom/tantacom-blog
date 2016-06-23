@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.1.1
+Stable tag: 4.1.5
 Tested up to: 4.5
 License: GPLv2
 
@@ -32,6 +32,44 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.1.5 (June 17, 2016) =
+
+* Added: Option to choose which page the featured slider is shown on (Bauhaus, certain configurations)
+* Added: For sites that redirect mobile visitors to a landing page other than their latest posts page, added option to select on which page the featured slider is shown.
+* Changed: Auto-expand menu section if on a page within that section
+* Changed: Reduced frequency of API calls in admin
+* Changed: Cache warning is no longer displayed for sites running W3 Total Cache if a user agent group has been enabled to pass through mobile requests. As it is incompatible with this cache configuration, the desktop/mobile theme switch is disabled for sites using this cache configuration.
+* Changed: Custom field-based thumbnails are now displayed in post listings, related posts, featured slider, and at top of posts.
+* Changed: Featured slider no longer shows zero comment count
+* Fixed: Incorrect XML sitemap output when Featured Slider was enabled
+* Updated: Italian, Portuguese, Spanish translations
+
+= Version 4.1.4 (May 26, 2016) =
+
+* Added: Support for new setting types in admin
+* Added: Improved RTL support for featured slider
+* Changed: Only display icon selection tool on items already saved to the menu (WordPress limitation)
+* Changed: Replaced library used for featured slider (now using Owl Carousel)
+* Changed: No icon selection shown for pending items (cannot select icons until item saved in menu)
+* Fixed: Icon selector not fully overlaying other menu items when they've been expanded
+* Fixed: Warnings when featured slider finds no content to display
+* Fixed: Menu fields showing through icon picker
+* Fixed: Display of long (non-breaking) titles in next/previous links
+* Fixed: 'Save settings' spinner triggered when non-saving actions were taken
+
+= Version 4.1.3 (May 6, 2016) =
+
+* Fixed: Auto-upgrade from WPtouch to WPtouch Pro when license is activated
+* Updated: Hebrew translation (partial)
+
+= Version 4.1.2 (May 3, 2016) =
+
+* Fixed: Auto-disable free plugin when WPtouch Pro is active
+* Fixed: Ensure correct theme is active when downgrading from WPtouch Pro
+* Fixed: Pinterest sharing link
+* Fixed: Search forms now allow searching while in preview mode
+* Updated: Translations for Arabic, French, Indonesian, Japanese, Portuguese
 
 = Version 4.1.1 (April 12, 2016) =
 

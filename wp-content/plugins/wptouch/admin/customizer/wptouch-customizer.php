@@ -2,7 +2,7 @@
 global $wptouch_pro;
 $current_theme = $wptouch_pro->get_current_theme_info();
 
-if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
+if ( $current_theme && wptouch_admin_use_customizer() ) {
 
 	add_action( 'admin_init', 'wptouch_initialize_customizer' );
 
@@ -40,8 +40,8 @@ if ( $current_theme && !defined( 'WPTOUCH_IS_FREE' ) ) {
 		add_filter( 'wptouch_user_agent', 'customizer_user_override' );
 
 		// Make WordPress aware we're using the mobile theme not the desktop theme (not overriden by WPtouch)
-		add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name' );
-		add_filter( 'pre_option_template', 'wptouch_get_current_theme_friendly_name' );
+		add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );
+		add_filter( 'pre_option_template', 'wptouch_get_current_theme_friendly_name', 50 );
 
 		// Prevent the 'custom landing page' setting from being applied.
 		add_filter( 'wptouch_redirect_target', 'wptouch_return_false' );
@@ -423,6 +423,10 @@ function wptouch_customizer_setup( $wp_customize ) {
 							'type' => $setting->type,
 						);
 
+						if ( isset( $setting->tooltip ) ) {
+							$args[ 'description' ] = $setting->tooltip;
+						}
+
 						$setting_args = array();
 
 						if ( isset( $defaults[ $setting->domain ]->{ $setting->name } ) ) {
@@ -754,11 +758,11 @@ function wptouch_get_current_theme_name( $value=false ) {
 }
 
 function wptouch_customizer_begin_theme_override() {
-	add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name' );
+	add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );
 }
 
 function wptouch_customizer_end_theme_override() {
-	remove_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name' );
+	remove_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );
 }
 
 function wptouch_customizer_port_image( $customizer_setting, $source_setting, $settings_domain = 'foundation' ) {

@@ -3,11 +3,24 @@
 Plugin Name: Nofollow for external link
 Plugin URI: http://www.cybernetikz.com
 Description: Just simple, if you activate this plugins, <code>rel=&quot;nofollow&quot;</code> and <code>target=&quot;_blank&quot;</code> will be added automatically, for all the external links of your website <strong>posts</strong> or <strong>pages</strong>. Also you can <strong>exclude domains</strong>, not to add <code>rel=&quot;nofollow&quot;</code> for the selected external links.
-Version: 1.1.2
+Version: 1.2.0
 Author: CyberNetikz
 Author URI: http://www.cybernetikz.com
 License: GPL2
 */
+
+if( !defined('ABSPATH') ) die('-1');
+
+function cn_nf_install() {
+	add_option( 'cn_nf_exclude_domains', '');
+	add_option( 'cn_nf_apply_to_menu', '1');
+}
+register_activation_hook(__FILE__,'cn_nf_install');
+
+function cn_nf_uninstall() {
+	delete_option( 'cn_nf_apply_to_menu' ); 
+}
+register_deactivation_hook(__FILE__,'cn_nf_uninstall');
 
 function cn_nf_admin_sidebar() {
 
@@ -49,19 +62,20 @@ function cn_nf_admin_style() {
 }
 add_action( 'admin_enqueue_scripts', 'cn_nf_admin_style' );
 
-add_action('admin_menu', 'cn_nf_plugin_menu');
-add_action( 'admin_init', 'register_cn_nf_settings' );
-
 function register_cn_nf_settings() {
 	register_setting( 'cn-nf-settings-group', 'cn_nf_exclude_domains' );
+	register_setting( 'cn-nf-settings-group', 'cn_nf_apply_to_menu' );
 }
+add_action( 'admin_init', 'register_cn_nf_settings' );
 
 function cn_nf_plugin_menu() {
 	add_options_page('Nofollow for external link', 'NoFollow ExtLink', 'manage_options', 'cn_nf_option_page', 'cn_nf_option_page_fn');
 }
+add_action( 'admin_menu', 'cn_nf_plugin_menu');
 
 function cn_nf_option_page_fn() {
 	$cn_nf_exclude_domains = get_option('cn_nf_exclude_domains');
+	$cn_nf_apply_to_menu = get_option('cn_nf_apply_to_menu');
 	?>
 	<div class="wrap">
 	<h2>Nofollow for external link Options</h2>
@@ -70,10 +84,17 @@ function cn_nf_option_page_fn() {
 	<form method="post" action="options.php" enctype="multipart/form-data">
 		<?php settings_fields( 'cn-nf-settings-group' ); ?>
 		<table class="form-table">
+        
+			<tr valign="top">
+			<th scope="row">Apply nofollow to Menu</th>
+			<td><input <?php echo ($cn_nf_apply_to_menu == 1)?'checked="checked"':''; ?>  type="checkbox" name="cn_nf_apply_to_menu" id="cn_nf_apply_to_menu" value="1" /><br />
+			<em>If you check this box then <code>rel="nofollow"</code> and <code>target="_blank"</code> will be added to all external links of your <a href="nav-menus.php">Theme Menus</a></em></td>
+			</tr>
+        
 			<tr valign="top">
 			<th scope="row">Exclude Domains</th>
 			<td><textarea name="cn_nf_exclude_domains" id="cn_nf_exclude_domains" class="large-text" placeholder="mydomain.com, my-domain.org, another-domain.net"><?php echo $cn_nf_exclude_domains?></textarea>
-            <br /><em>Domain name <code>MUST BE</code> comma(,) separated. <!--<br />Example: facebook.com, google.com, youtube.com-->Don't need to add <code>http://</code> or <code>https://</code><br /><code>rel="nofollow"</code> will not added to "Exclude Domains"</em></td>
+            <br /><em>Domain name <strong>must be</strong> comma(,) separated. <!--<br />Example: facebook.com, google.com, youtube.com-->Don't need to add <code>http://</code> or <code>https://</code><br /><code>rel="nofollow"</code> will not added to "Exclude Domains"</em></td>
 			</tr>
 		</table>
 		<p class="submit">
@@ -88,8 +109,6 @@ function cn_nf_option_page_fn() {
 	</div>
 	<?php 
 }
-
-add_filter( 'the_content', 'cn_nf_url_parse');
 
 function cn_nf_url_parse( $content ) {
 
@@ -113,7 +132,7 @@ function cn_nf_url_parse( $content ) {
 				$url  = $matches[$i][0];
 					
 				// bypass #more type internal link
-				$res = preg_match('/href(\s)*=(\s)*"#[a-zA-Z0-9-_]+"/',$url);
+				$res = preg_match('/href(\s)*=(\s)*"[#|\/]*[a-zA-Z0-9-_\/]+"/',$url);
 				if($res) {
 					continue;
 				}
@@ -166,4 +185,10 @@ function cn_nf_url_parse( $content ) {
 	
 	$content = str_replace(']]>', ']]&gt;', $content);
 	return $content;
+}
+
+add_filter( 'the_content', 'cn_nf_url_parse');
+
+if( get_option('cn_nf_apply_to_menu') ) {
+	add_filter( 'wp_nav_menu_items', 'cn_nf_url_parse' );
 }

@@ -2,7 +2,7 @@ Theme Name: Bauhaus
 Theme URI: http://www.wptouch.com/themes/bauhaus
 Author: BraveNewCode Inc.
 Description: Clean, modern, functional design. Great for all types of WordPress sites.
-Version: 1.6.5
+Version: 1.6.8
 Depends on: 4.0
 Framework: 2.0
 Tags: smartphone
@@ -22,6 +22,22 @@ Bauhaus is one of our more flexible themes, and is designed to easily take on th
 7. http://wptouch-pro-4.s3.amazonaws.com/screenshots/bauhaus/7.jpg
 
 == Changelog ==
+
+= Version 1.6.8 =
+
+* Changed: Custom field-based thumbnails are now displayed in post listings, related posts, featured slider, and at top of posts.
+* Changed: Featured image display settings now applied to AMP formatted posts also
+* Changed: Featured slider no longer shows zero comment count
+* Added: For sites that redirect mobile visitors to a landing page other than their latest posts page, added option to select on which page the featured slider is shown.
+
+= Version 1.6.7 =
+
+* Fixed: Long (non-word-wrappable) text is word-broken to fit on screen
+* Changed: Replaced library used for featured slider (now using Owl Carousel)
+
+= Version 1.6.6 =
+
+* Fixed: Pinterest sharing (Added image URL)
 
 = Version 1.6.5 =
 

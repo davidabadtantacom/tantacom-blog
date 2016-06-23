@@ -362,7 +362,7 @@ function foundation_setup_viewport(){
 function foundation_render_theme_settings( $page_options ) {
 	wptouch_add_sub_page( FOUNDATION_PAGE_GENERAL, 'foundation-page-theme-settings', $page_options );
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+	if ( !wptouch_admin_use_customizer() ) {
 		if ( foundation_has_theme_colors() ) {
 			$color_settings = array();
 

@@ -206,6 +206,13 @@ class WPtouchProFour {
 
 		if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 			add_filter( 'wptouch_settings_override_defaults', array( &$this, 'handle_free_migration' ), 10, 2 );
+
+			// Ensure we're using free Bauhaus
+			$settings = $wptouch_pro->get_settings();
+			$settings->current_theme_name = 'bauhaus';
+			$settings->current_theme_location = '/plugins/' . WPTOUCH_ROOT_NAME . '/themes';
+			$settings->current_theme_friendly_name = 'Bauhaus';
+			$settings->save();
 		}
 
 		// Only check directories when admin is showing
@@ -284,7 +291,14 @@ class WPtouchProFour {
 		} else {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
 				add_filter( 'wptouch_force_mobile_device', array( &$this, 'shortcode_override' ) );
-				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ) );
+
+				if ( defined( 'WPTOUCH_SHORTCODE_TIMING' ) ) {
+					$shortcode_priority = WPTOUCH_SHORTCODE_TIMING;
+				} else {
+					$shortcode_priority = 10;
+				}
+
+				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ), $shortcode_priority);
 			}
 
 			add_action( 'wp', array( &$this, 'set_cache_cookie' ) );
@@ -377,7 +391,7 @@ class WPtouchProFour {
 
 			global $woocommerce;
 
-			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_cart() || is_checkout() ) ) ) {
+			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_account_page() || is_cart() || is_checkout() ) ) ) {
 				$should_regenerate = true;
 				$shortcode_data = get_post_meta( get_the_ID(), 'wptouch_sc_data', true );
 				if ( $shortcode_data ) {
@@ -818,7 +832,7 @@ class WPtouchProFour {
 		$this->handle_admin_menu_commands();
 		$this->setup_automatic_backup();
 
-		wptouch_update_info();
+		// wptouch_update_info();
 	}
 
 	function setup_automatic_backup() {
@@ -1678,6 +1692,7 @@ class WPtouchProFour {
 
 	function get_theme_information( $theme_location, $theme_url ) {
 		$style_file = $theme_location . '/readme.txt';
+
 		if ( file_exists( $style_file ) ) {
 			$style_info = $this->load_file( $style_file );
 
@@ -1694,6 +1709,15 @@ class WPtouchProFour {
 			$theme_info->long_description = '';
 			$theme_info->changelog = '';
 			$theme_info->preview_images = array();
+
+			if ( preg_match_all( '#== Long Description ==(.*)(==|\z)#sUi', $style_info, $matches ) ) {
+				$theme_info->long_description = $matches[1][0];
+			}
+
+			if ( preg_match_all( '#== Changelog ==(.*)(==|\z)#sUi', $style_info, $matches ) ) {
+				$changelog = str_replace( array( "= ", "=\n", '* ' ), array( '<em>', '</em><ul><li>', '</li><li>' ), $matches[1][0] );
+				$theme_info->changelog = $changelog . '</li></ul>';
+			}
 
 			$features = $this->get_information_fragment( $style_info, 'Features' );
 
@@ -2786,7 +2810,6 @@ class WPtouchProFour {
 		delete_site_transient( '_wptouch_available_cloud_addons' );
 		delete_site_transient( '_wptouch_available_cloud_themes' );
 		delete_site_transient( '_wptouch_bncid_latest_version' );
-		delete_site_transient( '_wptouch_language_info' );
 	}
 
 	function activate_license() {
@@ -3230,8 +3253,6 @@ class WPtouchProFour {
 
 		require_once( WPTOUCH_DIR . '/core/admin-settings.php' );
 		wptouch_settings_process( $this );
-
-		$this->delete_theme_add_on_cache();
 
 		$new_settings = wptouch_get_settings();
 

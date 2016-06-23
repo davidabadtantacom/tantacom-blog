@@ -513,7 +513,7 @@ function wptouch_free_upgrade_plugin() {
 
 	$latest_info = $bnc_api->get_product_version();
 
-	if ( $latest_info && $latest_info[ 'version' ] != WPTOUCH_VERSION ) {
+	if ( $latest_info ) {
 		WPTOUCH_DEBUG( WPTOUCH_INFO, 'A new product update is available [' . $latest_info['version'] . ']' );
 
 		if ( isset( $latest_info[ 'upgrade_url' ] ) && wptouch_has_license() ) {
@@ -595,4 +595,8 @@ function wptouch_hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') 
 		return false; //Invalid hex color code
 	}
 	return $returnAsString ? implode( $seperator, $rgbArray ) : $rgbArray; // returns the rgb string or the associative array
+}
+
+function wptouch_admin_use_customizer() {
+	return !( defined( 'WPTOUCH_IS_FREE' ) || ( defined( 'WPTOUCH_USE_CUSTOMIZER' ) && WPTOUCH_USE_CUSTOMIZER == false ) );
 }

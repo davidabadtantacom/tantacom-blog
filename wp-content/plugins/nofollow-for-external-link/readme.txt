@@ -4,38 +4,28 @@ Contributors: cybernetikz
 Donate link: 
 Tags: nofollow,link,rel=nofollow,rel nofollow,seo,nofollow links,external link,external links,nofollow for external link,nofollow external link,nofollow external links
 Requires at least: 2.9.2
-Tested up to: 4.2.4
-Stable tag: 1.1.2
+Tested up to: 4.5.2
+Stable tag: 1.2.0
 License: GPL2
 
-Automatically insert `rel=nofollow` and `target=_blank` to all the external links into your website posts or pages. Support exclude domains.
+Automatically insert `rel=nofollow` and `target=_blank` to all the external links into your website posts, pages or menus. Support exclude domain.
 
 == Description ==
 
-Just simple, if you use this plugin, `rel=nofollow` and `target=_blank` will be inserted automatically, for all the external links of your website posts or pages. Also you can <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external links.
+Just simple, if you use this plugin, `rel=nofollow` and `target=_blank` will be inserted automatically, for all the external links of your website posts, pages or theme menus. Also you can set <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external domain links.
 
-> <strong>PAID SUPPORT ($30/Hr, We ACCEPT PAYPAL )</strong>
+> <strong>Paid Support</strong> ( $30 / Hour, We accept PayPal )
 >
-> We assume most of the users would find it easy to install & use this plugin but those who needs <strong><em>PAID SUPPORT</em></strong> on any of the following:
->
-> <strong>a. Get the plugin installed </strong>
->
-> <strong>b. Custom feature, custom theme </strong>
->
-> <strong>c. Auditing your wordpress theme & hosting environment</strong>
->
-> <strong>d. Google analytics & webmaster tools support</strong>
->
-> please send an email to this address <a href="mailto:support@cybernetikz.com">support@cybernetikz.com</a>
+> Email us if you need <strong>paid support</strong>, <a href="mailto:support@cybernetikz.com">support@cybernetikz.com</a>
 
 = Feature =
-* Add `rel=nofollow` for all the external links of your website posts/pages.
-* Add `target=_blank` for all the external links of your website posts/pages.
-* You can <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external links.
+* Add `rel=nofollow` for all the external links of your website posts / pages / menus.
+* Add `target=_blank` for all the external links of your website posts / pages / menus.
+* Support <strong>custom post type</strong> content.
 * Support WordPress multisite.
-* Also works for custom post type content.
+* You can <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external links.
 * This plugin will not add `rel=nofollow` or `target=_blank` to any `href=#read-more` or `href=#gotop` type links.
-* This plugin will not add `rel=nofollow` or `target=_blank` any of the internal link on your website posts/pages.
+* This plugin will not add `rel=nofollow` or `target=_blank` any of the internal link on your website posts / pages.
 * If you already added `rel=dofollow` or `rel=nofollow` to any post manually, this plugin will not add `rel=nofollow` for that post.
 * If you already added `target=_blank` to any post manually, this plugin will not add `target=_blank` for that post.
 
@@ -64,6 +54,11 @@ Ans: Yes it does.
 2. Options page for Exclude Domains.
 
 == Changelog ==
+
+= 1.2.0 =
+* Not add `rel=nofollow` and `target=_blank` for "/about-us" type internal links.
+* Add `rel=nofollow` and `target=_blank` for theme menus
+* Security updates
 
 = 1.1.2 =
 * Banner added in plugins settings page

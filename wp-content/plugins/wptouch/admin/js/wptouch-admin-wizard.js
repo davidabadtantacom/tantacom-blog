@@ -42,7 +42,6 @@ function wptouchDoWizard(){
 			}
 		},
 		onStepChanging: function ( event, currentIndex, newIndex ) {
-			var whereWeAt = wizardContainer.steps('getStep', currentIndex );
 			bncHasLicense = bncHasLicense;
 			// language
 			if ( newIndex > currentIndex ) {
@@ -142,7 +141,10 @@ function wptouchDoWizard(){
 			}
 			return true;
 		}
-	}).css( 'visibility', 'visible' );
+	});
+	
+	// Now make it visible ;p
+	wizardContainer.css( 'visibility', 'visible' );
 }
 
 function wptouchContinue() {

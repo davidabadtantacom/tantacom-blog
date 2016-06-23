@@ -1,6 +1,8 @@
 <?php
 
 add_action( 'foundation_enqueue_scripts', 'bauhaus_enqueue_scripts' );
+add_filter( 'amp_should_show_featured_image_in_header', 'bauhaus_should_show_thumbnail' );
+add_filter( 'foundation_featured_show', 'bauhaus_show_featured_slider', 10, 2 );
 
 function bauhaus_enqueue_scripts() {
 	wp_enqueue_script(
@@ -90,4 +92,19 @@ function bauhaus_is_menu_position_default(){
 	} else {
 		return false;
 	}
+}
+
+function bauhaus_show_featured_slider( $show_featured_slider, $featured_slider_enabled ) {
+	if ( bauhaus_allow_featured_slider_override() ) {
+		$settings = bauhaus_get_settings();
+
+		global $post;
+		if ( $settings->featured_slider_page !== false && $post->ID == $settings->featured_slider_page ) {
+			$show_featured_slider = true;
+		} elseif ( $settings->featured_slider_page == true ) {
+			$show_featured_slider = false;
+		}
+	}
+
+	return $show_featured_slider;
 }

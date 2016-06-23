@@ -15,7 +15,7 @@ function doBauhausReady() {
 
 // Spice up the appearance of Foundation's Featured Slider
 function bauhausSliderMods(){
-	jQuery( '.swipe-wrap a' ).each( function(){
+	jQuery( '#slider a' ).each( function(){
 		imgCloned = jQuery( this ).find( 'img' ).clone();
 		jQuery( this ).append( imgCloned );
 		imgCloned.addClass( 'clone' );
