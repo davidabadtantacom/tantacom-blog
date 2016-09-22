@@ -28,28 +28,28 @@
 	$site_description = get_bloginfo( 'description', 'display' );
 	if ( $site_description && ( is_home() || is_front_page() ) )
 		echo " | $site_description";
-		
+
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
 		echo ' | ' . sprintf( __( 'Page %s', 'tanta' ), max( $paged, $page ) );
 
 	?></title>
-	
-	<?	
-	if ( is_category()  ){		
+
+	<?
+	if ( is_category()  ){
 		global $post;
 		$categories = get_the_category($post->ID);
 	 	$des =  "Publicamos artículos en profundidad sobre ".$categories[0]->cat_name."...Consúltalos" ?>
 	 	<meta name="description" content="<? echo $des; ?>" />
-	<? 	
+	<?
 	}else if(is_date()){ ?>
-		
+
 	 	<meta name="description" content="Publicamos artículos en profundidad sobre temas de actualidad Internet y entornos móviles: Usabilidad, creatividad, desarrollo frontend y accesibilidad web, desarrollo backend y cms, promoción on y offpage, tendencias... Consúltalos" />
-	
+
 	<? } ?>
-		
-		
+
+
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
@@ -58,7 +58,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
 <script src="<?php bloginfo( 'template_url' ); ?>/js/common.js"></script>
-	
+
 <!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/ie7.css" /><![endif]-->
 <!--[if IE 8]><link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/ie8.css" /><![endif]-->
@@ -96,6 +96,7 @@
 					<li><a href="http://www.tantacom.com/soluciones">soluciones</a></li>
 					<li><a href="http://www.tantacom.com/clientes">casos de éxito</a></li>
 					<li><a class="sel" href="http://www.tantacom.com/el-blog-de-tanta">blog</a></li>
+					<li><a href="http://www.tantacom.com/ofertas-de-empleo">únete</a></li>
 					<li><a href="http://www.tantacom.com/contacto">contacto</a></li>
 				</ul>
 			</nav>
