@@ -106,7 +106,9 @@
 								<?php if ( isset( $panel_options[ 'Theme Settings' ]->sections ) && count( $panel_options[ 'Theme Settings' ]->sections ) > 0 ) { ?>
 									<li><a href="#" class="<?php wptouch_multisite_page_classes( 'themes' ); ?> foundation-page-theme-settings<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'foundation-page-theme-settings' ) ) { echo ' active'; } ?>" data-page-slug="foundation-page-theme-settings"><?php _e( 'Theme Settings', 'wptouch-pro' ); ?></a></li>
 								<?php } ?>
-								<li><a href="#" class="<?php wptouch_multisite_page_classes( 'themes' ); ?> foundation-page-theme-customizer<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'foundation-page-theme-customizer' ) ) { echo ' active'; } ?>" data-page-slug="foundation-page-theme-customizer"><?php _e( 'Customize Theme', 'wptouch-pro' ); ?></a></li>
+								<?php if ( wptouch_admin_use_customizer() ) { ?>
+									<li><a href="#" class="<?php wptouch_multisite_page_classes( 'themes' ); ?> foundation-page-theme-customizer<?php if ( isset( $_COOKIE['wptouch-4-admin-menu'] ) && ( $_COOKIE['wptouch-4-admin-menu'] == 'foundation-page-theme-customizer' ) ) { echo ' active'; } ?>" data-page-slug="foundation-page-theme-customizer"><?php _e( 'Customize Theme', 'wptouch-pro' ); ?></a></li>
+								<?php } ?>
 							<?php } ?>
 						</ul>
 						<?php } ?>
@@ -179,6 +181,7 @@
 							</div><!-- section -->
 						<?php } ?>
 					<?php } ?>
+					<?php do_action( 'wptouch_after_settings_subpage_' . $page_info->slug ); ?>
 					</div><!-- wptouch-settings-sub-page -->
 				<?php } ?>
 			<?php } ?>

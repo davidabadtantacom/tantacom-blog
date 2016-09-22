@@ -1,3 +1,5 @@
+/* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro/admin/css/wptouch-admin-4.css?ver=2394c9ffd5558f411ffdc3326e9a8962 */
+
 /* @group Clearfix */
 
 .wptouch-clearfix:after {
@@ -217,6 +219,16 @@ a#preview-theme {
 	display: none;
 }
 
+#wptouch-settings-area .wptouch-setting.setting-no-setting-warning {
+	text-align: center;
+}
+	#wptouch-settings-area .wptouch-setting.setting-no-setting-warning i {
+		color: #af4454;
+		display: block;
+		font-size: 72px;
+		margin-bottom: 10px;
+	}
+
 /* @end */
 
 /* @group Sections */
@@ -323,7 +335,8 @@ a#preview-theme {
 }
 
 #wptouch-admin-menu ul li a.active:before {
-	background: -webkit-linear-gradient(#eb5768, #4e8bda);
+	color: #55c2e8;
+	background: -webkit-linear-gradient(#59c4bc, #4e8bda);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -343,7 +356,9 @@ a#preview-theme {
 }
 
 #wptouch-admin-menu a.active {
-	background: -webkit-linear-gradient(#eb5768, #4e8bda);
+	font-weight: bold;
+	color: #55c2e8;
+	background: -webkit-linear-gradient(#59c4bc, #4e8bda);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -446,6 +461,13 @@ a#preview-theme {
 
 #wptouch-admin-menu ul li a.wptouch-addon-amp:before {
 	content: '\e822';
+	display: inline-block;
+	text-align: center;
+	width: 20px;
+}
+
+#wptouch-admin-menu ul li a.wptouch-addon-make-child:before {
+	content: '\e823';
 	display: inline-block;
 	text-align: center;
 	width: 20px;
@@ -586,10 +608,6 @@ i.wptouch-tooltip:after {
 }
 
 }
-
-
-
-
 
 
 /* :not(:required) hides this rule from IE9 and below */

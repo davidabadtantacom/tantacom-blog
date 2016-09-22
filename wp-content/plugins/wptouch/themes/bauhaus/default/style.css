@@ -76,7 +76,7 @@ header img {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	right: auto;	
+	right: auto;
 }
 
 #menu-toggle.menu-right {
@@ -97,7 +97,7 @@ header img {
 	position: absolute;
 	bottom: 0;
 	left:  0;
-	right: auto;	
+	right: auto;
 }
 
 #search-toggle.search-right {
@@ -254,6 +254,7 @@ header img {
 	font-size: 160%;
 	line-height: 115%;
 	height: 4.2em;
+	word-wrap: break-word;
 }
 
 .landscape #slider.enhanced a p.heading-font, .landscape #slider.enhanced a p.featured-date {
@@ -311,7 +312,7 @@ header img {
 	text-shadow: rgba(0,0,0,.1) 0px 1px 1px;
 }
 
-.swipe-wrap > div {
+#slider .owl-item {
 	height: 220px;
 	overflow: hidden;
 }
@@ -320,14 +321,14 @@ header img {
 	background: none;
 }
 
-ul.dots {
+.owl-dots {
 	right: 0;
 	left: 0;
 	height: 20px;
 	top: 190px;
 }
 
-.landscape ul.dots {
+.landscape .owl-dots {
 	top: 240px;
 }
 
@@ -584,10 +585,12 @@ ul.dots {
 
 .nav-controls .previous {
 	text-align: left;
+	word-wrap: break-word;
 }
 
 .nav-controls .next {
 	text-align: right;
+	word-wrap: break-word;
 	float: right;
 }
 
@@ -609,6 +612,7 @@ ul.dots {
 	padding-left: 20px;
 	padding-right: 20px;
 	overflow: hidden;
+	word-wrap: break-word;
 }
 	.post-page-content .post-page-thumbnail,
 	.post-page-content .sharing-options {
@@ -640,7 +644,7 @@ ul.dots {
 }
 
 .post-page-content ol {
-	list-style-type: decimal;	
+	list-style-type: decimal;
 }
 
 .post-page-content li {
@@ -701,6 +705,7 @@ ul.dots {
 	font-weight: normal;
 	margin: 0 !important;
 	padding: 10px 12px;
+    word-wrap: break-word;
 }
 
 .post-page-content blockquote {
@@ -837,6 +842,7 @@ ul.dots {
 .comment .comment-body {
 	font-size: 90%;
 	padding-bottom: 15px;
+	word-wrap: break-word;
 }
 
 .comment .comment-body a {
@@ -1150,3 +1156,25 @@ form#commentform button#submit {
 
 
 /* @end */
+
+
+/* @group Polylang language menu compat */
+.wptouch-menu li.lang-item span {
+    border: none;
+    box-shadow: none;
+    float: left;
+    padding: 0 15px;
+}
+
+.wptouch-menu li.lang-item img {
+    height: auto;
+    width: auto;
+    top: 2px;
+    padding-right: 0;
+}
+
+.wptouch-menu li.lang-item span:before {
+    content: '';
+    border: none;
+}
+/* @end* /
