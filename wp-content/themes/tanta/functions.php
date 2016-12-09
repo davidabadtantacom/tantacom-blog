@@ -461,3 +461,13 @@ function tanta_comment_form( $args = array(), $post_id = null ) {
 //wp_deregister_style('admin-bar');
 remove_action('wp_footer','wp_admin_bar_render',1000);
 remove_action('wp_head', 'wp_generator');
+
+
+function getShareButton ($socialNetwork, $link, $text){
+	switch ($socialNetwork){
+		default:
+			$htmlButton = '';
+			break;
+	}
+	return $htmlButton;
+}
