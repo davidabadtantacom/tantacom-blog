@@ -1,6 +1,6 @@
 <?php
 
-define( 'BNC_API_VERSION', '5.1' );
+define( 'BNC_API_VERSION', '5.2' );
 define( 'BNC_API_URL', 'http://api.wptouch.com/v/' . BNC_API_VERSION );
 define( 'BNC_API_TIMEOUT', 30 );
 
@@ -17,7 +17,7 @@ class BNCAPI {
 	var $might_have_license;
 	var $product_name;
 
-	function BNCAPI( $bncid, $license_key ) {
+	function __construct( $bncid, $license_key ) {
 		$this->bncid = $bncid;
 		$this->license_key = $license_key;
 		$this->credentials_invalid = false;

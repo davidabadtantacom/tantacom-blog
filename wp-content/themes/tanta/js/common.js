@@ -139,6 +139,8 @@ var suscripcionNewsletter = {
 					'success': function(data){					
 						if(typeof(data.Code) == "undefined"){
 							msg = "Tu suscripción se ha realizado correctamente. En breve recibirás un correo electrónico para que confirmes la suscripción";
+							jQuery("#inp_newsletter").val('');
+							obj.find(":checkbox").prop ('checked', '');
 						}else{
 							switch(data.Code){
 								case 1: // Invalid email address.Email Address passed in was invalid.
@@ -174,6 +176,21 @@ var suscripcionNewsletter = {
 
 }
 
+var fixes = {
+
+	controlHeight:function(obj){
+
+		var elems = obj.find("article");
+		for(var i = 0; i < elems.length; i+=2) {
+		  var divs = elems.slice(i, i+2), 
+		  height = Math.max(divs.eq(0).height(), divs.eq(1).height());
+		  divs.css('min-height', height);
+		}
+
+	}
+
+}
+
 $(function () {	
 	
 	herramientas.comentarios();
@@ -189,5 +206,8 @@ $(function () {
 		jQuery("#newsletterform").submit(function(){return suscripcionNewsletter.init() })	
 	}
 	
+	if($("section.quienesSomos").length != 0){fixes.controlHeight($("section.quienesSomos"));}
+	if($("section.soluciones").length != 0){fixes.controlHeight($("section.soluciones"));}
+	if($("section.partners").length != 0){fixes.controlHeight($("section.partners"));}
 	
 });

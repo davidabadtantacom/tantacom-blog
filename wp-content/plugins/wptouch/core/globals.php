@@ -598,5 +598,5 @@ function wptouch_hex_to_rgb($hexStr, $returnAsString = false, $seperator = ',') 
 }
 
 function wptouch_admin_use_customizer() {
-	return !( defined( 'WPTOUCH_IS_FREE' ) || ( defined( 'WPTOUCH_USE_CUSTOMIZER' ) && WPTOUCH_USE_CUSTOMIZER == false ) );
+	return !( defined( 'WPTOUCH_USE_CUSTOMIZER' ) && WPTOUCH_USE_CUSTOMIZER == false );
 }

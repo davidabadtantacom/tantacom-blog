@@ -283,6 +283,10 @@ function wptouch_admin_render_custom_page( $slug = false ) {
 	$panel_options = do_action( 'wptouch_admin_page_render_custom', $admin_panel_name );
 }
 
+function wptouch_should_show_setting( $setting ) {
+	return true;
+}
+
 function wptouch_section_has_visible_settings( $section ) {
 	$viewable_settings = 0;
 
@@ -290,7 +294,7 @@ function wptouch_section_has_visible_settings( $section ) {
 
 	if ( isset( $section->settings) && is_array( $section->settings ) && count( $section->settings ) ) {
 		foreach( $section->settings as $setting ) {
-			if ( !$setting->is_pro || !defined( 'WPTOUCH_IS_FREE' ) ) {
+			if ( wptouch_should_show_setting( $setting ) ) {
 				// This setting is viewable
 				$viewable_settings++;
 			}

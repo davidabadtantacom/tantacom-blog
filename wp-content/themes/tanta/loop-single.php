@@ -52,7 +52,12 @@
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'tanta' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
-                    
+					<ul class="shareButtons">
+						<li><?php echo getShareButton ('twitter'); ?></li>
+						<li><?php echo getShareButton ('linkedin', get_the_permalink()); ?></li>
+						<li><?php echo getShareButton ('facebook', get_the_permalink()); ?></li>
+					</ul>
+
                     
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">

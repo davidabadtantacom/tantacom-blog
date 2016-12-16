@@ -142,7 +142,7 @@ function wptouchDoWizard(){
 			return true;
 		}
 	});
-	
+
 	// Now make it visible ;p
 	wizardContainer.css( 'visibility', 'visible' );
 }
@@ -172,7 +172,7 @@ function wptouchLove(){
 		if ( !jQuery( this ).prop( 'checked' ) ) {
 			jQuery( 'i.heartbeat' ).removeClass( 'icon-heart' ).addClass( 'icon-heart-broken' );
 		} else {
-			jQuery( 'i.heartbeat' ).addClass( 'icon-heart' ).removeClass( 'icon-heart-broken' );			
+			jQuery( 'i.heartbeat' ).addClass( 'icon-heart' ).removeClass( 'icon-heart-broken' );
 		}
 	});
 }
@@ -198,7 +198,7 @@ function wptouchWizardLicense(){
 			wptouchAdminAjax( 'activate-license-key', ajaxParams, function( result ) {
 				if ( result == '1' ) {
 					// license success
-					bncHasLicense = 1;					
+					bncHasLicense = 1;
 					wptouchReload();
 
 				} else {
@@ -242,7 +242,7 @@ function wptouchWizardThemeSelect(){
 function wptouchWizardSetupComplete(){
 	jQuery( '#exit_wizard_customizer, #exit_wizard_settings' ).on( 'click', function(){
 		jQuery.cookie( 'jQu3ry_5teps_St@te_wptouch-wizard-container', '1', { expires: -1 } );
-		jQuery.cookie( 'wptouch_customizer_use', 'mobile', { expires: 0, path: '/' } );
+		jQuery.cookie( 'wptouch_customizer_mode', 'mobile', { expires: 0, path: '/' } );
 	});
 }
 

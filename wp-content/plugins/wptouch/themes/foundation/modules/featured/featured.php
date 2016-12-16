@@ -216,7 +216,7 @@ function foundation_featured_get_image( $post = false ) {
 
 function featured_should_show_slider() {
 	$settings = foundation_get_settings();
-	$should_show = ( ( is_home() || is_front_page() ) && $settings->featured_enabled );
+	$should_show = ( ( is_home() && $settings->featured_blog || is_front_page() && $settings->featured_homepage ) && $settings->featured_enabled );
 
 	return apply_filters( 'foundation_featured_show', $should_show, $settings->featured_enabled );
 }
@@ -320,14 +320,25 @@ function foundation_featured_slider() {
 function foundation_featured_settings( $page_options ) {
 	$settings = foundation_get_settings();
 	global $wptouch_pro;
-	$posts_to_show_label = false;
-	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
-		$posts_to_show_label = 'Posts to display';
-	}
-
 
 	if ( $wptouch_pro->get_current_theme() == 'bauhaus' || ( $wptouch_pro->is_child_theme() && $wptouch_pro->get_parent_theme_info()->base == 'bauhaus' ) ) {
 		$featured_enhanced_setting = array(
+			wptouch_add_setting(
+				'checkbox',
+				'featured_blog',
+				__( 'Show on blog', 'wptouch-pro' ),
+				false,
+				WPTOUCH_SETTING_BASIC,
+				'2.0'
+			),
+			wptouch_add_setting(
+				'checkbox',
+				'featured_homepage',
+				__( 'Show on homepage', 'wptouch-pro' ),
+				false,
+				WPTOUCH_SETTING_BASIC,
+				'2.0'
+			),
 			wptouch_add_setting(
 				'list',
 				'featured_style',
@@ -339,13 +350,26 @@ function foundation_featured_settings( $page_options ) {
 					'enhanced' => __( 'Enhanced', 'wptouch-pro' ),
 					'streamlined' => __( 'Streamlined', 'wptouch-pro' )
 				)
-			)
+			),
 		);
 	} else {
 		$featured_enhanced_setting = array();
 	}
 
 	$featured_settings = array(
+		wptouch_add_pro_setting(
+			'list',
+			'featured_speed',
+			__( 'Slide transition Delay', 'wptouch-pro' ),
+			false,
+			WPTOUCH_SETTING_BASIC,
+			'2.0',
+			array(
+				'slow' => __( 'Long', 'wptouch-pro' ),
+				'normal' => __( 'Normal', 'wptouch-pro' ),
+				'fast' => __( 'Short', 'wptouch-pro' )
+			)
+		),
 		wptouch_add_pro_setting(
 			'range',
 			'featured_max_number_of_posts',
@@ -355,7 +379,7 @@ function foundation_featured_settings( $page_options ) {
 			'2.0',
 			array(
 				'min' => 1,
-				'max' => 10,
+				'max' => 15,
 				'step' => 1
 			)
 		),
@@ -367,7 +391,7 @@ function foundation_featured_settings( $page_options ) {
 			WPTOUCH_SETTING_BASIC,
 			'2.0'
 		),
-		wptouch_add_pro_setting(
+		wptouch_add_setting(
 			'checkbox',
 			'featured_autoslide',
 			__( 'Slide automatically', 'wptouch-pro' ),
@@ -375,7 +399,7 @@ function foundation_featured_settings( $page_options ) {
 			WPTOUCH_SETTING_BASIC,
 			'2.0'
 		),
-		wptouch_add_pro_setting(
+		wptouch_add_setting(
 			'checkbox',
 			'featured_continuous',
 			__( 'Slides repeat', 'wptouch-pro' ),
@@ -399,23 +423,10 @@ function foundation_featured_settings( $page_options ) {
 			WPTOUCH_SETTING_BASIC,
 			'2.0'
 		),
-		wptouch_add_pro_setting(
-			'list',
-			'featured_speed',
-			__( 'Slide transition speed', 'wptouch-pro' ),
-			false,
-			WPTOUCH_SETTING_BASIC,
-			'2.0',
-			array(
-				'slow' => __( 'Slow', 'wptouch-pro' ),
-				'normal' => __( 'Normal', 'wptouch-pro' ),
-				'fast' => __( 'Fast', 'wptouch-pro' )
-			)
-		),
 		wptouch_add_setting(
 			'list',
 			'featured_type',
-			$posts_to_show_label,
+			__( 'Posts to display', 'wptouch-pro' ),
 			false,
 			WPTOUCH_SETTING_BASIC,
 			'2.0',

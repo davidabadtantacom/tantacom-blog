@@ -17,14 +17,17 @@ function doOwlFeatured() {
 			autoplayTimeout = false;
 		}
 
-		jQuery( '.owl-carousel' ).owlCarousel({
+		var carouselOptions = {
 			rtl: use_rtl,
 			nav: false,
 			items: 1,
 			loop: loop,
+//			lazyLoad : true,
 			autoplay: autoplay,
 			autoplayTimeout: autoplayTimeout
-		});
+		}
+
+		jQuery( '.owl-carousel' ).owlCarousel( carouselOptions );
 	}
 }
 

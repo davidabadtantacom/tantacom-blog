@@ -62,9 +62,9 @@ class WPtouchProFour {
 	var $cache_smash;
 
 	// Shortcodes that must process before AJAX shortcode request
-	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider' );
+	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider', 'contact-form-7', 'metaslider', 'wdi_feed' );
 
-	function WPtouchProFour() {
+	function __construct() {
 		$this->is_mobile_device = false;
 		$this->showing_mobile_theme = false;
 
@@ -335,10 +335,14 @@ class WPtouchProFour {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) && ( $this->is_mobile_device && $this->showing_mobile_theme ) ) {
 				remove_filter( 'the_content', 'wptexturize' );
 
+				// allow custom preprocess_shortcodes
+				$custom_preprocess_shortcodes = array();
+				$custom_preprocess_shortcodes = apply_filters( 'wptouch_preprocess_shortcodes', $custom_preprocess_shortcodes );
+
 				// Need finer-grain control over what gets processed or not.
 				global $shortcode_tags;
 				foreach ( $shortcode_tags as $shortcode => $object ) {
-					if ( !in_array( $shortcode, $this->preprocess_shortcodes ) ) {
+					if ( !in_array( $shortcode, $this->preprocess_shortcodes ) && !in_array( $shortcode, $custom_preprocess_shortcodes ) ) {
 						unset ( $shortcode_tags[ $shortcode ] );
 					}
 				}
@@ -393,7 +397,16 @@ class WPtouchProFour {
 
 			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_account_page() || is_cart() || is_checkout() ) ) ) {
 				$should_regenerate = true;
+				global $page;
+
 				$shortcode_data = get_post_meta( get_the_ID(), 'wptouch_sc_data', true );
+
+				if ( is_array( $shortcode_data ) && isset( $shortcode_data[ 'page-' . $page ] ) ) {
+					$shortcode_data = $shortcode_data[ 'page-' . $page ];
+				} else {
+					$shortcode_data = false;
+				}
+
 				if ( $shortcode_data ) {
 					if ( $shortcode_data->has_desktop_shortcode ) {
 						if ( $shortcode_data->valid_until > time() ) {
@@ -422,7 +435,9 @@ class WPtouchProFour {
 					$styles_object = wp_styles();
 					update_post_meta( get_the_ID(), 'wptouch_sc_styles', $styles_object->queue );
 
-					$content = '<div class="wptouch-sc-content" data-post-id="' . get_the_ID() . '"></div><div style="display: none;" class="wptouch-orig-content">' . $content . '</div>';
+					global $page;
+
+					$content = '<div class="wptouch-sc-content" data-post-id="' . get_the_ID() . '" data-page="' . $page . '"></div><div style="display: none;" class="wptouch-orig-content">' . $content . '</div>';
 				} else {
 					$content = wptexturize( $content );
 
@@ -493,23 +508,33 @@ class WPtouchProFour {
 			}
 
 			$post = get_post( $this->post[ 'post_id' ] );
+			$page = $this->post[ 'page' ];
 			$post_content = $this->post[ 'post_content' ];
 
 			if ( $post ) {
-				// Save data for later
-				$shortcode_data = new stdClass;
+				$shortcode_data = get_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', true );
 
-				$shortcode_data->has_desktop_shortcode = 1;
+				if ( is_object( $shortcode_data ) ) {
+					delete_post_meta( $this->post[ 'post_id'], 'wptouch_sc_data' );
+					$shortcode_data = "";
+				}
+
+				// Save data for later
+				$page_shortcode_data = new stdClass;
+
+				$page_shortcode_data->has_desktop_shortcode = 1;
 
 				// Prevent mobile content from overriding this
 				remove_action( 'the_content', 'wptouch_addon_the_content_mobile_content', 1 );
 				$content = apply_filters( 'the_content', $post_content );
 
-				$shortcode_data->scripts = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'scripts' );
-				$shortcode_data->styles = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'styles' );
+				$page_shortcode_data->scripts = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'scripts' );
+				$page_shortcode_data->styles = $this->desktop_shortcode_get_assets( $this->post[ 'post_id' ], 'styles' );
 
-				$shortcode_data->valid_until = time() + 3600*24;
-				$shortcode_data->shortcode_content = $content;
+				$page_shortcode_data->valid_until = time() + 3600*24;
+				$page_shortcode_data->shortcode_content = $content;
+
+				$shortcode_data[ 'page-' . $page ] = $page_shortcode_data;
 
 				echo $content;
 
@@ -735,7 +760,7 @@ class WPtouchProFour {
 	}
 
 	function set_cache_cookie() {
-		if ( !is_admin() && function_exists( 'wptouch_cache_admin_bar' ) ) {
+		if ( !is_admin() && ( function_exists( 'wptouch_cache_admin_bar' ) || function_exists( 'wptouch_power_pack_admin_bar') ) ) {
 			global $wptouch_pro;
 
 			$cookie_value = 'desktop';
@@ -750,6 +775,8 @@ class WPtouchProFour {
 
 			if ( function_exists( 'wptouch_addon_should_cache_desktop' ) ) {
 				$cache_desktop = wptouch_addon_should_cache_desktop();
+			} else if ( function_exists( 'wptouch_power_pack_should_cache_desktop' ) ) {
+				$cache_desktop = wptouch_power_pack_should_cache_desktop();
 			} else {
 				$cache_desktop = false;
 			}
@@ -1093,7 +1120,7 @@ class WPtouchProFour {
 		// We can have a mobile device detected, but not show the mobile theme
 		// usually this is a result of the user manually disabling it via a link in the footer
 		if ( $this->is_mobile_device ) {
-			$this->showing_mobile_theme = ( !isset( $_COOKIE[WPTOUCH_COOKIE] ) || $_COOKIE[WPTOUCH_COOKIE] === 'mobile' );
+			$this->showing_mobile_theme = ( !isset( $_COOKIE[WPTOUCH_COOKIE] ) || $_COOKIE[WPTOUCH_COOKIE] === 'mobile' || wptouch_is_customizing_mobile() );
 
 			if ( $this->showing_mobile_theme ) {
 				if ( $settings->url_filter_behaviour != 'disabled' && $settings->filtered_urls ) {
@@ -1888,7 +1915,7 @@ class WPtouchProFour {
 			}
 		}
 
-			uksort( $addons, 'strnatcasecmp' );
+		uksort( $addons, 'strnatcasecmp' );
 
 		return $addons;
 	}
@@ -2557,7 +2584,7 @@ class WPtouchProFour {
 					$settings_defaults = $settings;
 
 					// merge settings
-					switch_to_blog( $current_blog_id );
+					restore_current_blog();
 				}
 			}
 		}
@@ -3257,7 +3284,7 @@ class WPtouchProFour {
 		$new_settings = wptouch_get_settings();
 
 		if ( function_exists( 'wptouch_pro_update_site_info' ) && $update_info ) {
-			wptouch_pro_update_site_info();
+			//wptouch_pro_update_site_info();
 		}
 	}
 

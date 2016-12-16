@@ -42,6 +42,10 @@ if ( ! class_exists( 'AIOSEOP_Translations' ) ) :
 
 			$this->current_locale = get_locale();
 
+			if( $this->current_locale === 'en_US'){
+				return;
+			}
+
 			$this->init();
 
 		}
@@ -50,11 +54,16 @@ if ( ! class_exists( 'AIOSEOP_Translations' ) ) :
 		 * Fetch locale data from WP.
 		 *
 		 * @since 2.3.5
+		 * @since 2.3.6 Return FALSE on WP_Error object.
 		 *
 		 * @return mixed
 		 */
 		private function get_locale_data() {
 			$response = wp_remote_get( $this->url );
+
+			if ( is_wp_error( $response ) ) {
+				return false;
+			}
 
 			return $response['body'];
 		}
@@ -142,11 +151,16 @@ if ( ! class_exists( 'AIOSEOP_Translations' ) ) :
 		/**
 		 *
 		 * @since 2.3.5
+		 * @since 2.3.6 Return FALSE on WP_Error object in get_locale_data().
 		 *
 		 */
 		private function init() {
 
 			$json = $this->get_locale_data();
+
+			if ( $json === false ) {
+				return false;
+			}
 
 			$translation_data = json_decode( $json );
 

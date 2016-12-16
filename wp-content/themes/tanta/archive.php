@@ -13,36 +13,21 @@
  */
 
 get_header(); ?>
-		<section>
-			<header>
-				<div class="lang_social">
-					<!--a href="#" class="lang">English</a-->
-					<ul class="social">
-						<li><span>Síguenos:</span></li>
-						<li class="twitter">
-							<a href="http://www.twitter.com/tantacom">twitter</a>
-						</li>
-						<li class="linkedin">
-							<a href="http://www.linkedin.com/company/tanta-comunicacion">linkedin</a>
-						</li>
-						<li class="rss">
-							<a href="<?php bloginfo('rss2_url'); ?>">rss</a>
-						</li>
-					</ul>
-				</div>
-				<hgroup>
-					<h1>Blog de tanta</h1>
-<h2 class="page-title">
-<?php if ( is_day() ) : ?>
-				<?php printf( __( 'Daily Archives: <span>%s</span>', 'tanta' ), get_the_date() ); ?>
-<?php elseif ( is_month() ) : ?>
-				<?php printf( __( 'Monthly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'F Y' ) ); ?>
-<?php elseif ( is_year() ) : ?>
-				<?php printf( __( 'Yearly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'Y' ) ); ?>
-<?php else : ?>
-				<?php _e( 'Blog Archives', 'tanta' ); ?>
-<?php endif; ?>
-			</h2>
+	<section id="main">
+		<header>
+			<hgroup>
+					<h1>el blog de tanta_</h1>
+					<h2 class="page-title">
+					<?php if ( is_day() ) : ?>
+									<?php printf( __( 'Daily Archives: <span>%s</span>', 'tanta' ), get_the_date() ); ?>
+					<?php elseif ( is_month() ) : ?>
+									<?php printf( __( 'Monthly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'F Y' ) ); ?>
+					<?php elseif ( is_year() ) : ?>
+									<?php printf( __( 'Yearly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'Y' ) ); ?>
+					<?php else : ?>
+									<?php _e( 'Blog Archives', 'tanta' ); ?>
+					<?php endif; ?>
+					</h2>
                 </hgroup>
 			</header>
 
@@ -72,6 +57,6 @@ get_header(); ?>
 	 get_template_part( 'loop', 'archive' );
 ?>
 
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('blog'); ?>
 		</section>
 <?php get_footer(); ?>

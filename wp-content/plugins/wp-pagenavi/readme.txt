@@ -1,10 +1,10 @@
 === WP-PageNavi ===
 Contributors: GamerZ, scribu  
-Donate link: http://lesterchan.net/site/donation/  
+Donate link: https://lesterchan.net/site/donation/  
 Tags: navigation, pagination, paging, pages  
 Requires at least: 3.2  
-Tested up to: 4.5  
-Stable tag: 2.90
+Tested up to: 4.7  
+Stable tag: 2.91  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,7 +15,7 @@ Want to replace the old *&larr; Older posts | Newer posts &rarr;* links with som
 
 This plugin provides the `wp_pagenavi()` template tag which generates fancy pagination links. See the [installation instructions](http://wordpress.org/extend/plugins/wp-pagenavi/installation/) for using it in your theme.
 
-Help to translate at <https://translate.foe-services.de/projects/wp-pagenavi>.
+Help to translate at [WordPress Translate](https://translate.wordpress.org/projects/wp-plugins/wp-pagenavi).
 
 = Build Status =
 [![Build Status](https://travis-ci.org/lesterchan/wp-pagenavi.svg?branch=master)](https://travis-ci.org/lesterchan/wp-pagenavi)
@@ -157,6 +157,10 @@ You can do that like so:
 `<?php wp_pagenavi( array( 'options' => PageNavi_Core::$options->get_defaults() ) ); ?>`
 
 == Changelog ==
+= 2.91 =
+* Validate text option against kses 
+* Update SCB Framework
+
 = 2.90 =
 * Remove po/mo files from the plugin
 * Use translate.wordpress.org to translate the plugin
