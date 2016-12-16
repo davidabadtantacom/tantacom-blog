@@ -19,17 +19,17 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 			parent::__construct();
 			$help_text             = Array(
 				'import_submit'     => __(
-					"Select a valid All in One SEO Pack ini file and click 'Import' to import options from a previous state or install of All in One SEO Pack.<br /><a href='http://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
+					"Select a valid All in One SEO Pack ini file and click 'Import' to import options from a previous state or install of All in One SEO Pack.<br /><a href='https://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
 					'all-in-one-seo-pack'
 				),
 				'export_choices'    => __(
-					"You may choose to export settings from active modules, and content from post data.<br /><a href='http://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
+					"You may choose to export settings from active modules, and content from post data.<br /><a href='https://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
 					'all-in-one-seo-pack'
 				),
 				'export_post_types' => __(
-					"Select which Post Types you want to export your All in One SEO Pack meta data for.<br /><a href='http://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
+					"Select which Post Types you want to export your All in One SEO Pack meta data for.<br /><a href='https://semperplugins.com/documentation/importer-exporter-module/' target='_blank'>Click here for documentation on this setting</a>",
 					'all-in-one-seo-pack'
-				)
+				),
 			);
 			$this->warnings        = Array();
 			$this->default_options = array(
@@ -37,26 +37,26 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 					'name'    => __( 'Import', 'all-in-one-seo-pack' ),
 					'default' => '',
 					'type'    => 'file',
-					'save'    => false
+					'save'    => false,
 				),
 				'export_choices'     => Array(
 					'name'            => __( 'Export Settings', 'all-in-one-seo-pack' ),
 					'type'            => 'multicheckbox',
 					'initial_options' => Array(
 						1 => 'General Settings',
-						2 => 'Post Data'
-					)
+						2 => 'Post Data',
+					),
 				),
 				'export_post_types'  => Array(
 					'name'            => __( 'Export Post Types:', 'all-in-one-seo-pack' ),
 					'default'         => Array(
 						'post' => 'post',
-						'page' => 'page'
+						'page' => 'page',
 					),
 					'type'            => 'multicheckbox',
 					'initial_options' => $this->get_post_type_titles(
 						Array( '_builtin' => false )
-					)
+					),
 				),
 				'import_export_help' => Array(
 					'type'    => 'html',
@@ -67,8 +67,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 								and the following currently active modules will
 								have their settings data exported:',
 						             'all-in-one-seo-pack'
-					             ) . '<br />'
-				)
+					             ) . '<br />',
+				),
 			);
 			if ( ! empty( $help_text ) ) {
 				foreach ( $help_text as $k => $v ) {
@@ -78,9 +78,9 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 			$this->layout = Array(
 				'default' => Array(
 					'name'      => $this->name,
-					'help_link' => 'http://semperplugins.com/documentation/importer-exporter-module/',
-					'options'   => array_keys( $this->default_options )
-				)
+					'help_link' => 'https://semperplugins.com/documentation/importer-exporter-module/',
+					'options'   => array_keys( $this->default_options ),
+				),
 			);
 
 			// load initial options / set defaults
@@ -112,8 +112,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 				       'export_submit' => Array(
 					       'type'  => 'submit',
 					       'class' => 'button-primary',
-					       'value' => __( 'Export', 'all-in-one-seo-pack' ) . ' &raquo;'
-				       )
+					       'value' => __( 'Export', 'all-in-one-seo-pack' ) . ' &raquo;',
+				       ),
 			       ) + $submit;
 		}
 
@@ -123,7 +123,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 			$rempost                                                       = array(
 				'attachment'    => 1,
 				'revision'      => 1,
-				'nav_menu_item' => 1
+				'nav_menu_item' => 1,
 			);
 			$this->default_options['export_post_types']['initial_options'] = array_diff_key(
 				$post_types,
@@ -199,7 +199,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 
 			if ( is_array( $this->warnings ) ) {
 				foreach ( $this->warnings as $warning ) {
-					echo "<p>{$warning}</p>";
+					echo "<p>" . esc_html( $warning ) . "</p>";
 				}
 			}
 			echo '</div>';
@@ -291,7 +291,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 
 
 		/**
-		 * @param $assoc_arr
+		 * @param      $assoc_arr
 		 * @param bool $has_sections
 		 *
 		 * @return string
@@ -362,9 +362,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 				'disable',
 				'disable',
 				'disable_analytics',
-				'titleatr',
-				'menulabel',
-				'togglekeywords'
+				'togglekeywords',
 			);
 			if ( ! empty( $_FILES['aiosp_importer_exporter_import_submit']['tmp_name'] ) ) {
 				$submit = 'Import';
@@ -522,10 +520,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Importer_Exporter' ) ) {
 						// Sends File to browser
 						$strlength = strlen( $buf );
 						header( 'Content-type: application/ini' );
-						header(
-							"Content-Disposition:
-								attachment; filename=$settings_file"
-						);
+						header( "Content-Disposition: attachment; filename=$settings_file" );
 						header( 'Content-Length: ' . $strlength );
 						echo $buf;
 						die();

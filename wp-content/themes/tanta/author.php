@@ -10,21 +10,6 @@
 get_header(); ?>
 		<section>
 			<header>
-				<div class="lang_social">
-					<a href="#" class="lang">English</a>
-					<ul class="social">
-						<li><span>Síguenos:</span></li>
-						<li class="twitter">
-							<a href="#">twitter</a>
-						</li>
-						<li class="linkedin">
-							<a href="#">linkedin</a>
-						</li>
-						<li class="rss">
-							<a href="#">rss</a>
-						</li>
-					</ul>
-				</div>
 				<hgroup>
 					<h1>Blog de tanta</h1>
 					<h2><?php echo strftime("%B del %Y");  ?></h2>

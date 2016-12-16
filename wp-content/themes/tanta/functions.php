@@ -305,6 +305,18 @@ function twentyten_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+
+	// Bloog widget area (sidebar)
+	register_sidebar( array(
+		'name'=>__( 'Blog sidebar', 'theme_text_domain' ),
+		'id'            => 'blog-widget-area',
+		'description'   => 'Sidebar for blog page',
+		'class'         => 'blog',
+		'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>'
+	) );
 }
 /** Register sidebars by running twentyten_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'twentyten_widgets_init' );
@@ -463,11 +475,53 @@ remove_action('wp_footer','wp_admin_bar_render',1000);
 remove_action('wp_head', 'wp_generator');
 
 
-function getShareButton ($socialNetwork, $link, $text){
+function getShareButton ($socialNetwork, $link = '', $text=''){
 	switch ($socialNetwork){
+		case 'linkedin':
+				$htmlButton = '<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: es_ES</script><script type="IN/Share" data-url="'.$link.'" data-counter="right"></script>';
+			break;
+		case 'twitter':
+			$htmlButton = '<a href="https://twitter.com/share" class="twitter-share-button" data-via="tantacom" data-lang="es">Twittear</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
+			break;
+		case 'facebook':
+			$htmlButton = '<div class="fb-like" data-href="'.$link.'" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>';
+			break;
 		default:
 			$htmlButton = '';
 			break;
 	}
 	return $htmlButton;
+}
+
+function add_current_nav_class($classes, $item) {
+	// Getting the current post details
+	global $post;
+	
+	// Getting the post type of the current post
+	$current_post_type = get_post_type_object(get_post_type($post->ID));
+	$current_post_type_slug = $current_post_type->rewrite['slug'];
+	$current_post_type_archive_slug = $current_post_type->has_archive;
+
+	// Getting the URL of the menu item
+	$menu_slug = strtolower(trim($item->url));
+
+	// If the menu item URL contains the current post types slug add the current-menu-item class
+	if (strpos($menu_slug,$current_post_type_slug) !== false || strpos($menu_slug,$current_post_type_archive_slug) !== false) {
+	
+	   $classes[] = 'current-menu-item';
+	
+	}
+	
+	// Return the corrected set of classes to be added to the menu item
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'add_current_nav_class', 10, 2 );
+
+
+function get_body_id (){
+	$bodyID = '';
+	if (is_front_page()){
+		$bodyID = 'id="home"';
+	}
+	return $bodyID;
 }

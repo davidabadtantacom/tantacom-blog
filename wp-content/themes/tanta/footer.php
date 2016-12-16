@@ -17,10 +17,7 @@
 	wp_footer();
 ?>
 
-<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
-<script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline/tantacom.json?callback=twitterCallback2&count=6"></script>
-
-
+</div>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -45,6 +42,7 @@
     el.parentNode.insertBefore(s, el);
   })();
 </script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/common.js"></script>
 <noscript>
   <img src="http://b.scorecardresearch.com/p?c1=2&c2=17208856&cv=2.0&cj=1" />
 </noscript>

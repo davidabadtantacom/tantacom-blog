@@ -53,11 +53,11 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/default.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta.css" />
 
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
-<script src="<?php bloginfo( 'template_url' ); ?>/js/common.js"></script>
 
 <!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/css/ie7.css" /><![endif]-->
@@ -84,7 +84,7 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> <?php echo get_body_id (); ?>>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -95,17 +95,14 @@
     }(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
         <aside>
-            <nav>
-            <header>
-                <a href="http://www.tantacom.com"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39px" width="170px" alt="Tanta" id="logo" /></a>
-            </header>
-                <ul>
-                    <li><a href="http://www.tantacom.com/quienes-somos">quiénes somos</a></li>
-                    <li><a href="http://www.tantacom.com/soluciones">soluciones</a></li>
-                    <li><a href="http://www.tantacom.com/clientes">casos de éxito</a></li>
-                    <li><a class="sel" href="http://www.tantacom.com/el-blog-de-tanta">blog</a></li>
-                    <li><a href="http://www.tantacom.com/ofertas-de-empleo">únete</a></li>
-                    <li><a href="http://www.tantacom.com/contacto">contacto</a></li>
-                </ul>
-            </nav>
+          <header>
+            <a href="/"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39px" width="170px" alt="Tanta" id="logo" /></a>
+          </header>
+          <nav>
+            <?php wp_nav_menu (array ('menu'=>'primary', 'menu_id'=>'nav', 'depth'=>1)); ?>
+          </nav>
+          <footer>
+            <?php dynamic_sidebar ('first-footer-widget-area'); ?>
+          </footer>
         </aside>
+        <div class="body">

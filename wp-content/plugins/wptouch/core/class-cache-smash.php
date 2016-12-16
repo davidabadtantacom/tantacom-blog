@@ -18,7 +18,10 @@ class WPtouchCacheSmash {
 	}
 
 	private function is_w3_plugin_detected() {
-		return defined( 'W3TC' );
+		return (
+			defined( 'W3TC' ) &&
+			defined( 'W3TC_DIR' )
+		);
 	}
 
 	private function is_wp_super_cache_detected() {
@@ -93,12 +96,24 @@ class WPtouchCacheSmash {
 
 		// Check W3
 		if ( $this->is_w3_plugin_detected() ) {
-			$w3_config = new W3_Config( true );
+
+			if( version_compare( W3TC_VERSION, '0.9.5', ">=" ) ) {
+				if ( !function_exists( 'w3_instance' ) ) {
+					require_once W3TC_DIR . '/inc/define.php';
+				}
+
+				$w3_config = w3_instance( 'W3_Config' );
+			}
+			else {
+				$w3_config = new W3_Config( true );
+			}
+
 			if ( $w3_config ) {
 				// Check to see if the Page Cache is enabled
-				if ( $w3_config->get_cache_option( 'pgcache.enabled' ) ) {
+				if ( $w3_config->get( 'pgcache.enabled' ) ) {
 					// If it's enabled, we need to make sure the user agents have been updated
-					$rejected_user_agents = $w3_config->get_cache_option( 'pgcache.reject.ua' );
+					$rejected_user_agents = $w3_config->get( 'pgcache.reject.ua' );
+
 					if ( !$this->find_in_array_no_case( 'iphone', $rejected_user_agents ) ) {
 						$cache_configured = false;
 					}
@@ -119,7 +134,7 @@ class WPtouchCacheSmash {
 
 		if ( $this->is_wordfence_detected() ) {
 			$cache_type = wfConfig::get( 'cacheType', false );
-			if ( !$cache_type ) {
+			if ( !$cache_type || $cache_type == "disabled" ) {
 				$cache_configured = true;
 			} else {
 				$cookie_set = false;

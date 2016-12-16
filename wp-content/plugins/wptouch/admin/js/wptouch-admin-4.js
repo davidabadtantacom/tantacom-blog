@@ -472,7 +472,7 @@ function wptouchHandleMultilineFields() {
 
 function wptouchHandleCustomizerLink() {
 	jQuery( '#foundation-page-theme-customizer' ).click( 'a', function( e ) {
-		jQuery.cookie( 'wptouch_customizer_use', 'mobile', { expires: 0, path: '/' } );
+		jQuery.cookie( 'wptouch_customizer_mode', 'mobile', { expires: 0, path: '/' } );
 	});
 }
 
@@ -825,7 +825,7 @@ function wptouchUpdateAll() {
 
 function wptouchAddPlaceholders(){
 	jQuery( '#wptouch-settings-content input[type="text"]' ).not( '#license-settings-area input[type="text"]' ).each( function(){
-		var placeholder = jQuery( this ).parents( 'li' ).find( 'span' ).text();
+		var placeholder = jQuery( this ).parents( 'li' ).find( 'span' ).not( '.pro' ).text();
 		jQuery( this ).attr( 'placeholder', placeholder );
 	});
 }
@@ -850,7 +850,7 @@ function wptouchTriggerSave( callback ) {
 		success: function() {
 			// Done saving, allow reload
 			saving = false;
-
+		//	console.log( 'saved' )
 			// Animate the admin spinner out
 			jQuery( '#admin-spinner' ).animate({
 				opacity: 0
@@ -858,7 +858,8 @@ function wptouchTriggerSave( callback ) {
 
 			if ( typeof( callback ) !== 'undefined' ) {
 				callback();
-			};
+			return false;
+	};
 		},
 		cache: false
 	});
@@ -869,23 +870,24 @@ function wptouchAdminSetupSave(){
 	var wptouchAdminForm = jQuery( '#wptouch-settings-form' );
 
 	if ( wptouchAdminForm.length ) {
-		// Toggles, textareas & selects
-		wptouchAdminForm.on( 'change.ajaxed', 'input[type="checkbox"]:not(#translate_admin):not(#multisite_control):not(#wptouch-addon-deployment input), textarea, select:not(#force_locale):not(#force_network_locale):not(#wptouch-addon-deployment select)', function(){
-			wptouchTriggerSave();
-		});
 
 		// text inputs, debounced to save after 250 millisecond delay
-		var textInputDebounceSave = wptouchAdminDebounce( function(){
-			wptouchTriggerSave();
-		}, 250 );
+			var debounceSave = wptouchAdminDebounce( function(){
+				if ( !jQuery( this ).hasClass( 'no-save' ) ){
+					wptouchTriggerSave();
+				}
+			}, 1000 );
 
-		// Make sure we debounce saving on text inputs
-		wptouchAdminForm.on( 'keyup', 'input[type="text"]:not(.add-entry,.license-inputs)', textInputDebounceSave );
+		jQuery( window ).load( function(){
+			// Toggles, textareas & selects
 
-		// Multiline / Newline
-		jQuery( '.multiline' ).on( 'click', 'a.add, a.remove', function(){
-			wptouchTriggerSave();
+			wptouchAdminForm.on( 'change.autosave keyup.autosave', 'input[type="checkbox"]:not(.no-save):not(#translate_admin):not(#multisite_control):not(#wptouch-addon-deployment input), textarea, select:not(#force_locale):not(#force_network_locale):not(#wptouch-addon-deployment select), input[type="text"]:not(.add-entry,.license-inputs)', debounceSave );
+
+			// Multiline / Newline
+			jQuery( '.multiline' ).on( 'click', 'a.add, a.remove', debounceSave );
+
 		});
+
 	}
 
 	// Handle special case of saving setting relatedto the admin language
@@ -944,7 +946,7 @@ function showCustomizerWindow(){
 	topPosition = ( screen.height ) ? ( screen.height - height ) / 2:0;
 	leftPosition = ( screen.width ) ? ( screen.width - width ) / 2:0;
 	options = 'scrollbars=no, titlebar=no, status=no, menubar=no';
-	windowUrl = 'http://wptouch-pro-4.s3.amazonaws.com/free/free-customizer-promo.html';
+	windowUrl = '//wptouch-pro-4.s3.amazonaws.com/free/free-customizer-promo.html';
 	wptouchCustomizerWindow = window.open( windowUrl, 'customizermsg', 'width=' + width + ', height=' + height + ',' + options + ', top=' + topPosition + ',left=' + leftPosition + '' );
 }
 
@@ -952,16 +954,8 @@ function showCustomizerWindow(){
 // The Preview Pop-Up Window
 function wptouchPreviewWindow(){
 
-	jQuery( 'input#wptouch-preview-theme' ).on( 'click', function( e ) {
-		var previewCounter = jQuery.cookie( 'wptouch-preview-count' );
-		previewCounter++;
-		jQuery.cookie( 'wptouch-preview-count', previewCounter );
-
-		if ( jQuery.cookie( 'wptouch-preview-count' ) == 5 || jQuery.cookie( 'wptouch-preview-count' ) %25 == 0 ) {
-			showCustomizerWindow();
-		} else {
-			showPreviewWindow();
-		}
+	jQuery( 'input#wptouch-preview-theme' ).on( 'click', function( e ) {		
+		showPreviewWindow();
 		e.preventDefault();
 	});
 }

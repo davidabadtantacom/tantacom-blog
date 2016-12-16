@@ -59,7 +59,7 @@ function wptouch_admin_handle_ajax( &$wptouch_pro, $ajax_action ) {
 			echo $backup_file;
 			break;
 		case 'load-upgrade-area':
-			$content = wp_remote_get( 'http://wptouch-pro-4.s3.amazonaws.com/free-upgrade-area/page.xhtml' );
+			$content = wp_remote_get( 'http://wptouch-pro-4.s3.amazonaws.com/free-upgrade-area/4.2/page.xhtml' );
 
 			if ( !is_wp_error( $content ) ) {
 				echo $content['body'];
