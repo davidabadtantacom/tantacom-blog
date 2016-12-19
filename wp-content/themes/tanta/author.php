@@ -8,13 +8,13 @@
  */
 
 get_header(); ?>
-		<section>
-			<header>
-				<hgroup>
-					<h1>Blog de tanta</h1>
-					<h2><?php echo strftime("%B del %Y");  ?></h2>
-                </hgroup>
-			</header>
+	<section id="main">
+		<header>
+			<hgroup>
+				<h1>el blog de tanta_</h1>
+				<h2><?php echo strftime("%B del %Y");  ?></h2>
+            </hgroup>
+		</header>
 
 <?php
 	/* Queue the first post, that way we know who
@@ -31,20 +31,6 @@ get_header(); ?>
 					<h2 class="page-title author"><?php printf( __( 'Author Archives: %s', 'tanta' ), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h2>
 
 <?php
-// If a user has filled out their description, show a bio on their entries.
-if ( get_the_author_meta( 'description' ) ) : ?>
-					<div id="entry-author-info">
-						<div id="author-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-						</div><!-- #author-avatar -->
-						<div id="author-description">
-							<h2><?php printf( __( 'About %s', 'tanta' ), get_the_author() ); ?></h2>
-							<?php the_author_meta( 'description' ); ?>
-						</div><!-- #author-description	-->
-					</div><!-- #entry-author-info -->
-<?php endif; ?>
-
-<?php
 	/* Since we called the_post() above, we need to
 	 * rewind the loop back to the beginning that way
 	 * we can run the loop properly, in full.
@@ -58,6 +44,6 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 	 get_template_part( 'loop', 'author' );
 ?>
 
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('blog'); ?>
 		</section>
 <?php get_footer(); ?>
