@@ -248,7 +248,7 @@ a.btn:hover{text-decoration:underline;}
 		.clientes article p { font-size:1.4em; color:#515151; line-height: 1.2em; padding-bottom:0.5em;}	
 			.clientes article p a { color:#1c3f95; }
 				.clientes article p a:hover { text-decoration: underline  }	
-		.clientes article ul { font-size:1.4em; color:#515151; line-height: 1.2em; padding-bottom:0.5em;}	
+		.clientes article ul { color:#515151; line-height: 1.2em; padding-bottom:0.5em;}	
 		.clientes article h4 { font:2.5em 'akkurat_bold', Arial, Helvetica, sans-serif; color:#adafb2;}
 	
 	.clientes .archivoGrafico { background:#7ad0f1;}
@@ -549,7 +549,7 @@ section.clientes .link{padding: 0;}
 
 /*** share buttons ***/
 ul.shareButtons{list-style: none;margin: 0;padding: 0;}
-ul.shareButtons li{display: inline-block;margin: 0;padding: 0 5px;vertical-align: top;}
+ul.shareButtons li{display: inline-block;line-height: inherit;margin: 0;padding: 0 5px;vertical-align: top;}
 
 /*** contenido ***/
 /*section#main h2 { font-size:1.7em; color:#9b9b9b; margin-bottom: 1.5em; }*/
@@ -646,12 +646,14 @@ aside footer .social{float: none;}
 div.body{padding-top: 3em;}
 
 
+/*** aside ***/
+.colB aside#primary p{font-size: inherit;line-height: inherit;}
+.colB aside#primary ul li{font-size: inherit;line-height: inherit;}
+
+
 /*** main ***/
 section#main p{font-size: 1.6em;line-height: 1.3em;}
 section#main ul li{font-size: 1.6em;line-height: 1.3em;}
 section#main h3{font-size: 1.8em;font-weight: bold;margin-bottom: 0.5em;}
-
-
-/*** aside ***/
-.colB aside#primary p{font-size: inherit;line-height: inherit;}
-.colB aside#primary ul li{font-size: inherit;line-height: inherit;}
+section#main .linked p, section#main .linked ul{font-size: inherit;}
+section#main ul.shareButtons li{line-height: inherit;}
