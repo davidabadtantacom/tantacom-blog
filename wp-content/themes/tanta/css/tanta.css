@@ -650,3 +650,8 @@ div.body{padding-top: 3em;}
 section#main p{font-size: 1.6em;line-height: 1.3em;}
 section#main ul li{font-size: 1.6em;line-height: 1.3em;}
 section#main h3{font-size: 1.8em;font-weight: bold;margin-bottom: 0.5em;}
+
+
+/*** aside ***/
+.colB aside#primary p{font-size: inherit;line-height: inherit;}
+.colB aside#primary ul li{font-size: inherit;line-height: inherit;}
