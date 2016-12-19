@@ -8,10 +8,10 @@
  */
 
 get_header(); ?>
-		<section>
+		<section id="main">
 			<header>
 				<hgroup>
-					<h1>Blog de tanta</h1>
+					<h1>el blog de tanta_</h1>
 
 <?php if ( have_posts() ) : ?>
 				<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'tanta' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
@@ -35,6 +35,6 @@ get_header(); ?>
 				</article><!-- #post-0 -->
 <?php endif; ?>
 
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('blog'); ?>
 		</section>
 <?php get_footer(); ?>
