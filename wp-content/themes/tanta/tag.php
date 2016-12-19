@@ -12,7 +12,7 @@ get_header(); ?>
 
 			<header>
 				<hgroup>
-					<h1>Blog de tanta</h1>
+					<h1>el blog de tanta_</h1>
 					<h2><?php echo strftime("%B del %Y");  ?></h2>
 				<h2 class="page-title"><?php
 					printf( __( 'Tag Archives: %s', 'tanta' ), '<span>' . single_tag_title( '', false ) . '</span>' );
@@ -28,6 +28,6 @@ get_header(); ?>
  get_template_part( 'loop', 'tag' );
 ?>
 
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('blog'); ?>
 		</section>
 <?php get_footer(); ?>
