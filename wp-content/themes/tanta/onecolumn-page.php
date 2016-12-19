@@ -13,11 +13,11 @@
  */
 
 get_header(); ?>
-		<section>
+		<section id="main">
 
 			<header>
 				<hgroup>
-					<h1>Blog de tanta</h1>
+					<h1>el blog de tanta_</h1>
 					<h2><?php echo strftime("%B del %Y");  ?></h2>
                 </hgroup>
 			</header>
