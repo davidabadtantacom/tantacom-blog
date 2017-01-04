@@ -22,6 +22,11 @@ get_header(); ?>
 				<h1><?php echo get_the_title (); ?>_</h1>
 			</hgroup>
 		</header>
+
+		<?php if (!empty (get_field ('entradilla'))): ?>
+		<h2><?php echo get_field ('entradilla'); ?></h2>
+		<?php endif; ?>
+
 		<?php the_content (); ?>
 <?php endwhile; // end of the loop. ?>
 	</section>
