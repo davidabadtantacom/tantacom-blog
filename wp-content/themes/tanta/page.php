@@ -24,7 +24,9 @@ get_header(); ?>
 		</header>
 
 		<?php if (!empty (get_field ('entradilla'))): ?>
-		<h2><?php echo get_field ('entradilla'); ?></h2>
+		<div class="entradilla">
+			<?php echo get_field ('entradilla'); ?>
+		</div>
 		<?php endif; ?>
 
 		<?php the_content (); ?>

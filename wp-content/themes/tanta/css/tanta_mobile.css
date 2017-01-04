@@ -6,6 +6,7 @@
 		aside nav{position:static;z-index:0;}
 		aside footer{display:none;}
 	section{width:100%;margin:0;}
+	div.body{width: 100%;}
 /*Design*/
 nav{background-image:none;padding:0;text-align:left;}
 	nav header{padding:5em 1em 0;}
@@ -22,6 +23,8 @@ section header{}
 	.lang_social{float:none;position:absolute;top:0;background-color:#fff;z-index:2;}
 		.social{float:right;margin-right:1em;}
 	section header hgroup{padding:1em 1em 1.5em;}
+	section .entradilla {padding: 0 1em;}
+	.colAB{padding: 0 1em;width: auto;}
 section article{padding:0 1em;}
 
 	
