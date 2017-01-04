@@ -28,15 +28,17 @@ section header{}
 section article{padding:0 1em;}
 
 	
-.colA{float:none;width:100% !important;}
-.colB{float:none;width:100% !important;}
+#home .colA{float:none;width:100%;padding: 0;}
+#home .colB{float:none;width:100%;padding: 0;}
 
 #home #modDrupalCamp img { width:auto; max-width:90%;}
 
-#home .colAB { width:86%; margin-left:0; padding:0 7% 4em;}
+#home .colAB { width:98%; margin-left:0; padding:0 1% 4em 1%;}
 
 .quienesSomos header .link:before, .quienesSomos header .link:after { content:""; display:table; }
 .quienesSomos header .link:after { clear:both; }
+
+section.contacto{width: 98%;padding: 0 1%;}
 
 @media (max-width: 1024px) {
 	.jcarousel-skin .jcarousel-item img, .archivoGrafico .slider img, #gallery-user { width:100%;}
