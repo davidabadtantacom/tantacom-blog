@@ -170,9 +170,8 @@ a.btn:hover{text-decoration:underline;}
 	#home .colAB { width:98%; margin-left:2%; padding-bottom:4em;}
 		#home #sliderDots { clear:both; width:100%; margin:0; padding-top:2em; border-bottom:1px solid #d2e9f6;}
 		#home #sliderDots ul li span { display:none; text-indent:-99999em;}
-		#home h1 { font:2.7em 'akkurat', Arial, Helvetica, sans-serif; color:#00b2f9; text-align:center; }
-			#home h1 a { color:#00b2f9; text-decoration: none }
-				#home h1 a:hover { text-decoration: underline }
+		#home header{margin-left: 2%;}
+			#home header h1 { margin-bottom:.357em; padding:0; font-size:2.8em; color:#adafb2; font-family:'tanta_bold', Arial, Helvetica, sans-serif; text-transform: lowercase;}
 		#home .colA { width:54%;}
 			
 			#home .colA header { border:none; margin:0;}
@@ -513,8 +512,6 @@ section.error404{margin:0;width:100%;text-align:center;padding:2em 0;background:
 #modSus .status{font-size:1.7em;color:#1c91d0 !important;background:#dff3fb;border:0;}
 
 .fixedLinks { display:none;}
-
-#home #wrapper h1 { display:none;}
 
 .social .tlf { display:none;}
 
