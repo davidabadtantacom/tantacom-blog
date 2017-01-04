@@ -653,6 +653,7 @@ div.body{padding-top: 3em;display: inline-block;vertical-align: top;width: 73%;}
 
 /*** main ***/
 section#main p{font-size: 1.6em;line-height: 1.3em;}
+section#main .entradilla p{font-size: 1.7em;}
 section#main ul li{font-size: 1.6em;line-height: 1.3em;}
 section#main h3{font-size: 1.8em;font-weight: bold;margin-bottom: 0.5em;}
 section#main .linked p, section#main .linked ul{font-size: inherit;}
@@ -665,4 +666,5 @@ section#main ul.shareButtons li{line-height: inherit;}
         .listaSoluciones li{display: inline-block;font-size: 1.4em !important;margin: 0;padding-bottom: 1%;text-align: center;vertical-align: top;width: 24%;}
         .listaSoluciones li img{display: block;margin: 0 auto;}
 
-.entradilla p{color: #9b9b9b;font-size: 1.7em;margin-bottom: 1.5em;}
+
+.entradilla p{color: #9b9b9b;font-size: 1.7em;line-height: 1.3em;margin-bottom: 1.5em;}
