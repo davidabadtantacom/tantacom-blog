@@ -29,7 +29,7 @@ body { font-size:75%; font-family:'akkurat', Arial, Helvetica, sans-serif;}
 	aside { position:fixed; top:0; left:0; width:26%; background:#00b2f9; height:100%;}
 		aside header {  margin:0 4em 0 2em; padding-top:3em;height:5em; position:relative; z-index:2; text-align:right;}
 		aside nav { position:relative; z-index:2;}
-		aside footer { z-index:1; position:absolute; bottom:0; right:4em;}
+		aside footer { z-index:1; position:relative; bottom:0; right:4em;}
 	section { margin-left:29%; background-color:#fff;}
 	
 	.colAB { width:100%; margin:0;}
