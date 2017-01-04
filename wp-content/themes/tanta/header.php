@@ -96,7 +96,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
-        <aside>
+        <aside class="navLateral">
           <header>
             <a href="/"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39px" width="170px" alt="Tanta" id="logo" /></a>
           </header>
