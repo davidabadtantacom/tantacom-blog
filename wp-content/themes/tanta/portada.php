@@ -16,6 +16,12 @@
 
 get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
+	<header>
+		<hgroup>
+			<h1><?php echo get_the_title (); ?>_</h1>
+		</hgroup>
+	</header>
+
 	<?php if (!empty (get_field ('entradilla'))): ?>
 	<div class="entradilla">
 		<?php echo get_field ('entradilla'); ?>
