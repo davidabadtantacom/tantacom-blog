@@ -56,7 +56,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/default.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta.css" />
 <link rel="stylesheet" type="text/css" media="(max-height: 710px)" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta_lowheight.css" />
-<link rel="stylesheet" type="text/css" media="(max-width: 960px)" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta_mobile.css" />
+<link rel="stylesheet" type="text/css" media="(max-width: 1300px)" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta_mobile.css" />
 
 <!--[if lt IE 9]><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
