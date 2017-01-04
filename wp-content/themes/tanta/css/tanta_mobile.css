@@ -1,7 +1,7 @@
 /*Hoja de estilos para dispositivos movile - Resetea/complementa con la generica*/
 #wrapper{width:100%;position:relative;}
 	aside{background:#00b2f9;height:auto;position:static;width:100%;min-height:0;}
-		aside header{height:auto;margin:0; text-align:center;}
+		aside header{height:auto;margin:0 1em; text-align:center;}
 		aside header img{margin-top:2em;}
 		aside nav{position:static;z-index:0;}
 		aside footer{display:none;}

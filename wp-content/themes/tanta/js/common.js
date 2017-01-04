@@ -187,9 +187,25 @@ var fixes = {
 		  divs.css('min-height', height);
 		}
 
+	},
+
+	controlHeightLateral:function(){
+console.log ($(window).width ());
+		if ($(window).width () >= 1300){
+			if ($('#wrapper').height () > $('#wrapper').find(".navLateral").height ()){
+				$('#wrapper').find(".navLateral").css ('height', $('#wrapper').height ()+'px');
+			}
+		}
+		else{
+			$('#wrapper').find(".navLateral").css ('height', 'auto');
+		}
 	}
 
 }
+
+$( window ).resize(function() {
+	fixes.controlHeightLateral ();
+});
 
 $(function () {	
 	
@@ -206,8 +222,13 @@ $(function () {
 		jQuery("#newsletterform").submit(function(){return suscripcionNewsletter.init() })	
 	}
 	
+	// Igualamos el alto de lateral con el de la pagina
+	fixes.controlHeightLateral();
+
 	if($("section.quienesSomos").length != 0){fixes.controlHeight($("section.quienesSomos"));}
 	if($("section.soluciones").length != 0){fixes.controlHeight($("section.soluciones"));}
 	if($("section.partners").length != 0){fixes.controlHeight($("section.partners"));}
+
+
 	
 });

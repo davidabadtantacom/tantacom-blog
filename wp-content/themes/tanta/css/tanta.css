@@ -26,11 +26,11 @@ body { font-size:75%; font-family:'akkurat', Arial, Helvetica, sans-serif;}
 
 #wrapper { width:98%;}
 	/*aside { position:fixed; top:0; left:0; width:26%; background:#00b2f9 url(../images/f_aside.png) repeat-y 100% 0; height:100%;}*/
-	aside { position:fixed; top:0; left:0; width:26%; background:#00b2f9; height:100%;}
+	aside { position:relative; top:0; left:0; width:26%; background:#00b2f9; height:100%;display: inline-block;vertical-align: top;}
 		aside header {  margin:0 4em 0 2em; padding-top:3em;height:5em; position:relative; z-index:2; text-align:right;}
 		aside nav { position:relative; z-index:2;}
 		aside footer { z-index:1; position:relative; bottom:0; right:4em;}
-	section { margin-left:29%; background-color:#fff;}
+	section { margin-left:2%; background-color:#fff;}
 	
 	.colAB { width:100%; margin:0;}
 		.colA { width:50%; float:left;}
@@ -167,7 +167,7 @@ a.btn:hover{text-decoration:underline;}
 
 /*** home **/
 	
-	#home .colAB { width:65%; margin-left:29%; padding-bottom:4em;}
+	#home .colAB { width:98%; margin-left:2%; padding-bottom:4em;}
 		#home #sliderDots { clear:both; width:100%; margin:0; padding-top:2em; border-bottom:1px solid #d2e9f6;}
 		#home #sliderDots ul li span { display:none; text-indent:-99999em;}
 		#home h1 { font:2.7em 'akkurat', Arial, Helvetica, sans-serif; color:#00b2f9; text-align:center; }
@@ -643,7 +643,7 @@ aside footer .social li{float: right;}
 aside footer .social{float: none;}
 
 /*** body ***/
-div.body{padding-top: 3em;}
+div.body{padding-top: 3em;display: inline-block;vertical-align: top;width: 73%;}
 
 
 /*** aside ***/
