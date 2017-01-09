@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
-    Redirect 301 /about http://tantacom.com/quienes-somos
-	RedirectMatch 301 /quienes_somos/equipo/* /quienes-somos
-	RedirectMatch 301 /proyectos/.* /casos-de-exito
-	RedirectMatch 301 /clientes/.* /casos-de-exito
+    Redirect 301 /about /quienes-somos
+	RedirectMatch 301 /quienes_somos/equipo* /quienes-somos
+	RedirectMatch 301 /proyectos* /confian-en-nosotros
+	RedirectMatch 301 /clientes* /confian-en-nosotros
 </IfModule>
 
 # BEGIN WordPress

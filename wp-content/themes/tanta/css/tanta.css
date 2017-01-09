@@ -52,7 +52,7 @@ a{color:#00b2f9;}
 		nav ul { padding:0; padding-top:4em;}
 			nav li { list-style:none; margin:.8em 0;}
 			/*	nav a:link,nav a:visited { display:inline-block; padding:0 2.3809em 0 .952em; height:1.238em; font-family:'akkurat', Arial, Helvetica, sans-serif; font-size:2.1em; color:#fff; text-shadow: 1px 1px 0px #105e88; line-height:.952em;}*/
-				nav a:link,nav a:visited { display:inline-block; padding:0 2.3809em 0 .952em; height:1.238em; font-family:'akkurat', Arial, Helvetica, sans-serif; font-size:2.1em; color:#fff; line-height:.952em;}
+				nav a:link,nav a:visited { display:inline-block; padding:0.2em 2.3809em 0.2em .952em; height:auto; font-family:'akkurat', Arial, Helvetica, sans-serif; font-size:2.1em; color:#fff; line-height:.952em;}
 				nav a:hover { color:#00b2f9; background:#ffffff ;}
 				/*nav a.sel { color:#00b2f9; background:#cdeffd url(../images/f_nav_sel.png) no-repeat 0 0; text-shadow: 1px 1px 0px #7dc2e7}*/
 				nav a.sel { color:#00b2f9; background:#ffffff ; }
