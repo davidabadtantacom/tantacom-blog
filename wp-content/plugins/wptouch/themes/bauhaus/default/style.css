@@ -1240,25 +1240,4 @@ form#commentform label {
     border: none;
 }
 
-.listaLogosClientes{list-style: none;margin: 0;}
-        .listaLogosClientes li{display: inline-block;margin: 0;text-align: center;vertical-align: top;width: 24%;}
-.listaSoluciones{list-style: none;margin: 20px 0 40px 0;}
-        .listaSoluciones li{display: inline-block;margin: 0;padding-bottom: 1%;text-align: center;vertical-align: top;width: 24%;}
-        .listaSoluciones li img{display: block;margin: 0 auto;}
-
-@media (max-width: 800px) {
-        .listaLogosClientes li{width: 33%;}
-        .listaSoluciones li{width: 33%;}
-}
-
-@media (max-width: 700px) {
-        .listaLogosClientes li{width: 49%;}
-        .listaSoluciones li{width: 49%;}
-}
-
-@media (max-width: 500px) {
-        .listaLogosClientes li{display: block;width: 100%;}
-        .listaSoluciones li{display: block;width: 100%;}
-}
-
 /* @end */
