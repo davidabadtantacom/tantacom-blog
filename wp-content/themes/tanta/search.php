@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-		<section id="main">
+		<section>
 			<header>
 				<hgroup>
 					<h1>el blog de tanta_</h1>
