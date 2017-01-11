@@ -11,10 +11,8 @@ get_header(); ?>
 		<section>
 
 			<header>
-				<hgroup>
-					<h1>el blog de tanta_</h1>
-					<h2><?php echo strftime("%B del %Y");  ?></h2>
-                </hgroup>
+				<h1>el blog de tanta_</h1>
+				<h2><?php echo strftime("%B del %Y");  ?></h2>
 			</header>
 			<?php
 			/* Run the loop to output the attachment.

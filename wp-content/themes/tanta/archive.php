@@ -15,21 +15,19 @@
 get_header(); ?>
 	<section id="main">
 		<header>
-			<hgroup>
-					<h1>el blog de tanta_</h1>
-					<h2 class="page-title">
-					<?php if ( is_day() ) : ?>
-									<?php printf( __( 'Daily Archives: <span>%s</span>', 'tanta' ), get_the_date() ); ?>
-					<?php elseif ( is_month() ) : ?>
-									<?php printf( __( 'Monthly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'F Y' ) ); ?>
-					<?php elseif ( is_year() ) : ?>
-									<?php printf( __( 'Yearly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'Y' ) ); ?>
-					<?php else : ?>
-									<?php _e( 'Blog Archives', 'tanta' ); ?>
-					<?php endif; ?>
-					</h2>
-                </hgroup>
-			</header>
+			<h1>el blog de tanta_</h1>
+			<h2 class="page-title">
+			<?php if ( is_day() ) : ?>
+							<?php printf( __( 'Daily Archives: <span>%s</span>', 'tanta' ), get_the_date() ); ?>
+			<?php elseif ( is_month() ) : ?>
+							<?php printf( __( 'Monthly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'F Y' ) ); ?>
+			<?php elseif ( is_year() ) : ?>
+							<?php printf( __( 'Yearly Archives: <span>%s</span>', 'tanta' ), get_the_date( 'Y' ) ); ?>
+			<?php else : ?>
+							<?php _e( 'Blog Archives', 'tanta' ); ?>
+			<?php endif; ?>
+			</h2>
+		</header>
 
 <?php
 	/* Queue the first post, that way we know

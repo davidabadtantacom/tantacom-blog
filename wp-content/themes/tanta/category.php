@@ -10,12 +10,10 @@
 get_header(); ?>
 		<section>
 			<header>
-				<hgroup>
-					<h1>el blog de tanta_</h1>
-                    <h2 class="page-title"><?php
-                        printf( __( 'Category Archives: %s', 'tanta' ), '<span>' . single_cat_title( '', false ) . '</span>' );
-                    ?></h2>
-                </hgroup>
+				<h1>el blog de tanta_</h1>
+                <h2 class="page-title"><?php
+	                printf( __( 'Category Archives: %s', 'tanta' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+                ?></h2>
 			</header>
 
 				<?php
