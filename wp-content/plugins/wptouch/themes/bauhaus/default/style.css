@@ -1241,3 +1241,10 @@ form#commentform label {
 }
 
 /* @end */
+
+ul.listaLogosClientes, ul.listaSoluciones{
+	list-style-type: none;
+}
+ul.listaLogosClientes li, ul.listaSoluciones li{
+	text-align: center;
+}
