@@ -98,7 +98,7 @@
     <div id="wrapper">
         <aside class="navLateral">
           <header>
-            <a href="/"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39px" width="170px" alt="Tanta" id="logo" /></a>
+            <a href="/"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39" width="170" alt="Tanta" id="logo" /></a>
           </header>
           <nav>
             <?php wp_nav_menu (array ('menu'=>'primary', 'menu_id'=>'nav', 'depth'=>1)); ?>
