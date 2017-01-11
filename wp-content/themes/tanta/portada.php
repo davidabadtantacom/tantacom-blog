@@ -17,9 +17,7 @@
 get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 	<header>
-		<hgroup>
-			<h1><?php echo get_the_title (); ?>_</h1>
-		</hgroup>
+		<h1><?php echo get_the_title (); ?>_</h1>
 	</header>
 
 	<?php if (!empty (get_field ('entradilla'))): ?>

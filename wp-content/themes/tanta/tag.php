@@ -11,13 +11,11 @@ get_header(); ?>
 		<section>
 
 			<header>
-				<hgroup>
-					<h1>el blog de tanta_</h1>
-					<h2><?php echo strftime("%B del %Y");  ?></h2>
+				<h1>el blog de tanta_</h1>
+				<h2><?php echo strftime("%B del %Y");  ?></h2>
 				<h2 class="page-title"><?php
 					printf( __( 'Tag Archives: %s', 'tanta' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 				?></h2>
-                </hgroup>
 			</header>
 
 <?php

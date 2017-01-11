@@ -19,9 +19,7 @@ get_header(); ?>
 		<section>
         
 			<header>
-				<hgroup>
-					<h1>el blog de tanta_</h1>
-                </hgroup>
+				<h1>el blog de tanta_</h1>
 			</header>
 			<?php
 			/* Run the loop to output the posts.

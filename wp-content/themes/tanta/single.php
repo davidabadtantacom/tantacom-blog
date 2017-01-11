@@ -11,9 +11,7 @@ get_header(); ?>
 		<section>
         
 			<header>
-				<hgroup>
-					<h1><a href="<?php echo home_url(); ?>">el blog de tanta_</a></h1>
-                </hgroup>
+				<h1><a href="<?php echo home_url(); ?>">el blog de tanta_</a></h1>
 			</header>
 			<?php
 			/* Run the loop to output the posts.

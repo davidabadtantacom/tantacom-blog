@@ -10,12 +10,10 @@
 get_header(); ?>
 		<section>
 			<header>
-				<hgroup>
-					<h1>el blog de tanta_</h1>
+				<h1>el blog de tanta_</h1>
 
 <?php if ( have_posts() ) : ?>
 				<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'tanta' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
-                </hgroup>
 			</header>
 				<?php
 				/* Run the loop for the search to output the results.
