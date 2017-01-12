@@ -44,7 +44,7 @@
 </script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/common.js"></script>
 <noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=17208856&cv=2.0&cj=1" />
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=17208856&cv=2.0&cj=1" alt="comScore tag" />
 </noscript>
 <!-- End comScore Tag -->
 </body>
