@@ -7,6 +7,13 @@
 			</div>
 		<?php } ?>
 	</div>
+
+	<?php if (!empty (get_field ('entradilla'))): ?>
+	<div class="entradilla">
+		<?php echo get_field ('entradilla'); ?>
+	</div>
+	<?php endif; ?>
+
 	<div class="post-page-content">
 		<?php wptouch_the_content(); ?>
 	</div>

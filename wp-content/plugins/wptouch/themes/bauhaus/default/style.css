@@ -1242,6 +1242,14 @@ form#commentform label {
 
 /* @end */
 
+div.entradilla{
+	padding: 0 20px;
+}
+
+div.entradilla p{
+	color: #9b9b9b;
+}
+
 ul.listaLogosClientes, ul.listaSoluciones{
 	list-style-type: none;
 }
