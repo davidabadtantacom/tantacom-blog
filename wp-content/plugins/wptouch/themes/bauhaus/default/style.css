@@ -1256,3 +1256,5 @@ ul.listaLogosClientes, ul.listaSoluciones{
 ul.listaLogosClientes li, ul.listaSoluciones li{
 	text-align: center;
 }
+
+#cookie-notice{color: #000000; background-color: #ffffff;}
