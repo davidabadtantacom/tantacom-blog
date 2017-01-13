@@ -56,7 +56,6 @@
 #cookie-notice .button.bootstrap {
     font-family: sans-serif;
     display: inline-block;
-    *display: inline;
     padding: 4px 12px;
     margin-right: 0.3em;
     margin-bottom: 0;
