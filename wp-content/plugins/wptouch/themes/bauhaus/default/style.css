@@ -1258,3 +1258,5 @@ ul.listaLogosClientes li, ul.listaSoluciones li{
 }
 
 #cookie-notice{color: #000000; background-color: #ffffff;}
+
+#cookie-notice .cn-set-cookie.button{display: block;margin: 5px 0;}

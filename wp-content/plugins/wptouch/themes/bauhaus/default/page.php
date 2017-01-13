@@ -8,7 +8,7 @@
 	<?php get_header(); ?>
 
 	<?php if ( !bauhaus_if_carousel_view_enabled() && bauhaus_should_show_featured() ) { ?>
-		<?php bauhaus_featured_slider(); ?>
+		<?php // bauhaus_featured_slider(); ?>
 	<?php } ?>
 
 	<div id="content">
