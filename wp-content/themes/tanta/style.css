@@ -559,7 +559,7 @@ aside{}
 section{}
 	section header { margin:0 0 0 0; }
 		.lang_social { position:relative; float:left; width:100%;}
-			.lang { padding:.363em .727em; background-color:#97d7f7; color:#fff; text-transform:uppercase; font-style:1.1em;}
+			.lang { padding:.363em .727em; background-color:#97d7f7; color:#fff; text-transform:uppercase; font-size:1.1em;}
 			.social { float:right; padding:0;margin:0;/*nuevo*/height:4em}
 				.social li { float:left;margin-left:1em;list-style-type:none;/*nuevo*/height:4em;}
 					.social span { display:block; margin:1em 0 0 0; font-size:1.4em; color:#717171;}
@@ -607,7 +607,7 @@ text-transform: lowercase;
 .btn input{
 	display:inline-block;
 	background:none;
-	background-color:none;
+	background-color:transparent;
 	font-family:'tanta_bold', arial;
 	color:#ffffff;
 	font-size:1.3em;
