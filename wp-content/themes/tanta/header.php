@@ -95,6 +95,18 @@
       js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.8";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "name" : "Tanta",
+      "url" : "https://tantacom.com",
+      "sameAs" : [
+        "https://twitter.com/tantacom",
+        "https://www.linkedin.com/company/tantacomm"
+      ]
+    }
+    </script>
     <div id="wrapper">
         <aside class="navLateral">
           <header>
