@@ -534,3 +534,20 @@ function SearchFilter($query) {
 	return $query;
 }
 add_filter('pre_get_posts','SearchFilter');
+
+
+// Deregister Contact Form 7 styles
+add_action( 'wp_print_styles', 'aa_deregister_styles', 100 );
+function aa_deregister_styles() {
+    if ( ! is_page( 'contacto' ) ) {
+        wp_deregister_style( 'contact-form-7' );
+    }
+}
+
+// Deregister Contact Form 7 JavaScript files on all pages without a form
+add_action( 'wp_print_scripts', 'aa_deregister_javascript', 100 );
+function aa_deregister_javascript() {
+    if ( ! is_page( 'contacto' ) ) {
+        wp_deregister_script( 'contact-form-7' );
+    }
+}
