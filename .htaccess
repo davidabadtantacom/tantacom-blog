@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
-    Redirect 301 /about /quienes-somos
+	Redirect 301 /about /quienes-somos
 	RedirectMatch 301 /quienes_somos/equipo* /quienes-somos
 	RedirectMatch 301 /proyectos* /confian-en-nosotros
 	RedirectMatch 301 /clientes* /confian-en-nosotros
@@ -7,12 +7,18 @@
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
 </IfModule>
-
 # END WordPress
+
+# Libwww-perl Access Test
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+	RewriteRule .* ? [F,L]
+</IfModule>
