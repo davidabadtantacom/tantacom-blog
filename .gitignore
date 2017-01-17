@@ -5,6 +5,7 @@ wp-content/upgrade/
 wp-content/uploads/
 /wp-content/wptouch-data/cache/
 /wp-content/wptouch-data/uploads/
+wp-content/cache/
 
 /sitemap.xml
 /sitemap.xml.gz
