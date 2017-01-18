@@ -217,15 +217,16 @@ jQuery(function () {
 		jQuery("#newsletterform").submit(function(){return suscripcionNewsletter.init() })	
 	}
 	
-	// Igualamos el alto de lateral con el de la pagina
-	fixes.controlHeightLateral();
-
 	if(jQuery("section.quienesSomos").length != 0){fixes.controlHeight(jQuery("section.quienesSomos"));}
 	if(jQuery("section.soluciones").length != 0){fixes.controlHeight(jQuery("section.soluciones"));}
 	if(jQuery("section.partners").length != 0){fixes.controlHeight(jQuery("section.partners"));}
+});
 
-	jQuery( window ).resize(function() {
-		fixes.controlHeightLateral ();
-	});
+jQuery( window ).resize(function() {
+	fixes.controlHeightLateral ();
+});
 
+jQuery(window).load(function () {
+	// Igualamos el alto de lateral con el de la pagina
+	fixes.controlHeightLateral();
 });
