@@ -190,7 +190,6 @@ var fixes = {
 	},
 
 	controlHeightLateral:function(){
-console.log ($(window).width ());
 		if ($(window).width () >= 1300){
 			if ($('#wrapper').height () > $('#wrapper').find(".navLateral").height ()){
 				$('#wrapper').find(".navLateral").css ('height', $('#wrapper').height ()+'px');

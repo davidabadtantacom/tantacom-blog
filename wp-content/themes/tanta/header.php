@@ -53,10 +53,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/default.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta.css" />
-<link rel="stylesheet" type="text/css" media="(max-height: 710px)" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta_lowheight.css" />
-<link rel="stylesheet" type="text/css" media="(max-width: 1300px)" href="<?php bloginfo( 'template_directory' ); ?>/css/tanta_mobile.css" />
 
 <!--[if lt IE 9]><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -110,7 +107,7 @@
     <div id="wrapper">
         <aside class="navLateral">
           <header>
-            <a href="/"><img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" height="39" width="170" alt="Tanta" id="logo" /></a>
+            <a href="/" title="Ir a la portada" class="logo">tanta_</a>
           </header>
           <nav>
             <?php wp_nav_menu (array ('menu'=>'primary', 'menu_id'=>'nav', 'depth'=>1)); ?>

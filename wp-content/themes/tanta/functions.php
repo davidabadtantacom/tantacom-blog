@@ -536,17 +536,26 @@ function SearchFilter($query) {
 add_filter('pre_get_posts','SearchFilter');
 
 
-// Deregister Contact Form 7 styles
+// Deregister styles
 add_action( 'wp_print_styles', 'aa_deregister_styles', 100 );
 function aa_deregister_styles() {
+	// Contact Form 7
     if ( ! is_page( 'contacto' ) ) {
         wp_deregister_style( 'contact-form-7' );
     }
+	if ( ! is_single()){
+		// SyntaxHighlighter
+		wp_deregister_style( 'syntaxhighlighter-core3.0' );
+		wp_deregister_style( 'syntaxhighlighter-core-Default3.0' );
+		wp_deregister_style( 'syntaxhighlighter-theme-Default3.0' );
+		wp_deregister_style( 'syntaxhighlighter-Processing' );
+	}
 }
 
-// Deregister Contact Form 7 JavaScript files on all pages without a form
+// Deregister JavaScript
 add_action( 'wp_print_scripts', 'aa_deregister_javascript', 100 );
 function aa_deregister_javascript() {
+	// Contact Form 7 
     if ( ! is_page( 'contacto' ) ) {
         wp_deregister_script( 'contact-form-7' );
     }
