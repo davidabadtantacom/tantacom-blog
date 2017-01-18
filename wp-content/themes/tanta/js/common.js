@@ -2,19 +2,19 @@
 
 var herramientas = {
 	comentarios:function(){
-		if($(".form-submit").length){			
-			var obj = $(".form-submit input").clone();
-			$(".form-submit input").remove();
+		if(jQuery(".form-submit").length){			
+			var obj = jQuery(".form-submit input").clone();
+			jQuery(".form-submit input").remove();
 			
-			$('<span></span>').appendTo('p.form-submit');
-			$(".form-submit span").append(obj);
+			jQuery('<span></span>').appendTo('p.form-submit');
+			jQuery(".form-submit span").append(obj);
 		}	
 	},
 	imprimir:function(){
-		if($('#print')){
-			$('#print').append('<a href="" class="btn btn_dArrow btnType02"><span><span>Imprimir</span></span></a>');
+		if(jQuery('#print')){
+			jQuery('#print').append('<a href="" class="btn btn_dArrow btnType02"><span><span>Imprimir</span></span></a>');
 			
-			$('#print a').bind('click',function(e){
+			jQuery('#print a').bind('click',function(e){
 				window.print();
 				
 				e.preventDefault();
@@ -32,7 +32,7 @@ var formsValidations = {
 			var ulElement = document.createElement("ul");
 			var liElement = null;		
 			var errors = txt.split("|");
-			var msgConfirm = $(".msgConfirm");			
+			var msgConfirm = jQuery(".msgConfirm");			
 			jQuery(divElement).attr("class", "msgError");
 			jQuery(divElement).attr("tabIndex","-1");				
 			
@@ -44,7 +44,7 @@ var formsValidations = {
 				ulElement.appendChild(liElement);
 			}
 			
-			jQuery(divElement).append($("<span>La publicación del comentario no ha podido realizarse por estos motivos:</span>"));
+			jQuery(divElement).append(jQuery("<span>La publicación del comentario no ha podido realizarse por estos motivos:</span>"));
 			jQuery(divElement).append(ulElement);		
 			if(msgError.length == 0) form.before(jQuery(divElement));			
 			jQuery(divElement).focus();		
@@ -52,7 +52,7 @@ var formsValidations = {
 	},
 	validaComentarios:function(obj){
 		var errorTxt = "";
-		var f = $(obj);			
+		var f = jQuery(obj);			
 		var author = f.find("input#author");
 		var email = f.find("input#email");
 		var comentario = f.find("textarea#comment");
@@ -131,7 +131,7 @@ var suscripcionNewsletter = {
 		}else{
 		
 			if(em != ''){
-				$.ajax({
+				jQuery.ajax({
 					'url': action,			
 					'dataType': 'json',
 					'type': 'post',
@@ -190,33 +190,29 @@ var fixes = {
 	},
 
 	controlHeightLateral:function(){
-		if ($(window).width () >= 1300){
-			if ($('#wrapper').height () > $('#wrapper').find(".navLateral").height ()){
-				$('#wrapper').find(".navLateral").css ('height', $('#wrapper').height ()+'px');
+		if (jQuery(window).width () >= 1300){
+			if (jQuery('#wrapper').height () > jQuery('#wrapper').find(".navLateral").height ()){
+				jQuery('#wrapper').find(".navLateral").css ('height', jQuery('#wrapper').height ()+'px');
 			}
 		}
 		else{
-			$('#wrapper').find(".navLateral").css ('height', 'auto');
+			jQuery('#wrapper').find(".navLateral").css ('height', 'auto');
 		}
 	}
 
 }
 
-$( window ).resize(function() {
-	fixes.controlHeightLateral ();
-});
-
-$(function () {	
+jQuery(function () {	
 	
 	herramientas.comentarios();
 	
 	herramientas.imprimir();
 	
-	if($("#comments form").length != 0){
+	if(jQuery("#comments form").length != 0){
 		jQuery("#comments form").submit(function(){return formsValidations.validaComentarios( jQuery(this)) })	
 	}
 	
-	if($("#newsletterform").length != 0) {
+	if(jQuery("#newsletterform").length != 0) {
 		
 		jQuery("#newsletterform").submit(function(){return suscripcionNewsletter.init() })	
 	}
@@ -224,10 +220,12 @@ $(function () {
 	// Igualamos el alto de lateral con el de la pagina
 	fixes.controlHeightLateral();
 
-	if($("section.quienesSomos").length != 0){fixes.controlHeight($("section.quienesSomos"));}
-	if($("section.soluciones").length != 0){fixes.controlHeight($("section.soluciones"));}
-	if($("section.partners").length != 0){fixes.controlHeight($("section.partners"));}
+	if(jQuery("section.quienesSomos").length != 0){fixes.controlHeight(jQuery("section.quienesSomos"));}
+	if(jQuery("section.soluciones").length != 0){fixes.controlHeight(jQuery("section.soluciones"));}
+	if(jQuery("section.partners").length != 0){fixes.controlHeight(jQuery("section.partners"));}
 
+	jQuery( window ).resize(function() {
+		fixes.controlHeightLateral ();
+	});
 
-	
 });
