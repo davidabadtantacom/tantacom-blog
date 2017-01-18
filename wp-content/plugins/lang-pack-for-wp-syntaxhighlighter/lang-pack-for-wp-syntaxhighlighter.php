@@ -186,7 +186,7 @@ function add_nl_css_v3() {
 			$css_ver = $val[1];
 			if ($wp_sh_brush_files[$id][3] == 'added') {
 				if ($css_ver == '3.0' || $css_ver == 'all') {
-					wp_enqueue_style($id, $add_nl_plugin_url.$css_file, false, $css_ver);
+					wp_enqueue_style('syntaxhighlighter-'.$id, $add_nl_plugin_url.$css_file, false, $css_ver);
 				}
 			}
 		}
