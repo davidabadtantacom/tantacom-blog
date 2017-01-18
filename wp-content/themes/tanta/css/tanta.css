@@ -252,6 +252,8 @@ a{color:#00b2f9;}
 				footer a:link,footer a:visited { font-size:1.2em;  color:#1c3f95; }
 				footer a:hover { text-decoration:underline;}
 				footer a.sel { color:#fff; }
+
+				footer .desc a{font-size: 1em;}
 				
 				footer span { font-size:1.2em;color:#ffffff;}
 	section header { margin:0 0 0.2em 0; /*border-bottom:1px solid #d3e9f6;*/}
