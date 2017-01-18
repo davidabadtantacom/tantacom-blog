@@ -1257,6 +1257,6 @@ ul.listaLogosClientes li, ul.listaSoluciones li{
 	text-align: center;
 }
 
-#cookie-notice{color: #000000; background-color: #ffffff;}
+#cookie-notice{color: #000000; background-color: #ffffff;position: relative;}
 
 #cookie-notice .button.bootstrap {display: block;margin: 5px 0;}
