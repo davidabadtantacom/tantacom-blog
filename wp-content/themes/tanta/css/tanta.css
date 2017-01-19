@@ -932,6 +932,7 @@ header a.logo{color: white;font-family: 'tanta_bold';font-size: 4.7em;}
 		.social a.icon-twitter{background-color: #00def4;color: white;font-size: 1.4em;}
 .contact li{margin-bottom: 1.5em;}
 	.contact li i {color: white;font-family: 'fontello';font-size: 1.3em;margin-right: 0.5em;}
+.shareButtons .icon-email{color: gray;font-family: 'fontello';font-size: 2em;font-style: normal;}
 
 
 /* Para resoluciones con poca altura */

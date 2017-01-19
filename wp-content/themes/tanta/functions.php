@@ -483,8 +483,8 @@ function getShareButton ($socialNetwork, $link = '', $text=''){
 		case 'twitter':
 			$htmlButton = '<a href="https://twitter.com/share" class="twitter-share-button" data-via="tantacom" data-lang="es">Twittear</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
 			break;
-		case 'facebook':
-			$htmlButton = '<div class="fb-like" data-href="'.$link.'" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>';
+		case 'email':
+			$htmlButton = '<a href="mailto:?subject='.rawurlencode( $text ).'&body='.rawurlencode( $link ).'"><i class="icon-email" title="Enviar por e-mail">&#xe800;</i></a>';
 			break;
 		default:
 			$htmlButton = '';
