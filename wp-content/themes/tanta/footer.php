@@ -16,7 +16,9 @@
 
 	wp_footer();
 ?>
-
+<footer class="responsiveDevices">
+  <?php dynamic_sidebar ('first-footer-widget-area'); ?>
+</footer>
 </div>
 <script type="text/javascript">
 
