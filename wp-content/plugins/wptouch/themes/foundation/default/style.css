@@ -682,6 +682,14 @@ ul.dots li.active,
 	font-style: normal;
 }
 
+.sharing-options .linkedin-btn:before {
+	content: '\e827';
+	margin-right: 5px;
+	font-family: 'wptouch-icons';
+	font-weight: normal;
+	font-style: normal;
+}
+
 .sharing-options .google-btn:before {
 	content: '\e81c';
 	margin-right: 5px;
@@ -707,6 +715,10 @@ ul.dots li.active,
 }
 
 .rtl .sharing-options .twitter-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .linkedin-btn:before {
 	display: none;
 }
 
@@ -740,6 +752,14 @@ ul.dots li.active,
 
 .rtl .sharing-options .twitter-btn:after {
 	content: '\e81b';
+	margin-left: 5px;
+	font-family: 'wptouch-icons';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.rtl .sharing-options .linkedin-btn:after {
+	content: '\e827';
 	margin-left: 5px;
 	font-family: 'wptouch-icons';
 	font-weight: normal;
@@ -786,6 +806,10 @@ ul.dots li.active,
 
 .sharing-options.style-vibrant .twitter-btn {
 	background-color: #8cc1db;
+}
+
+.sharing-options.style-vibrant .linkedin-btn {
+	background-color: #287bbc;
 }
 
 .sharing-options.style-vibrant .google-btn {

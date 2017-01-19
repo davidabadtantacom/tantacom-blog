@@ -55,7 +55,7 @@
 					<ul class="shareButtons">
 						<li><?php echo getShareButton ('twitter'); ?></li>
 						<li><?php echo getShareButton ('linkedin', get_the_permalink()); ?></li>
-						<li><?php echo getShareButton ('facebook', get_the_permalink()); ?></li>
+						<li><?php echo getShareButton ('email', get_the_permalink(), get_the_title ()); ?></li>
 					</ul>
                    
 				</article><!-- #post-## -->
