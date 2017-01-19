@@ -637,7 +637,7 @@ ul.dots li.active,
 	max-width: 25%;
 	display: block;
 	font-weight: bold;
-	font-size: 90%;
+	font-size: 1.5em;
 	background-color: rgba(0,0,0,.05);
 	border-bottom: 1px solid rgba(255,255,255,.7);
 	border-top: 1px solid rgba(255,255,255,.7);
