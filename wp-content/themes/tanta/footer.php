@@ -20,6 +20,9 @@
   <?php dynamic_sidebar ('first-footer-widget-area'); ?>
 </footer>
 </div>
+<script type="text/javascript" src="<?php echo site_url( 'wp-includes/js/jquery/jquery.js?ver=' . W3TC_VERSION ); ?>"></script>
+<script type="text/javascript" src="<?php echo site_url( 'wp-includes/js/jquery/jquery-migrate.js?ver=' . W3TC_VERSION ); ?>"></script>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];

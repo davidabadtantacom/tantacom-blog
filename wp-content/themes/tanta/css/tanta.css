@@ -794,7 +794,7 @@ a { color:#1c3f95;}
 article.blog{float:left;width:65%; color:#515151;}
 	.post{margin-top:2em; border-bottom:1px solid #dddddd;}
 		.post header{margin:0;padding:0;border:0;}
-			.post h2{font:2.5em 'akkurat', Arial, Helvetica, sans-serif;color:#00b2f9; margin-bottom:.8em; line-height: 0.9em;
+			.post h2{font:2.5em 'akkurat', Arial, Helvetica, sans-serif;color:#00b2f9; margin-bottom:.8em; line-height: 1.2em;
 }
 				.post h2 a{ font-size:.8em; color:#00b2f9;}
 			.post header p{font-size:1.4em;margin-bottom:1.785em;}
@@ -812,11 +812,11 @@ section  h2 { font-size:1.7em; color:#9b9b9b; margin-bottom: 1.5em; }
 #cookie-notice span#cn-notice-text{display: block;margin-bottom: 10px;}
 
 /*** unete ***/
-.perfilBuscado{background-color: #cdeffd;padding: 10px;}
+.perfilBuscado{background-color: #cdeffd;margin-bottom: 20px;padding: 30px;}
 .perfilBuscado h3{color: #00b2f9;font-family: 'akkurat_bold', Arial, Helvetica, sans-serif;font-size: 2.2em;line-height: 1em;margin: 0;padding: 0 0 0.5em;}
 .perfilBuscado ul{list-style: none;}
 .perfilBuscado ul li{color: #515151;font-size: 1.4em;line-height: 1.4em;}
-.perfilBuscado ul li:before {content: "+";margin-right: 4px;}
+.perfilBuscado .content ul li:before {content: "+";margin-right: 4px;}
 .perfilBuscado p{color: #515151;font-size: 1.4em;line-height: 1.4em;}
 
 
