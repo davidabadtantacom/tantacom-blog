@@ -39,7 +39,7 @@ get_header(); ?>
 						</div>
 						<p>Escríbenos a <a href="mailto:talento@tantacom.com" target="_blank">talento@tantacom.com</a> y envíanos tu CV. Valoramos a todos los candidatos.</p>
 						<ul class="shareButtons">
-							<li><?php echo getShareButton ('twitter'); ?></li>
+							<li><?php echo getShareButton ('twitter', get_the_permalink()); ?></li>
 							<li><?php echo getShareButton ('linkedin', get_the_permalink()); ?></li>
 							<li><?php echo getShareButton ('email', get_the_permalink(), get_the_title ()); ?></li>
 						</ul>
