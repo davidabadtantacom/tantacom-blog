@@ -53,7 +53,7 @@
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'tanta' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
 					<ul class="shareButtons">
-						<li><?php echo getShareButton ('twitter'); ?></li>
+						<li><?php echo getShareButton ('twitter', get_the_permalink()); ?></li>
 						<li><?php echo getShareButton ('linkedin', get_the_permalink()); ?></li>
 						<li><?php echo getShareButton ('email', get_the_permalink(), get_the_title ()); ?></li>
 					</ul>
