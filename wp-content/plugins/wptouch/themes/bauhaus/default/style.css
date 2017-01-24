@@ -10,6 +10,23 @@ Responsive styles can be applied via '.smartphone', '.tablet', '.portrait' & '.l
 These classes are automatically applied and manipulated on <body> by Foundation.
 */
 
+@font-face {
+    font-family: 'tanta_bold';
+    src: url('fonts/tanta_bold-webfont.eot');
+    src: url('fonts/tanta_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/tanta_bold-webfont.svg#tanta_bold') format('svg'),
+         url('fonts/tanta_bold-webfont.woff') format('woff'),
+         url('fonts/tanta_bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: 'tanta_bold';
+            src: url('fonts/tanta_bold-webfont.svg#tanta_bold') format('svg'),
+    }
+}
+
 body {
 	font-family: "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -1274,3 +1291,5 @@ ul.listaLogosClientes li, ul.listaSoluciones li{
 .perfilBuscado ul li{color: #515151;line-height: 1.5em;margin-bottom: 10px;}
 .perfilBuscado .content ul li:before {content: "+";margin-right: 4px;}
 .perfilBuscado p{color: #515151;}
+
+h1.heading-font a{color: white;font-family: 'tanta_bold';font-size: 2.3em;line-height: 0.8em;}

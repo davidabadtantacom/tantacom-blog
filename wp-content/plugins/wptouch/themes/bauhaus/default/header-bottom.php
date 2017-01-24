@@ -30,13 +30,7 @@
 		<?php if ( bauhaus_should_show_search() ) { ?>
 			<div id="search-toggle" class="search-toggle tappable <?php if ( bauhaus_is_menu_position_default() ) { echo 'search-right'; } else { echo 'search-left'; } ?>" role="button"><!--icon-search--></div>
 		<?php } ?>
-		<a href="<?php wptouch_bloginfo( 'url' ); ?>" class="header-center tappable">
-			<?php if ( foundation_has_logo_image() ) { ?>
-				<img id="header-logo" src="<?php foundation_the_logo_image(); ?>" alt="logo image" />
-			<?php } else { ?>
-				<h1 class="heading-font"><?php wptouch_bloginfo( 'site_title' ); ?></h1>
-			<?php } ?>
-		</a>
+		<h1 class="heading-font"><a href="<?php wptouch_bloginfo( 'url' ); ?>" class="header-center tappable">tanta_</a></h1>
 		<div id="menu-toggle" class="menu-btn tappable show-hide-toggle <?php if ( bauhaus_is_menu_position_default() ) { echo 'menu-left'; } else { echo 'menu-right'; } ?>" data-effect-target="menu" data-menu-target="menu" role="button"><!--icon-reorder--></div>
 	</header>
 
