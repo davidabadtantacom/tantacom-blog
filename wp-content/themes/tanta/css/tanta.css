@@ -588,9 +588,8 @@ a.btn:hover{text-decoration:underline;}
 	.contacto .colA form fieldset { border:none;}
 	.contacto .colA form legend { display:none;}
 	.contacto .colA form label { display:block; margin:0 0 .3em 0; font:1.1em 'akkurat', Arial, Helvetica, sans-serif; color:#515151;}
-	.contacto .colA form input {padding:.3em .2em; margin:0; /*border:none;*/ font:1.3em 'akkurat', Arial, Helvetica, sans-serif; color:#767676;}
 	.contacto .colA form input,
-	.contacto .colA form textarea{width:100%;max-width:100%;min-width:100%;margin-bottom:0em;}
+	.contacto .colA form textarea{width:100%;max-width:100%;min-width:100%;margin-bottom:0em;font:1.3em 'akkurat', Arial, Helvetica, sans-serif; color:#767676;padding:.3em .2em;margin:0;}
 	.contacto .colA form input[type=checkbox]{max-width: inherit;min-width: inherit;width: inherit;}
 	.form-item{margin:0;}
 	.contacto .colA form textarea{min-height:6em;}
