@@ -1,58 +1,17 @@
-.bg-secondary {
-background: none;
-}
-
-.preview-portfolio .masonry {
-    border: none;
-}
-
-
-.preview-portfolio .project {
- border:none;
-}
-
-.hover-tile {
-    position: relative;
-    overflow: hidden;
-    background: none;
-    border: 2px solid #fff;
-}
-
-.hover-state h4{
-    color: #fff;
-    font-size: 15px;
-}
-
-body.single-portfolio, .single-post{
-    background-color:#f5f5f5 !important;
-}
-
-
-/*body.single-portfolio h1.large {
-    font-size: 40px;
-    line-height: 80px;
-    font-weight: 100;
-}*/
-
-
-#cookie-notice {
-   background: rgba(255, 255, 255, 0.8);
-}
-
-nav.transparent.fixed .menu > li > a, nav.transparent.fixed .module.widget-handle i {
-    opacity: .7 !important;
-}
-
-
-.menu li a {
-    opacity: 0.7;
-   
-}
-
-nav.transparent.fixed {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.dark nav.fixed {
-    background: rgba(255, 255, 255, 0.8);
-}
+.bg-secondary {background: none;}
+.preview-portfolio .masonry {border: none;}
+.preview-portfolio .project {border:none;}
+.hover-tile {position: relative;overflow: hidden;background: none;border: 2px solid #fff;}
+.hover-state h4{color: #fff;font-size: 15px;}
+body.single-portfolio, .single-post{background-color:#f5f5f5 !important;}
+#cookie-notice {background: rgba(255, 255, 255, 0.8);}
+nav.transparent.fixed .menu > li > a, nav.transparent.fixed .module.widget-handle i {opacity: .7 !important;}
+.menu li a {opacity: 0.7;}
+nav.transparent.fixed {background: rgba(255, 255, 255, 0.8);}
+.dark nav.fixed {background: rgba(255, 255, 255, 0.8);}
+.home div.wpcf7 textarea {height: 92px;margin-bottom: 13px;}
+.home input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {margin-bottom: 17px;}
+.home label {margin-bottom: 1px;}
+.ti-linkedin-alt:before {content: "\e735";}
+.ti-email-alt:before {content: "\e75a";}
+.listadoSoluciones .wpb_column{text-align: center;}

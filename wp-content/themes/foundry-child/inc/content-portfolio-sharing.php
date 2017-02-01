@@ -12,20 +12,20 @@
         
         <ul class="social-list list-inline">
             <li> 
-                <h6 class="uppercase">Comparte la oferta</h6>
+                <h6 class="uppercase"><?php _e('Share The Love','foundry'); ?></h6>
             </li>
             <li>
-                <a target="_blank" href="https://twitter.com/share?url=<?php the_permalink(); ?>" onClick="return ebor_tweet()">
+                <a target="_blank" href="https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom" onClick="return ebor_tweet()">
                     <i class="ti-twitter-alt icon icon-xs"></i>
                 </a>
             </li>
             <li>
-                <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>" onClick="return ebor_linkedin()">
+                <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>" onClick="return ebor_linkedin()">
                     <i class="ti-linkedin icon icon-xs"></i>
                 </a>
             </li>
             <li>
-               <a href="mailto:someone@example.com?Subject=Hello%20again" target="_blank">
+               <a href="mailto:subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
                     <i class="ti-email icon icon-xs"></i>
                 </a>
             </li>
@@ -37,11 +37,11 @@
 
 <script type="text/javascript">
 	function ebor_tweet() {
-		window.open('https://twitter.com/share?url=<?php the_permalink(); ?>&t=<?php echo sanitize_title(get_the_title()); ?>','sharer','toolbar=0,status=0,width=626,height=436');
+		window.open('https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom','sharer','toolbar=0,status=0,width=626,height=436');
 		return false;
 	}
 	function ebor_linkedin() {
-		window.open('http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&t=<?php echo sanitize_title(get_the_title()); ?>','sharer','toolbar=0,status=0,width=626,height=436');
+		window.open('http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>','sharer','toolbar=0,status=0,width=626,height=436');
 		return false;
 	}
 </script>
