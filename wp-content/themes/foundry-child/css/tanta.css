@@ -16,8 +16,16 @@ nav.transparent.fixed {background: rgba(255, 255, 255, 0.8);}
 .ti-email-alt:before {content: "\e75a";}
 .listadoSoluciones .wpb_column{text-align: center;}
 .listadoOfertasTrabajoPortada .bg-secondary {background: none;}
-.notFoundZone .background-image-holder.fadeIn, .notFoundZone .container{opacity: 0;}
-.notFoundZone .container a{text-decoration: underline;}
+.notFoundZone *{background-color: black;}
+.notFoundZone .imagen, .notFoundZone .texto{opacity: 0;}
+.notFoundZone .texto{text-align: center;}
+.notFoundZone .texto h2{color: white;}
+.notFoundZone .texto h4{color: white;}
+.notFoundZone .texto h4 a{color: white;text-decoration: underline;}
+
+@media (min-width: 992px){
+	.notFoundZone .texto{padding-top: 200px;}
+}
 
 @media (max-width: 991px){
 	.dark nav{background: #fff;}
