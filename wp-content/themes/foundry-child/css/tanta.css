@@ -17,17 +17,16 @@ nav.transparent.fixed {background: rgba(255, 255, 255, 0.8);}
 .listadoSoluciones .wpb_column{text-align: center;}
 .listadoOfertasTrabajoPortada .bg-secondary {background: none;}
 .notFoundZone *{background-color: black;}
-.notFoundZone .imagen, .notFoundZone .texto{opacity: 0;}
 .notFoundZone .texto{text-align: center;}
-.notFoundZone .texto h2{color: white;}
+.notFoundZone .texto h3{color: white;}
 .notFoundZone .texto h4{color: white;}
 .notFoundZone .texto h4 a{color: white;text-decoration: underline;}
+.notFoundZone .texto img{cursor: pointer;}
 
 @media (min-width: 992px){
 	.notFoundZone .texto{padding-top: 200px;}
 }
 
 @media (max-width: 991px){
-	.dark nav{background: #fff;}
-	.nav-bar .module-group{padding-bottom: 0;}
+	.notFoundZone .image-square .image{margin-bottom: 0;}
 }

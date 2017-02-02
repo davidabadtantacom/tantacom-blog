@@ -1,8 +1,10 @@
+// Metodo que retorna el nombre de un fichero a partir de una ruta
+String.prototype.filename=function(extension){var s= this.replace(/\\/g, '/');s= s.substring(s.lastIndexOf('/')+ 1);return extension? s.replace(/[?#].+$/, ''): s.split('.')[0];}
 // Parche para el comportamiento del menu en Firefox al abrir la portada con un ancla en la URL
 if (jQuery.browser.mozilla && location.hash) {setTimeout(function() {window.scrollTo(0, 0);}, 1);}
 jQuery(document).ready(function(){
 	// Parche para el comportamiento del menu en Firefox al abrir la portada con un ancla en la URL
 	if (jQuery.browser.mozilla && window.location.hash) {var anchor = jQuery(window.location.hash);if (anchor.length){jQuery('body .nav-container nav:first').addClass('fixed');setTimeout(function() {jQuery('html, body').animate({scrollTop:anchor.offset().top});}, 100);}}
 	// Animacion para la opacidad de la bombilla en la pagina de contenido no encontrado
-	if (jQuery('.notFoundZone').length){jQuery('.notFoundZone').find('.imagen').animate ({opacity: 1}, {duration: 1000, queue: false});jQuery('.notFoundZone').find('.texto').animate ({opacity: 1}, {duration: 5000, queue: true});}
+	var redireccionNotFound;function luzEncendida () {redireccionNotFound = setTimeout(function(){ location.href = '/'; }, 3000);}function luzApagada () {clearTimeout(redireccionNotFound);}jQuery('.notFoundZone').on ('click', '.interruptor', function (){if (jQuery(this).attr('src').filename() == 'interruptor-off'){jQuery(this).attr('src', jQuery(this).attr('src').replace('interruptor-off', 'interruptor-on'));jQuery('.notFoundZone').find('.background-image-holder').css ('background-image', jQuery('.notFoundZone').find('.background-image-holder').css ('background-image').replace ('lamp-off', 'lamp-on'));luzEncendida ();}else if (jQuery(this).attr('src').filename() == 'interruptor-on'){jQuery(this).attr('src', jQuery(this).attr('src').replace('interruptor-on', 'interruptor-off'));jQuery('.notFoundZone').find('.background-image-holder').css ('background-image', jQuery('.notFoundZone').find('.background-image-holder').css ('background-image').replace ('lamp-on', 'lamp-off'));luzApagada ();}});
 });
