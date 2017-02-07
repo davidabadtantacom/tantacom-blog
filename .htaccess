@@ -60,3 +60,6 @@
     RewriteRule .* "/wp-content/cache/page_enhanced/%{HTTP_HOST}/%{REQUEST_URI}/_index%{ENV:W3TC_PREVIEW}.html%{ENV:W3TC_ENC}" [L]
 </IfModule>
 # END W3TC Page Cache core
+
+# Redirect 404 error to custom 404 page
+ErrorDocument 404 /error-404
