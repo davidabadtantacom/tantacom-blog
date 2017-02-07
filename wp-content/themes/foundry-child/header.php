@@ -11,6 +11,18 @@
 
 <body <?php body_class( get_option('foundry_site_layout', 'normal-layout') . ' parallax-' . get_option('foundry_parallax_version', '3d') . ' ' . get_option('button_style', 'btn-regular') ); ?>>
 
+    <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "name" : "Tanta",
+      "url" : "https://tantacom.com",
+      "sameAs" : [
+        "https://twitter.com/tantacom",
+        "https://www.linkedin.com/company/tantacomm"
+      ]
+    }
+    </script>
 <?php
 	/**
 	 * First, we need to check if we're going to override the header layout (with post meta)
