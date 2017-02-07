@@ -17,7 +17,7 @@
         </a>
     </li>
     <li>
-       <a class="btn btn-sm btn-icon" href="mailto:subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
+       <a class="btn btn-sm btn-icon" href="mailto:&subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
             <i class="ti-email-alt"></i>
         </a>
     </li>

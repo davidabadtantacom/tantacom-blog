@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-               <a href="mailto:subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
+               <a href="mailto:&subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
                     <i class="ti-email icon icon-xs"></i>
                 </a>
             </li>
