@@ -3,16 +3,18 @@ Plugin URI: http://www.cybernetikz.com
 Contributors: cybernetikz
 Donate link: 
 Tags: nofollow,link,rel=nofollow,rel nofollow,seo,nofollow links,external link,external links,nofollow for external link,nofollow external link,nofollow external links
-Requires at least: 2.9.2
-Tested up to: 4.5.2
-Stable tag: 1.2.0
+Requires at least: 2.8.6
+Tested up to: 4.7.2
+Stable tag: 1.2.1
 License: GPL2
 
 Automatically insert `rel=nofollow` and `target=_blank` to all the external links into your website posts, pages or menus. Support exclude domain.
 
 == Description ==
 
-Just simple, if you use this plugin, `rel=nofollow` and `target=_blank` will be inserted automatically, for all the external links of your website posts, pages or theme menus. Also you can set <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external domain links.
+Just simple, if you use this plugin, `rel=nofollow` and `target=_blank` will be inserted automatically, for all the external links of your website posts, pages or theme menus. 
+
+Also you can set <strong>exclude domains</strong>, not to add `rel=nofollow` for the selected external domain links.
 
 > <strong>Paid Support</strong> ( $30 / Hour, We accept PayPal )
 >
@@ -54,6 +56,9 @@ Ans: Yes it does.
 2. Options page for Exclude Domains.
 
 == Changelog ==
+
+= 1.2.1 =
+* Fix issue with target="_self", target="_top", target="_parent"
 
 = 1.2.0 =
 * Not add `rel=nofollow` and `target=_blank` for "/about-us" type internal links.
