@@ -5,7 +5,7 @@
 	$url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full');
 ?>
 
-<ul class="tags pull-right">
+<ul class="tags text-right sharePost">
     <li>
         <a class="btn btn-sm btn-icon" target="_blank" href="https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom" onClick="return ebor_tweet_<?php echo the_ID(); ?>()">
             <i class="ti-twitter-alt"></i>
