@@ -5,6 +5,6 @@ Disallow: *.php
 Disallow: */feed*
 Disallow: /trackback*
 Disallow: /20*
-Sitemap: http://blog.tantacom.com/sitemap.xml
+Sitemap: https://tantacom.com/sitemap.xml
 
 
