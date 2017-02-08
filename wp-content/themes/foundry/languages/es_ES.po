@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foundry\n"
 "POT-Creation-Date: 2016-03-07 10:42+0000\n"
-"PO-Revision-Date: 2017-02-01 10:48+0100\n"
+"PO-Revision-Date: 2017-02-08 10:36+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -668,7 +668,7 @@ msgstr ""
 
 #: comments.php:9
 msgid "Name *"
-msgstr ""
+msgstr "Nombre *"
 
 #: comments.php:10
 msgid "Email *"
@@ -680,35 +680,35 @@ msgstr ""
 
 #: comments.php:13
 msgid "Your Comment Here"
-msgstr ""
+msgstr "Tu comentario aquí"
 
 #: comments.php:14
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: comments.php:17 woocommerce/single-product-reviews.php:63
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: comments.php:26
 msgid "0 Comments"
-msgstr ""
+msgstr "0 Comentarios"
 
 #: comments.php:26
 msgid "1 Comment"
-msgstr ""
+msgstr " 1 Comentario"
 
 #: comments.php:26
 msgid "% Comments"
-msgstr ""
+msgstr "% Comentarios"
 
 #: comments.php:40
 msgid "Leave A Comment"
-msgstr ""
+msgstr "Deja un comentario"
 
 #: inc/content-footer-widgets-light.php:63 inc/content-footer-widgets.php:63
 msgid "Top"
-msgstr ""
+msgstr "Arriba"
 
 #: inc/content-header-cart.php:12 inc/content-header-cart.php:18
 msgid "Shopping Cart"
@@ -732,11 +732,11 @@ msgstr "Comparte la oferta"
 
 #: inc/content-post-meta.php:4
 msgid "Written by"
-msgstr ""
+msgstr "Escrito por"
 
 #: inc/content-post-meta.php:8
 msgid "Categorised"
-msgstr ""
+msgstr "Categorizado"
 
 #: loop/content-none.php:1
 msgid "Sorry, no results were found, search again?"
