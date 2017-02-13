@@ -1,0 +1,40 @@
+# Copyright (C) 2017 Post views
+# This file is distributed under the same license as the Post views package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Post views 1\n"
+"Report-Msgid-Bugs-To: https:tantacom.comencoder\n"
+"POT-Creation-Date: 2017-02-10 13:42+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-02-10 13:43+0100\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Post views"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://tantacom.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A plugin to control posts views."
+msgstr "Un plugin para controla las visualizaciones de los posts"
+
+#. Author of the plugin/theme
+msgid "Tantacom"
+msgstr ""
+
+#. Description of Widget
+msgid "This widget displays a list of most viewed posts"
+msgstr "Este widget muestra una lista de los posts más vistos"
+
+# Name of widget
+msgid "Posts Views Widget"
+msgstr ""
