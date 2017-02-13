@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 #. Plugin Name of the plugin/theme
-msgid "Post views"
+msgid "Tanta Post views"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

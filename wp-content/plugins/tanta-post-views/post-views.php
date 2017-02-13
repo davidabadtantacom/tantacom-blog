@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Post views
+Plugin Name: Tanta Post Views
 Plugin URI: https://tantacom.com
-Description: A plugin to control posts views
+Description: A plugin to control posts views for tantacom.com
 Version: 1
 Author: David Abad
 Author URI: https://tantacom.com
@@ -18,28 +18,28 @@ if ( ! defined( 'EAE_FILTER_PRIORITY' ) ) {
 	define( 'EAE_FILTER_PRIORITY', 1000 );
 }
 
-function add_pixel_control_post_views( $content ) {
+function add_pixel_tanta_post_views( $content ) {
 
 	if ( is_single () ){
 		global $post;
-		$content = '<!-- Pixel to control post views -->
+		$content = '<!-- Pixel to control tanta post views -->
 					<img class="hidden" src="'.get_stylesheet_directory_uri ().'/addPostView.php?id='.$post->ID.'" alt="Count post views" />
-					<!-- End pixel to control post views -->'.
+					<!-- End pixel to control tanta post views -->'.
 					$content;
 	}
 	return $content;
 }
 
 // Creating the widget 
-class post_views_widget extends WP_Widget {
+class tanta_post_views_widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			// Base ID of your widget
-			'post_views_widget', 
+			'tanta_post_views_widget', 
 			// Widget name will appear in UI
-			__('Posts Views Widget', 'post_views_widget_domain'), 
+			__('Tanta Posts Views Widget', 'tanta_post_views'), 
 			// Widget description
-			array( 'description' => __( 'This widget displays a list of most viewed posts', 'post_views_widget_domain' ), ) 
+			array( 'description' => __( 'This widget displays a list of most viewed posts in tantacom.com', 'tanta_post_views' ), ) 
 		);
 	}
 
@@ -55,9 +55,22 @@ class post_views_widget extends WP_Widget {
 				echo  $before_title.$title.$after_title;
 			} ?>
 
-				<ul class="link-list recent-posts">
-					<?php 
-						query_posts('post_type=post&posts_per_page=' . $instance['amount'].'&meta_key=views&orderby=meta_value_num&order=DESC');
+				<ul class="mostViewedPosts link-list recent-posts" data-amount="<?php echo $instance['amount']; ?>">
+					<?php
+						$args = array(
+							'post_type' => 'post', 
+							'posts_per_page' => $instance['amount'],
+							'meta_key' => 'views',
+							'orderby' => 'meta_value_num',
+							'order' => 'DESC',
+							'date_query'    => array(
+								'column'  => 'post_date',
+								'after'   => '- 12 months'
+							)
+						);
+
+						query_posts($args);
+
 						if( have_posts() ) : while ( have_posts() ): the_post(); 
 					?>
 							
@@ -87,6 +100,12 @@ class post_views_widget extends WP_Widget {
 			$new_instance['amount'] = '3';
 		}
 
+		if( is_date($new_instance['dateInit']) ){
+			$instance['dateInit'] = $new_instance['dateInit'];
+		} else {
+			$new_instance['dateInit'] = '';
+		}
+
 		return $instance;
 	}
 
@@ -109,9 +128,9 @@ class post_views_widget extends WP_Widget {
 } // Class post_views_widget ends here
 
 // Register and load the widget
-function post_views_load_widget() {
-	register_widget( 'post_views_widget' );
+function tanta_post_views_load_widget() {
+	register_widget( 'tanta_post_views_widget' );
 }
 
-add_filter( 'the_content', 'add_pixel_control_post_views', EAE_FILTER_PRIORITY );
-add_action( 'widgets_init', 'post_views_load_widget' );
+add_filter( 'the_content', 'add_pixel_tanta_post_views', EAE_FILTER_PRIORITY );
+add_action( 'widgets_init', 'tanta_post_views_load_widget' );
