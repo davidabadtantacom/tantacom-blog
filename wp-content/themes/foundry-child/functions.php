@@ -17,3 +17,22 @@ function check_wp_query ( $query ){
 	return $query;
 }
 add_action( 'pre_get_posts', 'check_wp_query' );
+
+function ebor_header_social_items(){
+	
+	$protocols = array('http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet', 'skype');
+	$output = false;
+	
+	for( $i = 1; $i < 5; $i++ ){
+		if( get_option("header_social_url_$i") ) {
+			$output .= '<li>
+				      <a href="' . esc_url(get_option("header_social_url_$i"), $protocols) . '" target="_blank">
+					      <i class="' . get_option("header_social_icon_$i") . '"><span class="hidden">'.get_option("header_social_icon_$i").' link</span></i>
+				      </a>
+				  </li>';
+		}
+	} 
+	
+	return $output;	
+	
+}
