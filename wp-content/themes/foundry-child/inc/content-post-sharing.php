@@ -17,7 +17,7 @@
         </a>
     </li>
     <li>
-        <a class="btn btn-sm btn-icon" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>" onClick="return ebor_linkedin<?php echo the_ID(); ?>()">
+        <a class="btn btn-sm btn-icon" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>" onClick="return ebor_linkedin_<?php echo the_ID(); ?>()">
             <i class="ti-linkedin-alt"></i>
         </a>
     </li>
@@ -32,7 +32,7 @@
 		window.open('https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom','sharer','toolbar=0,status=0,width=626,height=436');
 		return false;
 	}
-	function ebor_linkedin() {
+	function ebor_linkedin_<?php echo the_ID(); ?>() {
 		window.open('http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>','sharer','toolbar=0,status=0,width=626,height=436');
 		return false;
 	}
