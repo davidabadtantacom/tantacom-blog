@@ -5,7 +5,7 @@
 		
 		<div class="hover-state">
 			<a href="<?php the_permalink(); ?>">
-				<?php the_title('<p class="uppercase mb0 nombreOferta">', '</p><h6>'. ebor_the_terms('portfolio_category', ' / ', 'name') .'</p>'); ?>
+				<?php the_title('<p class="uppercase mb0 nombreOferta">', '</p>'); ?>
 			</a>
 		</div>
 		
