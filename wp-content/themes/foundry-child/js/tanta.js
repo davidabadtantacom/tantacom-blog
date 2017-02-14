@@ -8,20 +8,7 @@ jQuery(document).ready(function(){
 	// Animacion para la opacidad de la bombilla en la pagina de contenido no encontrado
 	var redireccionNotFound;function luzEncendida () {redireccionNotFound = setTimeout(function(){ location.href = '/'; }, 3000);}function luzApagada () {clearTimeout(redireccionNotFound);}jQuery('.notFoundZone').on ('click', '.interruptor', function (){if (jQuery(this).attr('src').filename() == 'interruptor-off'){jQuery(this).attr('src', jQuery(this).attr('src').replace('interruptor-off', 'interruptor-on'));jQuery('.notFoundZone').find('.background-image-holder').css ('background-image', jQuery('.notFoundZone').find('.background-image-holder').css ('background-image').replace ('lamp-off', 'lamp-on'));luzEncendida ();}else if (jQuery(this).attr('src').filename() == 'interruptor-on'){jQuery(this).attr('src', jQuery(this).attr('src').replace('interruptor-on', 'interruptor-off'));jQuery('.notFoundZone').find('.background-image-holder').css ('background-image', jQuery('.notFoundZone').find('.background-image-holder').css ('background-image').replace ('lamp-on', 'lamp-off'));luzApagada ();}});
 	// Parche para hacer la navegacion mediante anclas más atractiva
-	jQuery('a[href*="#"]:not([href="#"])').click(function() {
-		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-			var target = jQuery(this.hash);
-			target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
-			if (target.length) {
-				// Realizamos la accion del boton del menu
-				if (jQuery (this).parents ('.menu').length){
-					jQuery('.mobile-toggle').trigger ('click');
-				}
-				jQuery('html, body').animate({
-					scrollTop: target.offset().top
-				}, 1000);
-				return false;
-			}
-		}
-	});
+	jQuery('a[href*="#"]:not([href="#"])').click(function() {if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {var target = jQuery(this.hash);target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');if (target.length) {if (jQuery (this).parents ('.menu').length){jQuery('.mobile-toggle').trigger ('click');}jQuery('html, body').animate({scrollTop: target.offset().top}, 1000);return false;}}});
+	// Parache para cambiar los h4 de los iconos del apartado de soluciones
+	if (jQuery('.listadoSoluciones').length){var txt;jQuery ('.listadoSoluciones').find ('i.icon').each (function (){txt = jQuery(this).siblings ('h4').html ();jQuery(this).siblings ('h4').replaceWith ('<p class="nombreSolucion">'+txt+'</p>');});}
 });
