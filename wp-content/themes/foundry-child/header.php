@@ -19,7 +19,8 @@
       "url" : "https://tantacom.com",
       "sameAs" : [
         "https://twitter.com/tantacom",
-        "https://www.linkedin.com/company/tantacomm"
+        "https://es.linkedin.com/company/tanta-comunicacion",
+        "https://www.facebook.com/tantacom/"
       ]
     }
     </script>
