@@ -17,11 +17,17 @@
       "@type" : "Organization",
       "name" : "Tanta",
       "url" : "https://tantacom.com",
+      "logo" : "https://tantacom.com/wp-content/uploads/2017/02/tanta_logo_azul-1.png",
       "sameAs" : [
         "https://twitter.com/tantacom",
         "https://es.linkedin.com/company/tanta-comunicacion",
         "https://www.facebook.com/tantacom/"
-      ]
+      ],
+      "contactPoint" : [{
+        "@type" : "ContactPoint",
+        "telephone" : "+34 91 440 10 40",
+        "contactType" : "customer support"
+      }]
     }
     </script>
 <?php
