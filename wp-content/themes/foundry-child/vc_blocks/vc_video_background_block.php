@@ -41,7 +41,7 @@ function ebor_video_background_shortcode( $atts, $content = null ) {
 	if( 'local' == $layout ){		    
 		$output .= '
 			<div class="fs-vid-background">
-		        <video autoplay muted loop>
+		        <video>
 		            <source src="'. esc_url($webm) .'" type="video/webm">
 		            <source src="'. esc_url($mpfour) .'" type="video/mp4">
 		            <source src="'. esc_url($ogv) .'" type="video/ogg">	
