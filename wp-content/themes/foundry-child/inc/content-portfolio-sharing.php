@@ -16,22 +16,22 @@
             </li>
             <li>
                 <a target="_blank" href="https://facebook.com/sharer.php?u=<?php the_permalink(); ?>" onClick="return ebor_facebook_<?php echo the_ID(); ?>()">
-                    <i class="ti-facebook icon icon-xs"></i>
+                    <i class="ti-facebook icon icon-xs"><span class="hidden">Facebook</span></i>
                 </a>
             </li>
             <li>
                 <a target="_blank" href="https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom" onClick="return ebor_tweet_<?php echo the_ID(); ?>()">
-                    <i class="ti-twitter-alt icon icon-xs"></i>
+                    <i class="ti-twitter-alt icon icon-xs"><span class="hidden">Twitter</span></i>
                 </a>
             </li>
             <li>
                 <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>" onClick="return ebor_linkedin_<?php echo the_ID(); ?>()">
-                    <i class="ti-linkedin icon icon-xs"></i>
+                    <i class="ti-linkedin icon icon-xs"><span class="hidden">Linkedin</span></i>
                 </a>
             </li>
             <li>
                <a href="mailto:somebody@example.com&subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
-                    <i class="ti-email icon icon-xs"></i>
+                    <i class="ti-email icon icon-xs"><span class="hidden">Email</span></i>
                 </a>
             </li>
 
