@@ -16,7 +16,7 @@
 			</div>
 			
 			<div class="module widget-handle offscreen-toggle right">
-				<span class="icon ti-menu"><span class="text">Menú</span></span>
+				<span class="iconized ti-menu"><span class="text">Menú</span></span>
 			</div>
 			
 		</div>

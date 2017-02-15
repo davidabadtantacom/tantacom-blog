@@ -15,7 +15,7 @@
             </div>
             
             <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
-                <span class="icon ti-menu"><span class="text">Menú</span></span>
+                <span class="iconized ti-menu"><span class="text">Menú</span></span>
             </div>
             
             <div class="module-group right">
