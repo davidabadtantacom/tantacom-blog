@@ -1,0 +1,6 @@
+span.icon span.text{display: none;}
+nav.transparent .module.widget-handle span.icon {color: #fff;opacity: 1;}
+.module.widget-handle span.icon {line-height: 40px;}
+.module.widget-handle span.icon {font-size: 20px;line-height: 53px;opacity: 0.5;transition: all 0.3s ease;-webkit-transition: all 0.3s ease;-moz-transition: all 0.3s ease;color: #111f23;}
+.mobile-toggle span.icon {line-height: 53px !important;}
+nav.transparent .nav-open .module.widget-handle span.icon {color: #111f23;}
