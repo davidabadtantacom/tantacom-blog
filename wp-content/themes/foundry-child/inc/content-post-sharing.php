@@ -8,17 +8,17 @@
 <ul class="tags text-right sharePost">
     <li>
         <a class="btn btn-sm btn-icon" target="_blank" href="https://facebook.com/sharer.php?u=<?php the_permalink(); ?>" onClick="return ebor_facebook_<?php echo the_ID(); ?>()">
-            <i class="ti-facebook"><span class="hidden">Facebook</span></i>
+            <span class="iconized ti-facebook"><span class="text">Facebook</span></span>
         </a>
     </li>
     <li>
         <a class="btn btn-sm btn-icon" target="_blank" href="https://twitter.com/share?original_referer=<?php the_permalink(); ?>&url=<?php echo wp_get_shortlink(); ?>&text=<?php echo get_the_title(); ?>&via=tantacom" onClick="return ebor_tweet_<?php echo the_ID(); ?>()">
-            <i class="ti-twitter-alt"><span class="hidden">Twitter</span></i>
+            <span class="iconized ti-twitter-alt"><span class="text">Twitter</span></span>
         </a>
     </li>
     <li>
         <a class="btn btn-sm btn-icon" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php echo get_the_title(); ?>&source=<?php echo get_site_url(); ?>" onClick="return ebor_linkedin_<?php echo the_ID(); ?>()">
-            <i class="ti-linkedin-alt"><span class="hidden">Linkedin</span></i>
+            <span class="iconized ti-linkedin-alt"><span class="text">Linkedin</span></span>
         </a>
     </li>
 </ul>
