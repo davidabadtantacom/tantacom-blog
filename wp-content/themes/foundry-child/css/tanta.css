@@ -5,3 +5,4 @@ nav.transparent .module.widget-handle span.iconized {color: #fff;opacity: 1;}
 .mobile-toggle span.iconized {line-height: 53px !important;}
 nav.transparent .nav-open .module.widget-handle span.iconized {color: #111f23;}
 .nav-bar .social-list li a span.iconized{vertical-align: middle;line-height: -moz-block-height;}
+span.iconized.icon {line-height: initial;}
