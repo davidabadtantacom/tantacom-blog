@@ -28,7 +28,7 @@ function ebor_header_social_items(){
 		if( get_option("header_social_url_$i") ) {
 			$output .= '<li>
 				      <a href="' . esc_url(get_option("header_social_url_$i"), $protocols) . '" target="_blank">
-					      <i class="' . get_option("header_social_icon_$i") . '"><span class="hidden">'.get_option("header_social_icon_$i").' link</span></i>
+					      <span class="iconized ' . get_option("header_social_icon_$i") . '"><span class="text">'.get_option("header_social_icon_$i").' link</span></span>
 				      </a>
 				  </li>';
 		}
