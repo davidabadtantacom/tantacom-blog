@@ -191,11 +191,15 @@ function ebor_icon_box_shortcode( $atts, $content = null ) {
 			</div>
 		';
 	} elseif( 'large-left-top' == $layout ) {
+		$h4 = '';
+		if (!empty ($title)){
+			$h4 = '<h4>'. htmlspecialchars_decode($title) .'</h4>';
+		}
 		$output = '
 			<div class="mb40 mb-xs-24">
 				'. $before .'
 			    <span class="iconized '. esc_attr($icon) .' icon inline-block mb16 fade-3-4"><span class="text">'. esc_attr($icon) .'</span></span>
-			    <h4>'. htmlspecialchars_decode($title) .'</h4>
+			    '.$h4.'
 			    '. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 			    '. $after .'
 			</div>
