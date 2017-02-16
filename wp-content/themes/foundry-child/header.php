@@ -30,6 +30,7 @@
       }]
     }
     </script>
+    <?php include_once("analyticstracking.php") ?>
 <?php
 	/**
 	 * First, we need to check if we're going to override the header layout (with post meta)
