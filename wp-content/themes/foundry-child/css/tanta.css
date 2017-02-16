@@ -1,8 +1,0 @@
-span.iconized span.text{display: none;}
-nav.transparent .module.widget-handle span.iconized {color: #fff;opacity: 1;}
-.module.widget-handle span.iconized {line-height: 40px;}
-.module.widget-handle span.iconized {font-size: 20px;line-height: 53px;opacity: 0.5;transition: all 0.3s ease;-webkit-transition: all 0.3s ease;-moz-transition: all 0.3s ease;color: #111f23;}
-.mobile-toggle span.iconized {line-height: 53px !important;}
-nav.transparent .nav-open .module.widget-handle span.iconized {color: #111f23;}
-.nav-bar .social-list li a span.iconized{vertical-align: middle;line-height: -moz-block-height;}
-span.iconized.icon {line-height: initial;}
