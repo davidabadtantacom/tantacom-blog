@@ -61,3 +61,11 @@ function disable_wp_emojicons() {
 }
 add_action( 'init', 'disable_wp_emojicons' );
 add_filter( 'emoji_svg_url', '__return_false' );
+
+
+function remove_scripts_styles_footer() {
+    //----- CSS
+    wp_deregister_style('yarppRelatedCss'); // YARPP
+}
+ 
+add_action('wp_footer', 'remove_scripts_styles_footer');
