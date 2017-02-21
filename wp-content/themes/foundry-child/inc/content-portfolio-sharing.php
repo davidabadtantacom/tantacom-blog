@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-               <a href="mailto:somebody@example.com&subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
+               <a href="mailto:&subject=<?php echo get_the_title(); ?>&body=<?php the_permalink(); ?>" target="_blank">
                     <span class="iconized ti-email icon icon-xs"><span class="text">Email</span></span>
                 </a>
             </li>
