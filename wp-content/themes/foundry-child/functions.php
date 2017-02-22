@@ -69,3 +69,60 @@ function remove_scripts_styles_footer() {
 }
  
 add_action('wp_footer', 'remove_scripts_styles_footer');
+
+
+// Change menu labels of backend menu
+function change_menu() {
+    global $menu;
+	// Portfolio => Ofertas de trabajo
+	foreach ($menu as $index => $data) {
+		if ($data[0] == 'Ofertas de trabajo'){
+			$menu [$index][6]= 'dashicons-megaphone';
+		}
+	}
+}
+add_action( 'admin_menu', 'change_menu' );
+
+function change_post_object() {
+    global $wp_post_types;
+
+	// Portfolio => Ofertas de trabajo
+	// Name
+	$wp_post_types ['portfolio']->name = 'ofertasdetrabajo';
+	// Label
+	$wp_post_types ['portfolio']->label = 'Ofertas de trabajo';
+	// Description
+	$wp_post_types ['portfolio']->description = 'Ofertas de trabajo entries for the ebor Theme.';
+	// Taxonomies
+	$wp_post_types ['portfolio']->taxonomies[0] = 'ofertasdetrabajo-category';
+	// Taxonomies
+	$wp_post_types ['portfolio']->menu_icon = 'dashicons-megaphone';
+    // Query var
+	$wp_post_types ['portfolio']->query_var = 'ofertadetrabajo';
+    // Slug
+    $wp_post_types ['portfolio']->rewrite['slug'] = 'ofertadetrabajo';
+    // Labels
+    $labels = &$wp_post_types['portfolio']->labels;
+	$labels->name = 'Ofertas de trabajo';
+	$labels->singular_name = 'Ofertas de trabajo';
+	$labels->add_new_item = 'Add New Oferta de trabajo';
+	$labels->edit_item = 'Edit Oferta de trabajo';
+	$labels->new_item = 'New Oferta de trabajo';
+	$labels->view_item = 'View Oferta de trabajo';
+	$labels->view_items = 'Ver Ofertas de trabajo';
+	$labels->search_items = 'Search Ofertas de trabajo';
+	$labels->not_found = 'No Ofertas de trabajos found';
+	$labels->not_found_in_trash = 'No Ofertas de trabajo found in Trash';
+	$labels->parent_item_colon = 'Parent Ofertas de trabajo:';
+	$labels->all_items = 'Ofertas de trabajo';
+	$labels->archives = 'Ofertas de trabajo';
+	$labels->attributes = 'Atributos de oferta de trabajo';
+	$labels->insert_into_item = 'Insertar en la oferta de trabajo';
+	$labels->uploaded_to_this_item = 'Subido a esta oferta de trabajo';
+	$labels->filter_items_list = 'Lista de ofertas de trabajo filtradas';
+	$labels->items_list_navigation = 'Navegación por el listado de ofertas de trabajo';
+	$labels->items_list = 'Lista de ofertas de trabajo';
+	$labels->menu_name = 'Ofertas de trabajo';
+	$labels->name_admin_bar = 'Ofertas de trabajo';
+}
+add_action( 'init', 'change_post_object' );
