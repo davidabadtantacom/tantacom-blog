@@ -61,3 +61,6 @@
 
 # Redirect 404 error to custom 404 page
 ErrorDocument 404 /error-404
+
+# Redirect 301 
+Redirect 301 /portfolio /ofertadetrabajo

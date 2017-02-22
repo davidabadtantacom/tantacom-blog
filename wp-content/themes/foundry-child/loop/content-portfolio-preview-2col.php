@@ -1,4 +1,4 @@
-<div class="col-sm-6 masonry-item project fadeIn" data-filter="<?php echo ebor_the_terms('portfolio_category', ',', 'name'); ?>">
+<div class="col-sm-6 masonry-item project fadeIn" data-filter="<?php echo ebor_the_terms('ofertasdetrabajo_category', ',', 'name'); ?>">
 	<div class="image-tile hover-tile text-center">
 	
 		<?php the_post_thumbnail('grid', array('class' => 'background-image')); ?>
