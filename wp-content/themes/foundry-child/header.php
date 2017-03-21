@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<?php wp_head(); ?>
+  <?php include_once("gtmtrackingjs.php") ?>
 </head>
 
 <body <?php body_class( get_option('foundry_site_layout', 'normal-layout') . ' parallax-' . get_option('foundry_parallax_version', '3d') . ' ' . get_option('button_style', 'btn-regular') ); ?>>
@@ -30,7 +31,7 @@
       }]
     }
     </script>
-    <?php include_once("analyticstracking.php") ?>
+    <?php include_once("gtmtrackingiframe.php") ?>
 <?php
 	/**
 	 * First, we need to check if we're going to override the header layout (with post meta)
