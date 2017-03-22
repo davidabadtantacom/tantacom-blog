@@ -126,3 +126,22 @@ function change_post_object() {
 	$labels->name_admin_bar = 'Ofertas de trabajo';
 }
 add_action( 'init', 'change_post_object' );
+
+
+function flipboard_namespace() {
+    echo 'xmlns:media="http://search.yahoo.com/mrss/"
+    xmlns:georss="http://www.georss.org/georss"';
+}
+add_filter( 'rss2_ns', 'flipboard_namespace' );
+
+function add_media_thumbnail( $content ) {
+  global $post;
+  if( has_post_thumbnail( $post->ID )) {
+    $thumb_ID = get_post_thumbnail_id( $post->ID );
+    $details = wp_get_attachment_image_src($thumb_ID, 'full');
+    if( is_array($details) ) {
+      echo '<media:content url="' . $details[0] . '" />';
+    }
+  }
+}
+add_filter( 'rss2_item', 'add_media_thumbnail' );
