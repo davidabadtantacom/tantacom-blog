@@ -135,13 +135,17 @@ function flipboard_namespace() {
 add_filter( 'rss2_ns', 'flipboard_namespace' );
 
 function add_media_thumbnail( $content ) {
-  global $post;
-  if( has_post_thumbnail( $post->ID )) {
-    $thumb_ID = get_post_thumbnail_id( $post->ID );
-    $details = wp_get_attachment_image_src($thumb_ID, 'full');
-    if( is_array($details) ) {
-      echo '<media:content url="' . $details[0] . '" />';
-    }
-  }
+	global $post;
+	if( has_post_thumbnail( $post->ID )) {
+		$thumb_ID = get_post_thumbnail_id( $post->ID );
+		$details = wp_get_attachment_image_src($thumb_ID, 'full');
+		if( is_array($details)) {
+			$tipo = '';
+			if ($info   = getimagesize($details[0])){
+				$tipo = ' type="'.$info['mime'].'"';
+			}
+			echo '<media:content url="' . $details[0] . '"'.$tipo.' />';
+		}
+	}
 }
 add_filter( 'rss2_item', 'add_media_thumbnail' );
