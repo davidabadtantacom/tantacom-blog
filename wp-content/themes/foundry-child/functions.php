@@ -140,7 +140,7 @@ function add_media_thumbnail( $content ) {
     $thumb_ID = get_post_thumbnail_id( $post->ID );
     $details = wp_get_attachment_image_src($thumb_ID, 'full');
     if( is_array($details) ) {
-      echo '<media:thumbnail url="' . $details[0] . '" />';
+      echo '<media:content url="' . $details[0] . '" />';
     }
   }
 }
