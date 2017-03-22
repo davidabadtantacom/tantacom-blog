@@ -139,7 +139,7 @@ function add_media_thumbnail( $content ) {
 	if( has_post_thumbnail( $post->ID )) {
 		$thumb_ID = get_post_thumbnail_id( $post->ID );
 		$details = wp_get_attachment_image_src($thumb_ID, 'full');
-		if( is_array($details) && file_exists($details[0])) {
+		if( is_array($details)) {
 			$tipo = '';
 			if ($info   = getimagesize($details[0])){
 				$tipo = ' type="'.$info['mime'].'"';
