@@ -143,7 +143,7 @@ function add_media_thumbnail( $content ) {
 			if ($info   = getimagesize($details[0])){
 				$tipo = ' type="'.$info['mime'].'"';
 			}
-			echo '<media:content url="' . $details[0] . '"'.$tipo.' />';
+			echo '<media:content url="' . $details[0] . '"'.$tipo.' width="100%" />';
 		}
 	}
 }
