@@ -143,7 +143,10 @@ function add_media_thumbnail( $content ) {
 			if ($info   = getimagesize($details[0])){
 				$tipo = ' type="'.$info['mime'].'"';
 			}
-			echo '<media:content url="' . $details[0] . '"'.$tipo.' width="100%" />';
+
+			// CDN Image			
+			$imgUrl = str_replace (get_site_url(), KEYCDN_URL, $details[0]);		
+			echo '<media:content url="' . $imgUrl . '"'.$tipo.' width="100%" />';
 		}
 	}
 }
