@@ -1,5 +1,5 @@
-{
-    "version": "0.9.5.1",
+<?php exit; ?>{
+    "version": "0.9.5.2",
     "cluster.messagebus.debug": false,
     "cluster.messagebus.enabled": false,
     "cluster.messagebus.sns.region": "",
@@ -33,7 +33,9 @@
         "SHORTINIT",
         "XMLRPC_REQUEST"
     ],
-    "dbcache.reject.cookie": [],
+    "dbcache.reject.cookie": [
+
+    ],
     "dbcache.reject.logged": "1",
     "dbcache.reject.sql": [
         "gdsr_",
@@ -60,6 +62,8 @@
     "objectcache.configuration_overloaded": false,
     "objectcache.enabled": "1",
     "objectcache.debug": "0",
+    "objectcache.enabled_for_wp_admin": true,
+    "objectcache.fallback_transients": true,
     "objectcache.engine": "file",
     "objectcache.file.gc": 3600,
     "objectcache.file.locking": false,
@@ -234,8 +238,12 @@
     "minify.redis.password": "",
     "minify.redis.dbid": 0,
     "minify.rewrite": true,
-    "minify.options": [],
-    "minify.symlinks": [],
+    "minify.options": [
+
+    ],
+    "minify.symlinks": [
+
+    ],
     "minify.lifetime": 86400,
     "minify.upload": true,
     "minify.html.enable": false,
@@ -248,14 +256,18 @@
         "google_ad_",
         "RSPEAK_"
     ],
+    "minify.css.combine": false,
     "minify.css.enable": true,
     "minify.css.engine": "css",
-    "minify.css.combine": false,
+    "minify.css.http2push": false,
     "minify.css.strip.comments": false,
     "minify.css.strip.crlf": false,
     "minify.css.embed": false,
     "minify.css.imports": "",
-    "minify.css.groups": [],
+    "minify.css.groups": [
+
+    ],
+    "minify.js.http2push": false,
     "minify.js.enable": true,
     "minify.js.engine": "js",
     "minify.js.combine.header": false,
@@ -266,7 +278,9 @@
     "minify.js.footer.embed_type": "blocking",
     "minify.js.strip.comments": false,
     "minify.js.strip.crlf": false,
-    "minify.js.groups": [],
+    "minify.js.groups": [
+
+    ],
     "minify.yuijs.path.java": "java",
     "minify.yuijs.path.jar": "yuicompressor.jar",
     "minify.yuijs.options.line-break": 5000,
@@ -299,13 +313,22 @@
     "minify.htmltidy.options.hide-comments": true,
     "minify.htmltidy.options.wrap": 0,
     "minify.reject.logged": false,
-    "minify.reject.ua": [],
-    "minify.reject.uri": [],
-    "minify.reject.files.js": [],
-    "minify.reject.files.css": [],
+    "minify.reject.ua": [
+
+    ],
+    "minify.reject.uri": [
+
+    ],
+    "minify.reject.files.js": [
+
+    ],
+    "minify.reject.files.css": [
+
+    ],
     "minify.cache.files": [
         ""
     ],
+    "minify.cache.files_regexp": false,
     "cdn.configuration_overloaded": false,
     "cdn.enabled": "0",
     "cdn.debug": "0",
@@ -342,7 +365,9 @@
     "cdn.ftp.pass": "",
     "cdn.ftp.path": "",
     "cdn.ftp.pasv": false,
-    "cdn.ftp.domain": [],
+    "cdn.ftp.domain": [
+
+    ],
     "cdn.ftp.ssl": "auto",
     "cdn.google_drive.client_id": "",
     "cdn.google_drive.refresh_token": "",
@@ -352,30 +377,40 @@
     "cdn.highwinds.account_hash": "",
     "cdn.highwinds.api_token": "",
     "cdn.highwinds.host.hash_code": "",
-    "cdn.highwinds.host.domains": [],
+    "cdn.highwinds.host.domains": [
+
+    ],
     "cdn.highwinds.ssl": "auto",
     "cdn.s3.key": "",
     "cdn.s3.secret": "",
     "cdn.s3.bucket": "",
-    "cdn.s3.cname": [],
+    "cdn.s3.cname": [
+
+    ],
     "cdn.s3.ssl": "auto",
     "cdn.s3_compatible.api_host": "auto",
     "cdn.cf.key": "",
     "cdn.cf.secret": "",
     "cdn.cf.bucket": "",
     "cdn.cf.id": "",
-    "cdn.cf.cname": [],
+    "cdn.cf.cname": [
+
+    ],
     "cdn.cf.ssl": "auto",
     "cdn.cf2.key": "",
     "cdn.cf2.secret": "",
     "cdn.cf2.id": "",
-    "cdn.cf2.cname": [],
+    "cdn.cf2.cname": [
+
+    ],
     "cdn.cf2.ssl": "",
     "cdn.rscf.user": "",
     "cdn.rscf.key": "",
     "cdn.rscf.location": "us",
     "cdn.rscf.container": "",
-    "cdn.rscf.cname": [],
+    "cdn.rscf.cname": [
+
+    ],
     "cdn.rscf.ssl": "auto",
     "cdn.rackspace_cdn.user_name": "",
     "cdn.rackspace_cdn.api_key": "",
@@ -384,44 +419,66 @@
     "cdn.rackspace_cdn.service.id": "",
     "cdn.rackspace_cdn.service.name": "",
     "cdn.rackspace_cdn.service.protocol": "http",
-    "cdn.rackspace_cdn.domains": [],
+    "cdn.rackspace_cdn.domains": [
+
+    ],
     "cdn.azure.user": "",
     "cdn.azure.key": "",
     "cdn.azure.container": "",
-    "cdn.azure.cname": [],
+    "cdn.azure.cname": [
+
+    ],
     "cdn.azure.ssl": "auto",
-    "cdn.mirror.domain": [],
+    "cdn.mirror.domain": [
+
+    ],
     "cdn.mirror.ssl": "auto",
     "cdn.netdna.alias": "",
     "cdn.netdna.consumerkey": "",
     "cdn.netdna.consumersecret": "",
     "cdn.netdna.authorization_key": "",
-    "cdn.netdna.domain": [],
+    "cdn.netdna.domain": [
+
+    ],
     "cdn.netdna.ssl": "auto",
     "cdn.netdna.zone_id": 0,
     "cdn.maxcdn.authorization_key": "",
-    "cdn.maxcdn.domain": [],
+    "cdn.maxcdn.domain": [
+
+    ],
     "cdn.maxcdn.ssl": "auto",
     "cdn.maxcdn.zone_id": 0,
     "cdn.cotendo.username": "",
     "cdn.cotendo.password": "",
-    "cdn.cotendo.zones": [],
-    "cdn.cotendo.domain": [],
+    "cdn.cotendo.zones": [
+
+    ],
+    "cdn.cotendo.domain": [
+
+    ],
     "cdn.cotendo.ssl": "auto",
     "cdn.akamai.username": "",
     "cdn.akamai.password": "",
-    "cdn.akamai.email_notification": [],
+    "cdn.akamai.email_notification": [
+
+    ],
     "cdn.akamai.action": "invalidate",
     "cdn.akamai.zone": "production",
-    "cdn.akamai.domain": [],
+    "cdn.akamai.domain": [
+
+    ],
     "cdn.akamai.ssl": "auto",
     "cdn.edgecast.account": "",
     "cdn.edgecast.token": "",
-    "cdn.edgecast.domain": [],
+    "cdn.edgecast.domain": [
+
+    ],
     "cdn.edgecast.ssl": "auto",
     "cdn.att.account": "",
     "cdn.att.token": "",
-    "cdn.att.domain": [],
+    "cdn.att.domain": [
+
+    ],
     "cdn.att.ssl": "auto",
     "cdn.reject.admins": false,
     "cdn.reject.logged_roles": "0",
@@ -447,7 +504,9 @@
         "Nexus 7",
         "Touch"
     ],
-    "cdn.reject.uri": [],
+    "cdn.reject.uri": [
+
+    ],
     "cdn.reject.files": [
         "{uploads_dir}\/wpcf7_captcha\/*",
         "{uploads_dir}\/imagerotator.swf",
@@ -498,7 +557,9 @@
     "browsercache.other.etag": false,
     "browsercache.other.w3tc": false,
     "browsercache.other.replace": false,
-    "browsercache.replace.exceptions": [],
+    "browsercache.replace.exceptions": [
+
+    ],
     "mobile.configuration_overloaded": false,
     "mobile.enabled": false,
     "mobile.rgroups": {
@@ -684,10 +745,16 @@
         "newrelic": "w3-total-cache\/Extension_NewRelic_Plugin.php",
         "fragmentcache": "w3-total-cache\/Extension_FragmentCache_Plugin.php"
     },
-    "extensions.active_frontend": [],
+    "extensions.active_frontend": [
+
+    ],
     "plugin.license_key": "",
     "plugin.type": "",
     "fragmentcache": {
         "engine": "file"
+    },
+    "pgcache.bad_behavior_path": "",
+    "newrelic": {
+        "monitoring_type": "apm"
     }
 }
