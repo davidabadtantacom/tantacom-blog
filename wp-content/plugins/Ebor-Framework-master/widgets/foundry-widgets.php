@@ -115,7 +115,7 @@ if(!( class_exists('foundry_Twitter_Widget') )){
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
 			if ( isset( $instance['username'] ) || isset( $instance['user_name'] ) )
-				echo '<span class="hidden">Tweets list</span><div class="twitter-feed"><div class="tweets-feed" data-widget-id="'. $instance['username'] .'" data-user-name="'. $instance['user_name'] .'"></div></div>';
+				echo '<div class="twitter-feed"><div class="tweets-feed" data-widget-id="'. $instance['username'] .'" data-user-name="'. $instance['user_name'] .'"></div></div>';
 			
 			echo $args['after_widget'];
 		}
