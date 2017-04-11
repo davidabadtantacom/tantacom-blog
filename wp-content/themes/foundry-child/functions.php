@@ -155,7 +155,7 @@ add_filter( 'rss2_item', 'add_media_thumbnail' );
 // Validation comments form
 function comment_validation_init() {
 	if(is_singular() && comments_open() ){
-		wp_enqueue_script( 'validation-js', 'http://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' );
+		wp_enqueue_script( 'validation-js', 'https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js' );
 	}
 }
 add_action('wp_footer', 'comment_validation_init');
