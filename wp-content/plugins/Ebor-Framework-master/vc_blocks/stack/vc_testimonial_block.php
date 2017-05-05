@@ -19,6 +19,7 @@ function ebor_testimonial_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'testimonial',
+		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
 	
@@ -64,7 +65,7 @@ function ebor_testimonial_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Testimonial Feeds", 'stackwordpresstheme'),
 			"base" => "stack_testimonial",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show testimonial posts with layout options.',
 			"params" => array(
 				array(
