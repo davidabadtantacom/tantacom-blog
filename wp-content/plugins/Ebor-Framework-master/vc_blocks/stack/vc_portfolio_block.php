@@ -10,7 +10,10 @@ function ebor_portfolio_shortcode( $atts ) {
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'carousel-1',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
@@ -20,6 +23,7 @@ function ebor_portfolio_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'portfolio',
+		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
 	
@@ -40,6 +44,11 @@ function ebor_portfolio_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
 	
 	ob_start();
 	
@@ -67,7 +76,7 @@ function ebor_portfolio_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Portfolio Feeds", 'stackwordpresstheme'),
 			"base" => "stack_portfolio",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show portfolio posts with layout options.',
 			"params" => array(
 				array(

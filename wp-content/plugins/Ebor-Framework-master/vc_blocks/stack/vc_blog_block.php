@@ -29,7 +29,9 @@ function ebor_post_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'post',
-		'posts_per_page' => $pppage
+		'post_status' => 'publish',
+		'posts_per_page' => $pppage,
+		'paged' => $paged
 	);
 	
 	if (!( $filter == 'all' )) {
@@ -76,7 +78,7 @@ function ebor_post_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Blog Feeds", 'stackwordpresstheme'),
 			"base" => "stack_post",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show post posts with layout options.',
 			"params" => array(
 				array(
