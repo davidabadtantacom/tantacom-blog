@@ -1,6 +1,6 @@
 <?php 
 
-if(!( function_exists('ebor_icons_settings_field') )){
+if( !( function_exists('ebor_icons_settings_field') ) && function_exists('vc_set_as_theme') ){
 	function ebor_icons_settings_field( $settings, $value ) {
 		
 		$icons = $settings['value'];
@@ -17,6 +17,10 @@ if(!( function_exists('ebor_icons_settings_field') )){
 	   return $output;
 	}
 	vc_add_shortcode_param( 'ebor_icons', 'ebor_icons_settings_field' );
+}
+
+if( function_exists('ebor_breadcrumbs') ){
+	add_shortcode('stack_breadcrumbs_variant', 'ebor_breadcrumbs');	
 }
 
 /*-----------------------------------------------------------------------------------*/

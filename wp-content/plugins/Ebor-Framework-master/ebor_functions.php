@@ -1,5 +1,13 @@
 <?php 
 
+/**
+ * Update an option name with a value, both given by $_POST data
+ */
+function ebor_framework_update_option(){
+	update_option($_POST['optionName'], $_POST['optionValue']);
+}
+add_action('wp_ajax_ebor_framework_update_option', 'ebor_framework_update_option');
+
 function ebor_framework_functions_backfill(){
 	
 	if(!( function_exists('ebor_get_portfolio_layouts') )){
@@ -34,6 +42,40 @@ function ebor_framework_functions_backfill(){
 	
 }
 add_action('after_setup_theme', 'ebor_framework_functions_backfill', 1);
+
+/**
+ * Filters wp_title to print a neat <title> tag based on what is being viewed.
+ * @since 1.0.0
+ * @author tommusrhodus
+ */
+if(!( function_exists('ebor_framework_wp_title') )){
+	function ebor_framework_wp_title( $title, $sep ) {
+		global $page, $paged;
+		
+		if( get_theme_support('title-tag') ){
+			return $title;	
+		}
+	
+		if ( is_feed() ){
+			return $title;
+		}
+	
+		// Add the blog name
+		$title .= get_bloginfo( 'name' );
+	
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			$title .= " $sep $site_description";
+	
+		// Add a page number if necessary:
+		if ( $paged >= 2 || $page >= 2 )
+			$title .= " $sep " . sprintf( __( 'Page %s', 'ebor-framework' ), max( $paged, $page ) );
+	
+		return $title;
+	}
+	add_filter( 'wp_title', 'ebor_framework_wp_title', 10, 2 );
+}
 
 function ebor_is_woocommerce() {
     if( function_exists( "is_woocommerce" ) && is_woocommerce())

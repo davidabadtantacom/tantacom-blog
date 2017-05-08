@@ -20,6 +20,7 @@ function ebor_product_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'product',
+		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
 	
@@ -67,7 +68,7 @@ function ebor_product_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Product Feeds", 'stackwordpresstheme'),
 			"base" => "stack_product",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show product posts with layout options.',
 			"params" => array(
 				array(
