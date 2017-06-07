@@ -17,7 +17,8 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				'delay' => false,
 				'align' => 'text-center',
 				'cookie' => false,
-				'manual_id' => false
+				'manual_id' => false,
+				'hide_button' => 'no'
 			), $atts 
 		) 
 	);
@@ -40,7 +41,10 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 		$delay = 'data-time-delay="'. (int) $delay .'"';	
 	}
 	
-	$output = '<div class="modal-container '. $align .'"><a class="btn btn-lg btn-modal" href="#" modal-link="'. esc_attr($id) .'"><i class="'. $icon .'"></i> '. $button_text .'</a>';
+	$output = '<div class="modal-container '. $align .'">';
+	
+	if( 'no' == $hide_button )
+		$output .= '<a class="btn btn-lg btn-modal" href="#" modal-link="'. esc_attr($id) .'"><i class="'. $icon .'"></i> '. $button_text .'</a>';
 	
 	$output2 = '<div class="foundry_modal text-center '. $classes .'" '. $delay .' '. esc_attr($cookie) .' modal-link="'. esc_attr($id) .'"><i class="ti-close close-modal"></i>';
 	
@@ -102,6 +106,15 @@ function ebor_modal_shortcode_vc() {
 		    		"type" => "textfield",
 		    		"heading" => __("Button Text", 'foundry'),
 		    		"param_name" => "button_text"
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Hide Button?", 'foundry'),
+		    		"param_name" => "hide_button",
+		    		"value" => array(
+		    			'No' => 'no',
+		    			'Yes' => 'yes'
+		    		)
 		    	),
 		    	array(
 		    		"type" => "attach_image",

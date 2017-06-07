@@ -70,6 +70,9 @@ if(!( function_exists('ebor_framework_add_theme_support') )){
 		 * Woocommerce support
 		 */
 		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
 		
 		add_theme_support('post-formats', array('video', 'audio', 'quote'));
 		

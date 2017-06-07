@@ -2,7 +2,7 @@
 	/**
 	 * @package Foundry
 	 * @author TommusRhodus
-	 * @version 3.0.0
+	 * @version 9.9.9
 	 */
 	$layout = get_option('foundry_shop_layout', 'sidebar-right');
 	
