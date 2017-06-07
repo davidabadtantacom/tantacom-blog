@@ -261,7 +261,7 @@ if(!( function_exists('ebor_breadcrumbs') )){
 		}
 		
 		if( 'product' == $post_type && !(is_archive()) ){
-			$home .= '<li class="active"><a href="' . esc_url( get_permalink( woocommerce_get_page_id( 'shop' ) ) ) . '">' . __( 'Shop', 'foundry' ) . '</a></li>';
+			$home .= '<li class="active"><a href="' . esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ) . '">' . __( 'Shop', 'foundry' ) . '</a></li>';
 		} elseif( 'product' == $post_type && is_archive() ) {
 			$home .= '<li class="active">' . __( 'Shop', 'foundry' ) . '</li>';
 		}
@@ -643,7 +643,7 @@ if(!( function_exists('ebor_register_required_plugins') )){
 				'slug'     				=> 'Ebor-Framework-master',
 				'source'   				=> 'https://github.com/tommusrhodus/ebor-framework/archive/master.zip',
 				'required' 				=> true,
-				'version' 				=> '1.0.0',
+				'version' 				=> '1.3.0',
 				'external_url' 			=> 'https://github.com/tommusrhodus/ebor-framework/archive/master.zip',
 			),
 			array(
@@ -652,13 +652,13 @@ if(!( function_exists('ebor_register_required_plugins') )){
 				'source'   				=> 'http://www.madeinebor.com/plugin-downloads/js_composer-latest.zip',
 				'required' 				=> true,
 				'external_url' 			=> 'http://www.madeinebor.com/plugin-downloads/js_composer-latest.zip',
-				'version' 				=> '4.12.1',
+				'version' 				=> '5.1.1',
 			),
 			array(
 			    'name'      => 'WooCommerce',
 			    'slug'      => 'woocommerce',
 			    'required'  => false,
-			    'version' 	=> '2.0.0'
+			    'version' 	=> '3.0.0'
 			),
 		);
 		$config = array(

@@ -2,7 +2,7 @@
 /**
  * @package Foundry
  * @author TommusRhodus
- * @version 3.0.0
+ * @version 9.9.9
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -26,9 +26,9 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 
 	<?php endif; ?>
 
-	<?php echo htmlspecialchars_decode($product->get_categories( ', ', '<li><strong>' . _n( 'Category:', 'Categories:', $cat_count, 'foundry' ) . '</strong> ', '.</li>' )); ?>
+	<?php echo htmlspecialchars_decode(wc_get_product_category_list( $product->get_id(), ', ', '<li><strong>' . _n( 'Category:', 'Categories:', $cat_count, 'foundry' ) . '</strong> ', '.</li>' )); ?>
 
-	<?php echo htmlspecialchars_decode($product->get_tags( ', ', '<li><strong>' . _n( 'Tag:', 'Tags:', $tag_count, 'foundry' ) . '</strong> ', '.</li>' )); ?>
+	<?php echo htmlspecialchars_decode(wc_get_product_tag_list( $product->get_id(), ', ', '<li><strong>' . _n( 'Tag:', 'Tags:', $tag_count, 'foundry' ) . '</strong> ', '.</li>' )); ?>
 
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 	

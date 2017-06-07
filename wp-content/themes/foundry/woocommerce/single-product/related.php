@@ -2,7 +2,7 @@
 	/**
 	 * @package Foundry
 	 * @author TommusRhodus
-	 * @version 3.0.0
+	 * @version 9.9.9
 	 */
 	if ( ! defined( 'ABSPATH' ) ) {
 		exit; // Exit if accessed directly
@@ -14,7 +14,7 @@
 		return;
 	}
 	
-	$related = $product->get_related( $posts_per_page );
+	$related = wc_get_related_products($product->get_id(), $posts_per_page );
 	
 	if ( sizeof( $related ) == 0 ) return;
 	
@@ -25,7 +25,7 @@
 		'posts_per_page'       => 3,
 		'orderby'              => $orderby,
 		'post__in'             => $related,
-		'post__not_in'         => array( $product->id )
+		'post__not_in'         => array( $product->get_id() )
 	) );
 	
 	$products = new WP_Query( $args );
