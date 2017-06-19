@@ -9,3 +9,10 @@ Version: 1.0.0
 */
 
 @import url('../foundry/style.css');
+
+.listadoSoluciones .tabbed-content .tabs{position: relative;}
+.listadoSoluciones .tabbed-content .tabs li .text{background-color: rgba(255,255,255,0.8);border-radius: 6px;display: none;height: 100%;left: 0px;padding: 20px;position: absolute;top: 0px;width: 100%;z-index: 100;}
+.listadoSoluciones .tabbed-content .tabs li .text p{color: black;font-weight: bold;}
+.listadoSoluciones .tabbed-content .tabs li .text p.title{font-size: 2rem;}
+.listadoSoluciones .tabbed-content .tabs li .cerrar{background-color: transparent;border: none;color: #009fe3;float: right;font-weight: bold;margin-bottom: 0;}
+
