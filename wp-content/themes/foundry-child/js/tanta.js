@@ -19,4 +19,28 @@ jQuery(document).ready(function(){
 	document.addEventListener( 'wpcf7mailsent', function( event ) {if ("ga" in window) {tracker = ga.getAll()[0];if (tracker){tracker.send("event", "Formulario contacto", "Click", "Envio correcto");}}}, false );
 	// Parche para validar el formulario de comentarios
 	if (jQuery('#commentform').length){jQuery('#commentform').validate({onfocusout: function(element) {this.element(element);},rules: {author: {required: true,minlength: 2,normalizer: function(value) { return jQuery.trim(value); }},email: {required: true,email: true},comment: {required: true,minlength: 20,normalizer: function(value) { return jQuery.trim(value); }}},messages: {author: "Por favor indica tu nombre (2 caracteres mínimo).",email: "Por favor indica una dirección de correo electrónico válida.",comment: "Por favor indica tu comentario (20 caracteres mínimo)."},errorElement: "div",errorPlacement: function(error, element) {element.before(error);}});}
+	// Parche para controlar de forma diferente la funcionalidad de visualizacion del texto de los iconos de la secciones "soluciones"
+	// Quitamos el icono activo
+	jQuery('.listadoSoluciones .tabbed-content').find('.tabs>li').removeClass('active');
+	// Quitamos el contenido activo
+	jQuery('.listadoSoluciones .tabbed-content').find('.content>li').removeClass('active');
+	// Evitamos que al pinchar el icono se vea el texto 
+	jQuery('.listadoSoluciones .tabs li').click(function() {var liIndex = jQuery(this).index() + 1;jQuery(this).closest('.tabbed-content').find('.content>li').removeClass('active');
+	});
+	// Procedemos  a poner el contenido dentro del HTML del icono
+    jQuery('.listadoSoluciones .content li').each(function() {var liIndex = jQuery(this).index() + 1;var title = jQuery('.listadoSoluciones .tabs li:nth-of-type(' + liIndex + ')').find('span').html();var content = jQuery(this).find('.tab-content').html();var newContent = '<div class="text"><p class="title">'+title+'</p>'+content+'<button class="cerrar">Cerrar</button></div>';jQuery('.listadoSoluciones .tabs li:nth-of-type(' + liIndex + ')').append(newContent);});
+    // Asignamos actividad al boton de cerrar
+    jQuery('.listadoSoluciones .tabs').on ('click', '.cerrar', function (e){e.preventDefault ();jQuery(this).parents('.text').hide ();});
+    // Asignamos actividad al icono
+    jQuery('.listadoSoluciones .tabs li .tab-title').click(function() {jQuery('.listadoSoluciones .tabs').find ('.text:visible').hide();jQuery(this).siblings('.text').show();jQuery('html,body').animate({scrollTop: jQuery('h3.soluciones').offset().top},'slow');});
+	// Borramos la lista de contenidos. Ya los tenemos donde queriamos
+    jQuery('.listadoSoluciones .content').remove ();
+
+});
+
+jQuery(document).mouseup(function(e) {
+    // Parche para cerrar los textos de soluciones al pinchar fuera estando abierto alguno
+    var container = jQuery('.listadoSoluciones .tabs').find ('.text:visible');
+    // if the target of the click isn't the container nor a descendant of the container
+	if (!container.is(e.target) && container.has(e.target).length === 0) {container.hide();}
 });
