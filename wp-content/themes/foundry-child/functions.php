@@ -160,12 +160,34 @@ function comment_validation_init() {
 }
 add_action('wp_footer', 'comment_validation_init');
 
-
 /*
 Wordpress leading whitespace fix
 http://wejn.org/stuff/wejnswpwhitespacefix.php.html
 */
 function ___wejns_wp_whitespace_fix($input) {
+  /* valid content-type? */
+  $allowed = false;
+
+  /* found content-type header? */
+  $found = false;
+
+  /* we mangle the output if (and only if) output type is text/* */
+  foreach (headers_list() as $header) {
+    if (preg_match("/^content-type:\\s+(text\\/|application\\/((xhtml|atom|rss)\\+xml|xml))/i", $header)) {
+      $allowed = true;
+    }
+
+    if (preg_match("/^content-type:\\s+/i", $header)) {
+      $found = true;
+    }
+  }
+
+  /* do the actual work */
+  if ($allowed || !$found) {
+    return preg_replace("/\\A\\s*/m", "", $input);
+  } else {
+    return $input;
+  }
 	/* valid content-type? */
 	$allowed = false;
 
@@ -193,3 +215,11 @@ function ___wejns_wp_whitespace_fix($input) {
 
 /* start output buffering using custom callback */
 ob_start("___wejns_wp_whitespace_fix");
+
+function excluir_cursos( $query ) {
+  if ( $query->is_home() && $query->is_main_query() ) {
+    $query->set( 'cat', '-142' ); // id de la categoría cursos
+  }
+}
+add_action( 'pre_get_posts', 'excluir_cursos' );
+
