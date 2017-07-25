@@ -159,3 +159,11 @@ function comment_validation_init() {
 	}
 }
 add_action('wp_footer', 'comment_validation_init');
+
+
+function excluir_cursos( $query ) {
+  if ( $query->is_home() && $query->is_main_query() ) {
+    $query->set( 'cat', '-142' ); // id de la categoría cursos
+  }
+}
+add_action( 'pre_get_posts', 'excluir_cursos' );
