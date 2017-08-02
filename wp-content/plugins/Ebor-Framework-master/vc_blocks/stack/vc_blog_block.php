@@ -4,19 +4,25 @@
  * The Shortcode
  */
 function ebor_post_shortcode( $atts ) {
+	global $wp_query, $post, $paged;
+	
 	extract( 
 		shortcode_atts( 
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'list',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'false',
+				'arrows' => 'true',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
 	
-	//PAgination fix
-	global $paged;
+	if( 0 == $pppage || isset($wp_query->doing_blog_shortcode) ){
+		return false;	
+	}
 	
 	if( is_front_page() ) { 
 		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
@@ -34,6 +40,11 @@ function ebor_post_shortcode( $atts ) {
 		'paged' => $paged
 	);
 	
+	//Hide current post ID from the loop if we're in a singular view
+	if( is_single() && isset($post->ID) ){
+		$query_args['post__not_in']	= array($post->ID);
+	}
+	
 	if (!( $filter == 'all' )) {
 		if( function_exists( 'icl_object_id' ) ){
 			$filter = (int)icl_object_id( $filter, 'category', true);
@@ -47,10 +58,15 @@ function ebor_post_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
+	$wp_query->{"doing_blog_shortcode"} = 'true';
 	
 	ob_start();
 	

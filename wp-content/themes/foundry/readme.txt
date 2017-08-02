@@ -1,5 +1,28 @@
 ===================================================================
-May 19th 2017 - v1.1.17
+July 21st 2017 - v2.0.10
+-------------------------------------------------------------------
+
+* FIXED: Multiple [gallery] masonry feeds in the same page
+* FIXED: Stars display when leaving product rating in WooCommerce
+* UPDATED: Increased amount of social icons allowed in header
+* UPDATED: Increased amount of social icons allowed in footer
+* UPDATED: body class function in header.php is cleaned up
+* ADDED: New theme option for header, specify scroll distance before follow header appears
+* ADDED: data-fixed-at markup to each header layout in /inc/
+
+===================================================================
+June 13th 2017 - v2.0.9
+-------------------------------------------------------------------
+
+* FIXED: header CTA button going invisible on scroll
+* FIXED: Screen reader text
+* FIXED: Double arrow on select items in WooCommerce Checkout
+* ADDED: new header layout - centered header without utility bar
+* ADDED: new header layout - transparent centered header without utility bar
+* ADDED: New blog layout, big alternating sections with featured images.
+
+===================================================================
+May 19th 2017 - v2.0.8
 -------------------------------------------------------------------
 
 * FIXED: Twitter feeds

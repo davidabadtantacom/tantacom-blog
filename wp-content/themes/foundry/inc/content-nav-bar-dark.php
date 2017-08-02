@@ -1,10 +1,15 @@
 <?php 
 	$logo = get_option('custom_logo', EBOR_THEME_DIRECTORY . 'style/img/logo-dark.png'); 
 	$logo_light = get_option('custom_logo_light', EBOR_THEME_DIRECTORY . 'style/img/logo-light.png');
+	
+	$fixed_at_html = false;
+	if( $fixed_at = get_option('fixed_at_scroll_value') ){
+		$fixed_at_html = 'data-fixed-at="'. $fixed_at .'"';
+	}
 ?>
 
 <div class="nav-container">
-    <nav class="bg-dark">  
+    <nav class="bg-dark" <?php echo wp_kses_post($fixed_at_html); ?>>
         <div class="nav-bar">
         
             <div class="module left">

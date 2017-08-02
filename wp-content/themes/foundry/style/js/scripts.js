@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
 	/**
 	 * Select items
 	 */
-	jQuery('select').wrap('<div class="select-option" />').parent().prepend('<i class="ti-angle-down"></i>');
+	jQuery('select:not(.checkout select)').wrap('<div class="select-option" />').parent().prepend('<i class="ti-angle-down"></i>');
 	
 	jQuery('.blog-carousel').owlCarousel({
 		nav: false,
@@ -59,6 +59,7 @@ jQuery(document).ready(function() {
 /*-----------------------------------------------------------------------------------*/
 var mr_firstSectionHeight,
     mr_nav,
+    mr_fixedAt,
     mr_navOuterHeight,
     mr_navScrolled = false,
     mr_navFixed = false,
@@ -241,6 +242,7 @@ jQuery(document).ready(function() {
     // Fix nav to top while scrolling
     mr_nav = jQuery('body .nav-container nav:first');
     mr_navOuterHeight = jQuery('body .nav-container nav:first').outerHeight();
+    mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt(jQuery('section:nth-of-type(1)').outerHeight());
     window.addEventListener("scroll", updateNav, false);
 
     // Menu dropdown positioning
@@ -772,6 +774,28 @@ jQuery(window).load(function() {
 
         msnry.layout();
     }
+    
+    if (jQuery('.wp-gallery-masonry').length) {
+        jQuery('.wp-gallery-masonry').each(function(){
+        	
+	        var $this = jQuery(this),
+	        	msnry = new Masonry($this[0], {
+	            itemSelector: '.masonry-item'
+	        });
+	
+	        msnry.on('layoutComplete', function() {
+	
+	            $this.addClass('fadeIn');
+	            jQuery('.masonry-loader', $this).addClass('fadeOut');
+	            if (jQuery('.masonryFlyIn').length) {
+	                masonryFlyIn();
+	            }
+	        });
+	
+	        msnry.layout();
+	        
+        });
+    }
 
     // Initialize twitter feed
     var setUpTweets = setInterval(function() {
@@ -831,7 +855,7 @@ function updateNav() {
         return;
     }
 
-    if (scrollY > mr_firstSectionHeight) {
+    if (scrollY > mr_navOuterHeight + mr_fixedAt) {
         if (!mr_navScrolled) {
             mr_nav.addClass('scrolled');
             mr_navScrolled = true;
@@ -839,12 +863,12 @@ function updateNav() {
         }
     } else {
         if (scrollY > mr_navOuterHeight) {
-            if (!mr_navFixed) {
+           if (!mr_navFixed) {
                 mr_nav.addClass('fixed');
                 mr_navFixed = true;
             }
 
-            if (scrollY > mr_navOuterHeight * 2) {
+            if (scrollY > mr_navOuterHeight +10) {
                 if (!mr_outOfSight) {
                     mr_nav.addClass('outOfSight');
                     mr_outOfSight = true;

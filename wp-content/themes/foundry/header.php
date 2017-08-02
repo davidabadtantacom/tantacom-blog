@@ -8,7 +8,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class( get_option('foundry_site_layout', 'normal-layout') . ' parallax-' . get_option('foundry_parallax_version', '3d') . ' ' . get_option('button_style', 'btn-regular') ); ?>>
+<body <?php body_class(); ?>>
 
 <?php
 	/**

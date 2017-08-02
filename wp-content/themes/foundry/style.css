@@ -1,7 +1,7 @@
 /*
 Theme Name: Foundry
 Theme URI: http://www.tommusrhodus.com
-Version: 2.0.8
+Version: 2.0.10
 Description: Foundry - A Multipurpose, Responsive WordPress Theme.
 Author: Tom Rhodes
 Author URI: http://www.tommusrhodus.com
@@ -502,6 +502,7 @@ h1 span {
 .bypostauthor img.avatar {
 }
 .screen-reader-text {
+	display: none;
 }
 select {
 	max-width: 100%;
@@ -907,3 +908,4 @@ body.btn-rounded {
 .mb_YTPlayer {
     transform-style: flat;
 }
+.tabbed-content .content .stars .active { display: inline-block; }

@@ -4,6 +4,8 @@
  * The Shortcode
  */
 function ebor_portfolio_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
@@ -18,6 +20,10 @@ function ebor_portfolio_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage || isset($wp_query->doing_portfolio_shortcode) ){
+		return false;	
+	}
+	
 	/**
 	 * Setup post query
 	 */
@@ -26,6 +32,11 @@ function ebor_portfolio_shortcode( $atts ) {
 		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
+	
+	//Hide current post ID from the loop if we're in a singular view
+	if( is_single() && isset($post->ID) ){
+		$query_args['post__not_in']	= array($post->ID);
+	}
 	
 	if (!( $filter == 'all' )) {
 		if( function_exists( 'icl_object_id' ) ){
@@ -49,6 +60,7 @@ function ebor_portfolio_shortcode( $atts ) {
 		'arrows' => $arrows,
 		'timing' => $timing
 	);
+	$wp_query->{"doing_portfolio_shortcode"} = 'true';
 	
 	ob_start();
 	
