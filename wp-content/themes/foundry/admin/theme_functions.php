@@ -315,7 +315,7 @@ if(!( function_exists('ebor_header_social_items') )){
 		$protocols = array('http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet', 'skype');
 		$output = false;
 		
-		for( $i = 1; $i < 5; $i++ ){
+		for( $i = 1; $i < 10; $i++ ){
 			if( get_option("header_social_url_$i") ) {
 				$output .= '<li>
 					      <a href="' . esc_url(get_option("header_social_url_$i"), $protocols) . '" target="_blank">
@@ -405,7 +405,8 @@ if(!( function_exists('ebor_get_blog_layouts') )){
 			'Masonry Blog, 3 Columns' => 'masonry-3col',
 			'Masonry Blog, 2 Columns' => 'masonry-2col',
 			'Box Grid' => 'box',
-			'Carousel' => 'carousel'
+			'Carousel' => 'carousel',
+			'Big Sections' => 'sections'
 		);	
 	}
 }
@@ -467,8 +468,10 @@ if(!( function_exists('ebor_get_header_options') )){
 			'bar-transparent-dark' => 'Transparent Header (Dark Text)',
 			'bar-transparent-extended-dark' => 'Transparent Header with Top Utility Bar (Dark Text)',
 			'offscreen' => 'Offscreen Header',
-			'centered' => 'Centered Light Header',
-			'centered-transparent' => 'Centered Transparent Header'
+			'centered' => 'Centered Light Header with Top Utility Bar',
+			'centered-transparent' => 'Centered Transparent Header with Top Utility Bar',
+			'centered-no-top' => 'Centered Light Header',
+			'centered-transparent-no-top' => 'Centered Transparent Header'
 		);
 		return $options;	
 	}

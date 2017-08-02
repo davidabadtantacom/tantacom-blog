@@ -27,6 +27,10 @@ if(!( function_exists('ebor_body_classes') )){
 			$classes[] = 'perm-fixed-nav';
 		}
 		
+		$classes[] = get_option('foundry_site_layout', 'normal-layout');
+		$classes[] = 'parallax-' . get_option('foundry_parallax_version', '3d');
+		$classes[] = get_option('button_style', 'btn-regular');
+		
         return $classes;
         
 	}
@@ -219,7 +223,7 @@ if(!( function_exists('ebor_post_gallery') )){
 	     * Return Masonry Layout
 	     */
 	    if( $layout == 'masonry' ){
-	    	$output = '<div class="row"><div class="col-sm-12"><div class="masonry-feed masonry masonryFlyIn">';
+	    	$output = '<div class="row"><div class="col-sm-12"><div class="masonry-feed masonryFlyIn wp-gallery-masonry">';
 	    	foreach ( $attachments as $id => $attachment ) {
 	    		$url = wp_get_attachment_image_src($id, 'full');
 	    	    $output .= '

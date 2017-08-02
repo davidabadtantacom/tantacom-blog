@@ -4,16 +4,25 @@
  * The Shortcode
  */
 function ebor_product_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'column-2',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
+	
+	if( 0 == $pppage || isset($wp_query->doing_product_shortcode) ){
+		return false;	
+	}
 	
 	/**
 	 * Setup post query
@@ -37,10 +46,15 @@ function ebor_product_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
+	$wp_query->{"doing_product_shortcode"} = 'true';
 	
 	ob_start();
 	

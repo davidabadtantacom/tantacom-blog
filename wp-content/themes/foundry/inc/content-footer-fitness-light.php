@@ -4,7 +4,7 @@
 			<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
 			
 				<p class="fade-1-4">
-					<?php echo wp_kses(htmlspecialchars_decode(get_option('foundry_footer_copyright', 'Configure this message in "appearance" => "customize"')), ebor_allowed_tags()); ?>
+					<?php echo wp_kses_post(htmlspecialchars_decode(get_option('foundry_footer_copyright', '<a href="http://www.tommusrhodus.com">Foundry Premium WordPress Theme by TommusRhodus</a>')), ebor_allowed_tags()); ?>
 				</p>
 				
 				<ul class="list-inline social-list mb0">

@@ -3,8 +3,8 @@ Contributors: webdevstudios, pluginize, tw2113, vegasgeek, modemlooper, williams
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3084056
 Tags: custom post types, CPT, CMS, post, types, post type, taxonomy, tax, custom, content types, post types
 Requires at least: 4.6
-Tested up to: 4.7.2
-Stable tag: 1.5.3
+Tested up to: 4.8.0
+Stable tag: 1.5.5
 License: GPLv2
 
 Admin UI for creating custom post types and custom taxonomies for WordPress
@@ -32,7 +32,15 @@ Official development of Custom Post Type UI is on GitHub, with official stable r
 
 See changelog.txt for older changes.
 
-= 1.5.3 - TBD =
+= 1.5.5 - 2017-07-27 =
+* Fixed: Prevent possible conflicts with .required css selector by prefixing ours.
+* Fixed: Better accommodate possible labels with apostrophes, in relation to "Get code" functionality.
+
+= 1.5.4 - 2017-06-22 =
+* Fixed: Resolved saving issue around post types tha matched existing page slugs.
+* Fixed: Layout issues on about page.
+
+= 1.5.3 - 2017-03-29 =
 * Fixed: Removed ability to rename post type and taxonomy slugs to reserved slugs after initial saving.
 * Updated: Updated existing and added new, fancier side graphics.
 
@@ -100,7 +108,15 @@ See changelog.txt for older changes.
 
 == Upgrade Notice ==
 
-= 1.5.3 - TBD =
+= 1.5.5 - 2017-07-27 =
+* Fixed: Prevent possible conflicts with .required css selector by prefixing ours.
+* Fixed: Better accommodate possible labels with apostrophes, in relation to "Get code" functionality.
+
+= 1.5.4 - 2017-06-22 =
+* Fixed: Resolved saving issue around post types tha matched existing page slugs.
+* Fixed: Layout issues on about page.
+
+= 1.5.3 - 2017-03-29 =
 * Fixed: Removed ability to rename post type and taxonomy slugs to reserved slugs after initial saving.
 * Updated: Updated existing and added new, fancier side graphics.
 
@@ -188,5 +204,8 @@ That's it! Now you can easily start creating custom post types and taxonomies in
 
 == Frequently Asked Questions ==
 
-User documentation: http://docs.pluginize.com/category/126-custom-post-type-ui
-Code/API documentation: http://codex.pluginize.com/cptui/
+#### User documentation
+Please see http://docs.pluginize.com/category/126-custom-post-type-ui
+
+#### Code/API documentation
+Please see http://codex.pluginize.com/cptui/

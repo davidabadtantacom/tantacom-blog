@@ -1,10 +1,15 @@
 <?php 
 	$logo = get_option('custom_logo', EBOR_THEME_DIRECTORY . 'style/img/logo-dark.png'); 
 	$logo_light = get_option('custom_logo_light', EBOR_THEME_DIRECTORY . 'style/img/logo-light.png');
+	
+	$fixed_at_html = false;
+	if( $fixed_at = get_option('fixed_at_scroll_value') ){
+		$fixed_at_html = 'data-fixed-at="'. $fixed_at .'"';
+	}
 ?>
 
 <div class="nav-container">
-	<nav class="absolute transparent">
+	<nav class="absolute transparent" <?php echo wp_kses_post($fixed_at_html); ?>>
 	
 		<div class="nav-bar">
 		
@@ -54,7 +59,7 @@
 				?>
 				
 				<p class="fade-half">
-					<?php echo wpautop(wp_kses(htmlspecialchars_decode(get_option('foundry_footer_copyright', 'Configure this message in "appearance" => "customize"')), ebor_allowed_tags())); ?>
+					<?php echo wpautop(wp_kses_post(htmlspecialchars_decode(get_option('foundry_footer_copyright', '<a href="http://www.tommusrhodus.com">Foundry Premium WordPress Theme by TommusRhodus</a>')), ebor_allowed_tags())); ?>
 				</p>
 				
 				<ul class="list-inline social-list">

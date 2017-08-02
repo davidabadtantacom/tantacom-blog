@@ -4,15 +4,24 @@
  * The Shortcode
  */
 function ebor_team_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
-				'layout' => 'grid-3'
+				'layout' => 'grid-3',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
+	
+	if( 0 == $pppage || isset($wp_query->doing_team_shortcode) ){
+		return false;	
+	}
 	
 	/**
 	 * Setup post query
@@ -22,6 +31,11 @@ function ebor_team_shortcode( $atts ) {
 		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
+	
+	//Hide current post ID from the loop if we're in a singular view
+	if( is_single() && isset($post->ID) ){
+		$query_args['post__not_in']	= array($post->ID);
+	}
 	
 	if (!( $filter == 'all' )) {
 		if( function_exists( 'icl_object_id' ) ){
@@ -36,10 +50,15 @@ function ebor_team_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
+	$wp_query->{"doing_team_shortcode"} = 'true';
 	
 	ob_start();
 

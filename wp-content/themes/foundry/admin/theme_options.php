@@ -16,7 +16,7 @@ if( class_exists('Ebor_Options') ){
 	 */
 	$theme = wp_get_theme();
 	$theme_name = $theme->get( 'Name' );
-	$footer_default = 'Modify this text from "appearance => customise"';
+	$footer_default = '<a href="http://www.tommusrhodus.com">Foundry Premium WordPress Theme by TommusRhodus</a>';
 	$footer_layouts = ebor_get_footer_options();
 	$header_layouts = ebor_get_header_options();
 	$team_layouts = array_flip(ebor_get_team_layouts());
@@ -242,6 +242,7 @@ if( class_exists('Ebor_Options') ){
 	$ebor_options->add_setting('range', 'nav_right_margin', 'Nav Right Margin (32 Default)', 'header_layout_section', '32', 35, array('min' => '32', 'max' => '150', 'step' => '1'));
 	$ebor_options->add_setting('range', 'dropdown_width', 'Dropdown Menu Width (200 Default)', 'header_layout_section', '200', 40, array('min' => '200', 'max' => '300', 'step' => '1'));
 	$ebor_options->add_setting('select', 'perm_fixed_nav', 'Permanent fix Nav to top of screen? (disabled on mobile)(May appear under WordPress admin bar whilst logged in)', 'header_layout_section', 'no', 45, array('yes' => 'Yes', 'no' => 'No'));
+	$ebor_options->add_setting('input', 'fixed_at_scroll_value', 'Fix menu after certain scroll value? E.g: enter 200px for the scroll menu to kick in after 200px of scrolling', 'header_layout_section', '', 50);
 	
 	$ebor_options->add_setting('input', 'cta_url', 'Call to Action Button URL', 'sub_header_layout_section', '', 10);
 	$ebor_options->add_setting('input', 'cta_text', 'Call to Action Button Text', 'sub_header_layout_section', 'Build Yours »', 15);
@@ -264,13 +265,13 @@ if( class_exists('Ebor_Options') ){
 	$ebor_options->add_setting('select', 'foundry_footer_modal_colour', 'Footer Modal Background', 'footer_modal_section', 'bg-white', 35, array('bg-white' => 'White Background', 'bg-dark' => 'Dark Background'));
 	
 	//Footer Icons
-	for( $i = 1; $i < 5; $i++ ){
+	for( $i = 1; $i < 10; $i++ ){
 		$ebor_options->add_setting('select', 'footer_social_icon_' . $i, 'Footer Social Icon ' . $i, 'footer_social_settings_section', 'none', 20 + $i + $i, $new_social_options);
 		$ebor_options->add_setting('input', 'footer_social_url_' . $i, 'Footer Social URL ' . $i, 'footer_social_settings_section', '', 21 + $i + $i);
 	}
 	
 	//Header icons
-	for( $i = 1; $i < 5; $i++ ){
+	for( $i = 1; $i < 10; $i++ ){
 		$ebor_options->add_setting('select', 'header_social_icon_' . $i, 'Header Social Icon ' . $i, 'sub_header_layout_section', 'none', 30 + $i + $i, $new_social_options);
 		$ebor_options->add_setting('input', 'header_social_url_' . $i, 'Header Social URL ' . $i, 'sub_header_layout_section', '', 31 + $i + $i);
 	}

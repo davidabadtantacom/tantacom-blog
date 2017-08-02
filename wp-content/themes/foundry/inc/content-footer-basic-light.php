@@ -17,7 +17,7 @@
 		
 			<div class="col-sm-4 text-center">
 				<span class="fade-half">
-					<?php echo wp_kses(htmlspecialchars_decode(get_option('foundry_footer_copyright', 'Configure this message in "appearance" => "customize"')), ebor_allowed_tags()); ?>
+					<?php echo wp_kses_post(htmlspecialchars_decode(get_option('foundry_footer_copyright', '<a href="http://www.tommusrhodus.com">Foundry Premium WordPress Theme by TommusRhodus</a>')), ebor_allowed_tags()); ?>
 				</span>
 			</div>
 		
