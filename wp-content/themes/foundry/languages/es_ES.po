@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foundry\n"
 "POT-Creation-Date: 2016-03-07 10:42+0000\n"
-"PO-Revision-Date: 2017-08-24 14:40+0200\n"
+"PO-Revision-Date: 2017-09-05 17:09+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: 404.php:10
 msgid "Page Not Found"
-msgstr ""
+msgstr "Página no encontrada"
 
 #: 404.php:11
 msgid ""
@@ -740,7 +740,7 @@ msgstr "Categorizado"
 
 #: loop/content-none.php:1
 msgid "Sorry, no results were found, search again?"
-msgstr ""
+msgstr "Lo sentimos, no se han encontrado resultados, ¿buscar de nuevo?"
 
 #: loop/content-portfolio-parallax-large.php:14
 #: loop/content-portfolio-parallax.php:12
@@ -766,15 +766,15 @@ msgstr "Leer más"
 
 #: search.php:6
 msgid " Item"
-msgstr ""
+msgstr " Ítem"
 
 #: search.php:6
 msgid " Items"
-msgstr ""
+msgstr " Ítems"
 
 #: search.php:10
 msgid "Found "
-msgstr ""
+msgstr "Encontrados "
 
 #: searchform.php:2 woocommerce/product-searchform.php:2
 msgid "Type here"
