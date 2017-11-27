@@ -1,10 +1,10 @@
 === Scripts To Footer ===
 Contributors: joshuadnelson
-Tags: javascript, scripts, wp_enqueue_scripts, footer, speed, head, performance, jquery, seo
-Donate link: http://jdn.im/donate
+Tags: javascript, footer, speed, head, performance
+Donate link: https://joshuadnelson.com/donate
 Requires at least: 3.1.0
-Tested up to: 4.7.0
-Stable tag: 0.6.1
+Tested up to: 4.9
+Stable tag: 0.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,11 +18,7 @@ You can disable the plugin on specific pages and posts directly via the post/pag
 
 You can disable the plugin on specific archive pages (blog page, search page, post type and taxonomy archives) via the settings page.
 
-= Sometimes moving scripts breaks something. =
-
-There are many javascript-based plugins like many sliders, some social media sharing scripts, that rely on jQuery to be loaded prior to the HTML elements. This is so common, I've created an option to fix it. If you experience issues, click the "Keep jQuery in Header" option in Settings > Scripts to Footer. 
-
-If that doesn't work, refer to the walkthrough below for using the `stf_exclude_scripts` filter for the script that is causing the issue.
+**Everything Broken?** Try placing jQuery back into the header via Settings > Scripts to Footer, "Keep jQuery in the Header" checkbox. If that doesn't work, refer to the walkthrough below for using the `stf_exclude_scripts` filter for the script that is causing the issue.
 
 Check out the [documentation](https://github.com/joshuadavidnelson/scripts-to-footer/wiki) on [GitHub](https://github.com/joshuadavidnelson/scripts-to-footer) or some quick walkthroughs below.
 
@@ -113,23 +109,25 @@ Please feel free to open a [Github Issue](https://github.com/joshuadavidnelson/s
 
 == Changelog ==
 
+= 0.6.2 =
+Added support for disabling plugin on 404 pages, thanks to Alex (@piscis on GitHub)
+
 = 0.6.1 =
-* Fix bug with custom taxonomy archive include filter
-* Clean up all taxonomy archive conditional statements and corresponding error logging
+Updates custom taxonomy check for custom taxonomy archives and some error logging functions.
 
 = 0.6.0 =
 Large number of improvements:
-* Add settings page with global disable options for home page, search pages, post type archives, taxonomy archives, and other archives.
-* Update uninstall.php to remove things correctly.
-* Add FAQ to readme.txt and readme.md.
-* Add a changelog as a separate file.
-* Change the custom post type filter. Refer to updated [FAQ](https://github.com/joshuadavidnelson/scripts-to-footer/#faq) and [documentation](https://github.com/joshuadavidnelson/scripts-to-footer/wiki).
-* Add support for custom taxonomy archives.
-* Change the exclude filter, to be more relevant to the new options. Older filter is depreciated, but still supported (for now).
-* Update the post meta for disabling the plugin on specific posts/pages.
-* Add Github Updater support.
-* Removed CMB and built metaboxes the old fashion way.
-* Added debug logging to better track any potential errors moving forward.
+ - Add settings page with global disable options for home page, search pages, post type archives, taxonomy archives, and other archives.
+ - Update uninstall.php to remove things correctly.
+ - Add FAQ to readme.txt and readme.md.
+ - Add a changelog as a separate file.
+ - Change the custom post type filter. Refer to updated [FAQ](https://github.com/joshuadavidnelson/scripts-to-footer/#faq) and [documentation](https://github.com/joshuadavidnelson/scripts-to-footer/wiki).
+ - Add support for custom taxonomy archives.
+ - Change the exclude filter, to be more relevant to the new options. Older filter is depreciated, but still supported (for now).
+ - Update the post meta for disabling the plugin on specific posts/pages.
+ - Add Github Updater support.
+ - Removed CMB and built metaboxes the old fashion way.
+ - Added debug logging to better track any potential errors moving forward.
 
 = 0.5 =
 Reverted metabox version to previous - invalid error was sneaking through.
@@ -148,8 +146,11 @@ Initial release
 
 == Upgrade Notice ==
 
+= 0.6.2 =
+Added support for disabling plugin on 404 pages, thanks to Alex (@piscis on GitHub)
+
 = 0.6.1 =
-Updates custom taxonomy check for custom taxonomy archives and some error logging functions. 
+Updates custom taxonomy check for custom taxonomy archives and some error logging functions.
 
 = 0.6 =
 Large improvements, including: a settings page to resolve issues on archives and blog roll pages, setting to keep jQuery in the header, and updated filters. Refer to the documentation if you are using a filter currently, as they have changed, prior to updating.
